@@ -1,6 +1,9 @@
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fghkdtlwns987&count_bg=%23FFDAC7&title_bg=%23FFADAD&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ghkdtlwns987)](https://solved.ac/ghkdtlwns987/)
+
+### Best Of The Best 10th Vulnerability analysis(2021.07.01 ~ 2022.03.31)
+![Alt text](image.png)
 # 💪Skills
 ### Platforms & Languages
 ![Java](https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=Java&logoColor=white)
@@ -23,5 +26,21 @@
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939.svg?&style=for-the-badge&logo=Jenkins&logoColor=white)
 ![ArgoCD](https://img.shields.io/badge/argo-EF7B4D.svg?&style=for-the-badge&logo=argo&logoColor=white)
  
-# :mailbox_with_mail: Contacts
-[![Naver Badge](https://img.shields.io/badge/Naver-03C75A?style=flat-square&logo=Naver&logoColor=white&link=mailto:ghkdtlwns987@naver.com)](mailto:ghkdtlwns987@naver.com)
+# Contacts
+Naver : ghkdtlwns987@naver.com  
+Velog : https://velog.io/@ghkdtlwns987  
+Portfolio : https://mud-sea-993.notion.site/Portfolio-f2afe783fa8d47f1aed549de85e1c01d?pvs=4
+# Certificates
+|Organization|Name|Score|Period|
+|:---:|:---:|:---:|:---:|
+|OPIC|OPIC|IM2|2023.09.03|
+|Amazon|AWS Solutions Architect - Associate|Pass|2023-10-21|
+|The Linux Foundation|Certified Kubernetes Administrator(CKA)|Processing|2023.11.22|    
+
+# Awards
+|Organization|Name|Award|Details|Period|
+|:---:|:---:|:---:|:---:|:--:|
+|조선대학교|교내 아이디어 경진대회|동상|동아리 운영 정보에 필요한 데이터 크롤링 어플리케이션|2021.12.20|  
+|KOSPO|정보보안 웹 서비스 경진대회|대상|웹 서비스 취약점 발굴 및 대응|2022.09.16|
+|(주)비온시이노베이터|인공지능 학습용 데이터 구축 해커톤 경진대회|장려상|CNN 신경망을 통한 화제 탐지|2022.09.29|
+|한국전력|사이버보안 컨퍼런스 침해대응/분석 경진대회|우수상|취약 서버 구축, 웹 취약점 점검 및 보안, 침해사고 대응 및 분석, 악성코드 분석, NFV구축|2022.09.30|
