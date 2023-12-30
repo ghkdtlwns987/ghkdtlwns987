@@ -34,7 +34,7 @@ Portfolio : https://mud-sea-993.notion.site/Portfolio-f2afe783fa8d47f1aed549de85
 |Organization|Name|Score|Period|
 |:---:|:---:|:---:|:---:|
 |OPIC|OPIC|IM2|2023.09.03|
-|Amazon|AWS Solutions Architect - Associate|Pass|2023-10-21|
+|Amazon|AWS Solutions Architect - Associate|Pass|2023.10.21|
 |The Linux Foundation|Certified Kubernetes Administrator(CKA)|Pass|2023.12.29|    
 
 # Awards
