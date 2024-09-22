@@ -33,9 +33,11 @@ Portfolio : https://mud-sea-993.notion.site/Portfolio-f2afe783fa8d47f1aed549de85
 # Certificates
 |Organization|Name|Score|Period|
 |:---:|:---:|:---:|:---:|
-|OPIC|OPIC|IM2|2023.09.03|
+|TOEIC-SPEAKING|TOEIC-SPEAKING|AL|2024.08.04|
 |Amazon|AWS Solutions Architect - Associate|Pass|2023.10.21|
 |The Linux Foundation|Certified Kubernetes Administrator(CKA)|Pass|2023.12.29|    
+|한국산업인력공단|정보처리기사|Pass|2024.06.18|
+|KData|SQLD|Pass|2024.09.20|
 
 # Awards
 |Organization|Name|Award|Details|Period|
