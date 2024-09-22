@@ -28,8 +28,9 @@
  
 # Contacts
 Naver : ghkdtlwns987@naver.com  
-Velog : https://velog.io/@ghkdtlwns987  
-Portfolio : https://mud-sea-993.notion.site/Portfolio-f2afe783fa8d47f1aed549de85e1c01d?pvs=4
+Blog1 : https://velog.io/@ghkdtlwns987  
+Blog2 : https://hard-to-study.tistory.com/
+
 # Certificates
 |Organization|Name|Score|Period|
 |:---:|:---:|:---:|:---:|
