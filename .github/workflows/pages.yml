@@ -2,9 +2,10 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 
+# Pages 배포에 필요한 권한 (Settings → Pages → GitHub Actions 활성화 후 동작)
 permissions:
   contents: read
   pages: write
@@ -30,8 +31,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
