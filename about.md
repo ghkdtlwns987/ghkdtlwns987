@@ -86,12 +86,6 @@ permalink: /about/
       <li>Pwnable · 웹 보안 교육</li>
     </ul>
   </div>
-
-  <div class="timeline-item">
-    <h3>조선대학교 연구실 — 학부 연구생</h3>
-    <p class="period">2022.03 ~ 2022.12</p>
-    <p>국제 공동기술개발 프로젝트 — Mean-shift + K-means 기반 이미지 처리 알고리즘 개선</p>
-  </div>
 </section>
 
 <section>

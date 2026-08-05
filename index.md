@@ -20,6 +20,43 @@ title: Home
 </div>
 
 <section>
+  <h2>News</h2>
+  <ul class="news-list">
+    <li class="news-item">
+      <div class="news-meta">
+        <time class="news-date">Aug 2026</time>
+        <span class="news-badge">New</span>
+        <span class="news-tag">ASE 2026</span>
+      </div>
+      <p class="news-text">
+        <strong>CLEAR</strong> 논문이 arXiv에 게재되었습니다.
+        <em>CLEAR: Causal Context-Based Agentic Reasoning for Vulnerability Detection</em>
+        — IEEE/ACM ASE 2026 ·
+        <a href="https://arxiv.org/abs/2608.03134" target="_blank" rel="noopener">arXiv:2608.03134</a>
+      </p>
+    </li>
+    <li class="news-item">
+      <div class="news-meta">
+        <time class="news-date">2025</time>
+        <span class="news-tag">Research</span>
+      </div>
+      <p class="news-text">
+        한양대학교 정보보호학과 석사과정 입학 — AI Security · Knowledge Graph · Vulnerability Detection 연구 시작
+      </p>
+    </li>
+    <li class="news-item">
+      <div class="news-meta">
+        <time class="news-date">2025</time>
+        <span class="news-tag">Publication</span>
+      </div>
+      <p class="news-text">
+        국내 학술대회 2편 발표 — CISC-S 2025, 한국통신학회 AI학술대회
+      </p>
+    </li>
+  </ul>
+</section>
+
+<section>
   <h2>Highlights</h2>
   <div class="card-grid">
     <div class="card">

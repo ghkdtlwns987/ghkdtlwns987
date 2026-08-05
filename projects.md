@@ -11,10 +11,14 @@ permalink: /projects/
 <section>
   <h2>Research</h2>
   <div class="card-grid">
-    <div class="card">
+    <div class="card card--featured">
       <h3>CLEAR</h3>
       <p class="meta">Causal Context-based Agentic Reasoning for Vulnerability Detection</p>
       <p>Multi-Agent 기반 취약점 탐지 프레임워크. Vulnerability Causal Knowledge Graph(VCKG) 설계 및 AI 기반 Causal Reasoning을 통한 취약점 탐지.</p>
+      <p class="project-link">
+        <a href="https://arxiv.org/abs/2608.03134" target="_blank" rel="noopener">DOI / arXiv:2608.03134</a>
+        · ASE 2026
+      </p>
       <div class="tags">
         <span class="tag">LLM</span>
         <span class="tag">Knowledge Graph</span>
