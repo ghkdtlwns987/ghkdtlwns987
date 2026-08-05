@@ -15,7 +15,10 @@
   --accent-orange: #f0883e;
   --sidebar-width: 260px;
   --sidebar-right-width: 280px;
-  --content-max: 720px;
+  --content-max: 880px;
+  --layout-max: 1500px;
+  --layout-gutter-left: 1.25rem;
+  --layout-gutter-right: 2rem;
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
@@ -79,14 +82,15 @@ a:hover {
 .site-wrapper {
   display: flex;
   min-height: 100vh;
-  max-width: 1280px;
-  margin: 0 auto;
+  width: calc(100% - var(--layout-gutter-left) - var(--layout-gutter-right));
+  max-width: var(--layout-max);
+  margin: 0 var(--layout-gutter-right) 0 var(--layout-gutter-left);
 }
 
 .sidebar-left {
   width: var(--sidebar-width);
   flex-shrink: 0;
-  padding: 2rem 1.25rem;
+  padding: 2rem 0.875rem 2rem 0.25rem;
   border-right: 1px solid var(--border-light);
   position: sticky;
   top: 0;
@@ -270,15 +274,16 @@ a:hover {
 
 .main-content {
   flex: 1;
-  padding: 2rem 2rem 3rem;
+  padding: 2rem 1.5rem 3rem 1.25rem;
   min-width: 0;
   max-width: calc(var(--content-max) + 4rem);
 }
 
 .content-area--wide .main-content {
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   width: 100%;
+  padding: 2rem 2rem 3rem 1.5rem;
 }
 
 .sidebar-right {
@@ -1347,6 +1352,9 @@ td strong {
 @media (max-width: 768px) {
   .site-wrapper {
     flex-direction: column;
+    width: 100%;
+    max-width: none;
+    margin: 0;
   }
 
   .sidebar-left {
