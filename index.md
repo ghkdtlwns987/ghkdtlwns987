@@ -7,14 +7,20 @@ title: Home
   {% include intro.html %}
 </div>
 
-<section class="content-section">
-  <h2 class="section-title">News</h2>
+<section class="content-section content-section--feed">
+  <h2 class="section-title section-title--feed">News</h2>
   <ul class="news-list">
     {% for item in site.data.profile.news %}
-    <li class="news-item">
+    <li class="news-item{% if forloop.first %} news-item--featured{% endif %}">
       <div class="news-meta">
         <time class="news-date">{{ item.date }}</time>
-        {% if item.badge %}<span class="news-badge">{{ item.badge }}</span>{% endif %}
+        {% if item.badges %}
+          {% for badge in item.badges %}
+            <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
+          {% endfor %}
+        {% elsif item.badge %}
+          <span class="news-badge">{{ item.badge }}</span>
+        {% endif %}
         {% if item.tag %}<span class="news-tag">{{ item.tag }}</span>{% endif %}
       </div>
       <p class="news-text">
@@ -28,10 +34,12 @@ title: Home
   </ul>
 </section>
 
-<section class="content-section">
-  <h2 class="section-title">Recent Poster</h2>
-  {% include poster-recent.html %}
-  <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">Poster 전체 보기 →</a></p>
+<section class="content-section content-section--feed">
+  <h2 class="section-title section-title--feed">Recent Poster</h2>
+  <div class="home-feed-panel">
+    {% include poster-recent.html %}
+  </div>
+  <p class="cross-link cross-link--feed"><a href="{{ '/poster/' | relative_url }}">Poster 전체 보기 →</a></p>
 </section>
 
 <section class="content-section">

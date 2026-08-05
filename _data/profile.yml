@@ -29,7 +29,9 @@ tags:
 
 news:
   - date: "Aug 2026"
-    badge: "New"
+    badges:
+      - New
+      - Paper
     tag: "ASE 2026"
     text: "CLEAR:Causal Context-based Agentic Reasoning for Vulnerability Detection has been accepted to IEEE/ACM International conference on automated software engineering 2026"
     link: "https://conferences.computer.org/ase/2026/program/eventDetails.html?eventId=315325"
