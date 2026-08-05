@@ -1,0 +1,70 @@
+international:
+  - slug: clear-ase-2026
+    featured: true
+    headline: "CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection"
+    title: "CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection"
+    date: "2026.07.29"
+    venue: "IEEE/ACM International Conference on Automated Software Engineering (ASE 2026)"
+    authors: "Sungju Yun*, Sijune Hwang*, Yeonjoon Lee, Kyungtae Kang, Sungbin Park"
+    badges:
+      - type: intl
+        label: International
+      - type: year
+        label: ASE 2026
+      - type: author
+        label: First Author
+    news:
+      date: "Aug 2026"
+      featured: true
+      text: |
+        CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection has been accepted to
+        IEEE/ACM International Conference on Automated Software Engineering (ASE 2026).
+      badges:
+        - New
+        - Paper
+      tag: "ASE 2026"
+    summary:
+      - >
+          소프트웨어 취약점의 인과적 특성을 구조화한 지식 그래프와 LLM 기반 멀티에이전트 추론을 결합하여, 복잡한 보안 취약점에 대한 신뢰성 높은 탐지 및 근거 기반 추론을 수행하는 AI 보안 프레임워크를 제안하였습니다.
+      - >
+          본 연구에서는 Vulnerability Causal Knowledge Graph (VCKG)를 구축하고,
+          다중 LLM 에이전트 기반 협력 추론을 통해 소프트웨어 취약점의 탐지와
+          원인 분석을 수행합니다.
+    link: "https://arxiv.org/abs/2608.03134"
+    link_label: "http://arxiv.org/abs/2608.03134"
+    contributions:
+      - Multi-Agent 기반 취약점 탐지 프레임워크 제안
+      - Vulnerability Causal Knowledge Graph (VCKG) 설계
+      - AI 기반 Causal Reasoning을 통한 취약점 탐지 성능 향상
+
+domestic:
+  - slug: cisc-s-2025
+    title: "대규모 언어 모델 기반 취약점 분석 기술 동향 분석"
+    date: "2025.07.01"
+    venue: "한국정보보호학회 하계학술대회 (CISC-S 2025)"
+    badges:
+      - type: domestic
+        label: Domestic
+      - type: year
+        label: CISC-S 2025
+    news:
+      date: "2025"
+      tag: "CISC-S 2025"
+    summary:
+      - >
+          LLM 기반 취약점 분석 기술의 최신 동향을 정리하고, Knowledge Graph와
+          RAG를 활용한 탐지 접근법의 가능성을 분석하였습니다.
+
+  - slug: kt-ai-2025
+    title: "Knowledge Graph 기반 RAG를 활용한 LLM 취약점 탐지 방법론"
+    date: "2025.11.01"
+    venue: "한국통신학회 인공지능학술대회 (2025)"
+    badges:
+      - type: domestic
+        label: Domestic
+      - type: year
+        label: "2025"
+    summary:
+      - >
+          Knowledge Graph와 RAG를 결합하여 LLM의 취약점 탐지 성능을 보완하는
+          방법론을 제안하고, 실험 결과를 통해 접근법의 유효성을 검토하였습니다.

@@ -1,0 +1,12 @@
+{% comment %}
+  Find publication by slug
+  Usage: {% include find-publication.html slug='clear-ase-2026' %}
+  Sets: found_pub
+{% endcomment %}
+{% assign found_pub = nil %}
+{% assign all_pubs = site.data.publications.international | concat: site.data.publications.domestic %}
+{% for p in all_pubs %}
+  {% if p.slug == include.slug %}
+    {% assign found_pub = p %}
+  {% endif %}
+{% endfor %}

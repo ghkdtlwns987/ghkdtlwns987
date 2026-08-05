@@ -1,0 +1,154 @@
+{% comment %}
+  Publication detail modals — summary 또는 contributions가 있는 항목만
+{% endcomment %}
+<div class="pub-modal-backdrop" id="pub-modal-backdrop" aria-hidden="true"></div>
+
+{% assign pub_sections = site.data.publications.international | concat: site.data.publications.domestic %}
+{% for pub in pub_sections %}
+  {% assign has_detail = false %}
+  {% if pub.summary and pub.summary.size > 0 %}
+    {% assign has_detail = true %}
+  {% elsif pub.contributions and pub.contributions.size > 0 %}
+    {% assign has_detail = true %}
+  {% endif %}
+  {% if has_detail %}
+<div
+  class="pub-modal"
+  id="pub-modal-{{ pub.slug }}"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="pub-modal-title-{{ pub.slug }}"
+  aria-hidden="true"
+>
+  <div class="pub-modal-panel">
+    <div class="pub-modal-header">
+      <span class="pub-modal-label">Publications</span>
+      <button type="button" class="pub-modal-close" data-pub-close aria-label="닫기">×</button>
+    </div>
+
+    <h2 class="pub-modal-title" id="pub-modal-title-{{ pub.slug }}">
+      {{ pub.headline | default: pub.title }}
+    </h2>
+
+    {% if pub.news %}
+    {% assign venue_label = nil %}
+    {% if pub.news.tag %}
+      {% assign venue_label = pub.news.tag %}
+    {% elsif pub.news.venue %}
+      {% assign venue_label = pub.news.venue %}
+    {% endif %}
+    {% if venue_label == nil and pub.badges %}
+      {% for badge in pub.badges %}
+        {% if badge.type == 'year' %}
+          {% assign venue_label = badge.label %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <div class="pub-modal-news-meta news-meta">
+      {% if pub.news.date %}
+      <time class="news-date">{{ pub.news.date }}</time>
+      {% endif %}
+      {% if venue_label %}<span class="news-badge news-badge--venue">{{ venue_label }}</span>{% endif %}
+      {% if pub.news.badges %}
+        {% for badge in pub.news.badges %}
+          <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if pub.date %}
+    <p class="pub-modal-date">
+      <span class="pub-modal-date-icon" aria-hidden="true">📅</span>
+      <time datetime="{{ pub.date | replace: '.', '-' }}">{{ pub.date }}</time>
+    </p>
+    {% endif %}
+
+    <div class="pub-modal-body">
+      {% if pub.headline %}
+      <p class="pub-modal-paper-title">{{ pub.title }}</p>
+      {% endif %}
+
+      {% if pub.venue %}
+      <p class="pub-modal-venue">{{ pub.venue }}</p>
+      {% endif %}
+
+      {% if pub.authors %}
+      <p class="pub-modal-authors">{{ pub.authors }}</p>
+      {% endif %}
+
+      {% for paragraph in pub.summary %}
+        <p>{{ paragraph }}</p>
+      {% endfor %}
+
+      {% if pub.contributions %}
+      <div class="pub-modal-contributions">
+        <h3>Contributions</h3>
+        <ul>
+          {% for item in pub.contributions %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if pub.link %}
+    <p class="pub-modal-footer">
+      <a href="{{ pub.link }}" target="_blank" rel="noopener" class="pub-modal-details">
+        details → {{ pub.link_label | default: pub.link }}
+      </a>
+    </p>
+    {% endif %}
+  </div>
+</div>
+  {% endif %}
+{% endfor %}
+
+<script>
+(function () {
+  var backdrop = document.getElementById('pub-modal-backdrop');
+  var activeModal = null;
+
+  function openModal(slug) {
+    var modal = document.getElementById('pub-modal-' + slug);
+    if (!modal) return;
+    activeModal = modal;
+    backdrop.classList.add('is-open');
+    backdrop.setAttribute('aria-hidden', 'false');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('pub-modal-open');
+    var closeBtn = modal.querySelector('.pub-modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    if (!activeModal) return;
+    activeModal.classList.remove('is-open');
+    activeModal.setAttribute('aria-hidden', 'true');
+    activeModal = null;
+    backdrop.classList.remove('is-open');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('pub-modal-open');
+  }
+
+  document.querySelectorAll('[data-pub-modal]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openModal(btn.getAttribute('data-pub-modal'));
+    });
+  });
+
+  document.querySelectorAll('[data-pub-close]').forEach(function (btn) {
+    btn.addEventListener('click', closeModal);
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeModal);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+</script>

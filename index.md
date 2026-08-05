@@ -14,6 +14,7 @@ title: Home
       {% include news-item.html item=item featured=forloop.first %}
     {% endfor %}
   </ul>
+  {% include publication-modal.html %}
 </section>
 
 <section class="content-section content-section--feed">

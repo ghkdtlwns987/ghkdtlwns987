@@ -1,57 +1,70 @@
 {% comment %}
   Usage: {% include news-item.html item=item featured=true %}
+  item.publication → publications.yml slug (모달)
+  item.text → 일반 News 또는 publication News 문구 override
+  News 본문 우선순위: profile.text → publications.news.text → headline → title
 {% endcomment %}
-{% assign has_link = false %}
-{% if include.item.link and include.item.link != '' %}
-  {% assign has_link = true %}
-{% endif %}
 
-<li class="news-item{% if include.featured %} news-item--featured{% endif %}{% if has_link %} news-item--linked{% endif %}">
-  {% if has_link %}
-  <a href="{{ include.item.link }}" class="news-item-link" target="_blank" rel="noopener">
+{% if include.item.publication %}
+  {% include find-publication.html slug=include.item.publication %}
+  {% assign pub = found_pub %}
+  {% assign news_meta = pub.news %}
+  {% assign news_text = include.item.text | default: news_meta.text | default: pub.headline | default: pub.title %}
+  {% assign venue_label = nil %}
+  {% if news_meta.tag %}
+    {% assign venue_label = news_meta.tag %}
+  {% elsif news_meta.venue %}
+    {% assign venue_label = news_meta.venue %}
+  {% endif %}
+  {% if venue_label == nil and pub.badges %}
+    {% for badge in pub.badges %}
+      {% if badge.type == 'year' %}
+        {% assign venue_label = badge.label %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% assign has_detail = false %}
+  {% if pub.summary and pub.summary.size > 0 %}
+    {% assign has_detail = true %}
+  {% elsif pub.contributions and pub.contributions.size > 0 %}
+    {% assign has_detail = true %}
+  {% endif %}
+  {% assign is_featured = include.featured %}
+  {% if news_meta.featured %}
+    {% assign is_featured = true %}
   {% endif %}
 
+  {% if has_detail %}
+  <li class="news-item news-item--linked{% if is_featured %} news-item--featured{% endif %}">
+    <button type="button" class="news-item-link" data-pub-modal="{{ pub.slug }}" aria-haspopup="dialog">
+      <div class="news-meta">
+        <time class="news-date">{{ news_meta.date | default: include.item.date }}</time>
+        {% if venue_label %}<span class="news-badge news-badge--venue">{{ venue_label }}</span>{% endif %}
+        {% if news_meta.badges %}
+          {% for badge in news_meta.badges %}
+            <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <p class="news-headline">{{ news_text }}</p>
+    </button>
+  </li>
+  {% else %}
+  <li class="news-item{% if is_featured %} news-item--featured{% endif %}">
+    <div class="news-meta">
+      <time class="news-date">{{ news_meta.date | default: include.item.date }}</time>
+      {% if venue_label %}<span class="news-badge news-badge--venue">{{ venue_label }}</span>{% endif %}
+    </div>
+    <p class="news-text">{{ news_text }}</p>
+  </li>
+  {% endif %}
+
+{% else %}
+  <li class="news-item{% if include.featured %} news-item--featured{% endif %}">
     <div class="news-meta">
       <time class="news-date">{{ include.item.date }}</time>
-      {% if include.item.badges %}
-        {% for badge in include.item.badges %}
-          <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
-        {% endfor %}
-      {% elsif include.item.badge %}
-        <span class="news-badge">{{ include.item.badge }}</span>
-      {% endif %}
       {% if include.item.tag %}<span class="news-tag">{{ include.item.tag }}</span>{% endif %}
     </div>
-
-    {% if include.item.title %}
-      <dl class="news-details">
-        <div class="news-detail-row">
-          <dt>title :</dt>
-          <dd>{{ include.item.title }}</dd>
-        </div>
-        {% if include.item.conference %}
-        <div class="news-detail-row">
-          <dt>Conference :</dt>
-          <dd>{{ include.item.conference }}</dd>
-        </div>
-        {% endif %}
-        {% if has_link %}
-        <div class="news-detail-row">
-          <dt>Link :</dt>
-          <dd class="news-link-text">{{ include.item.link_label | default: include.item.link }}</dd>
-        </div>
-        {% endif %}
-      </dl>
-    {% else %}
-      <p class="news-text">
-        {{ include.item.text }}
-        {% if has_link %}
-          <span class="news-link-text">{{ include.item.link_label | default: include.item.link }}</span>
-        {% endif %}
-      </p>
-    {% endif %}
-
-  {% if has_link %}
-  </a>
-  {% endif %}
-</li>
+    <p class="news-text">{{ include.item.text }}</p>
+  </li>
+{% endif %}

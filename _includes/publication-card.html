@@ -1,0 +1,53 @@
+{% comment %}
+  Usage: {% include publication-card.html pub=pub %}
+{% endcomment %}
+{% assign has_detail = false %}
+{% if include.pub.summary and include.pub.summary.size > 0 %}
+  {% assign has_detail = true %}
+{% elsif include.pub.contributions and include.pub.contributions.size > 0 %}
+  {% assign has_detail = true %}
+{% endif %}
+
+{% if has_detail %}
+<button
+  type="button"
+  class="pub-item pub-item--clickable{% if include.pub.featured %} pub-item--featured{% endif %}"
+  data-pub-modal="{{ include.pub.slug }}"
+  aria-haspopup="dialog"
+>
+  <div class="pub-badges">
+    {% for badge in include.pub.badges %}
+      <span class="pub-badge pub-badge--{{ badge.type }}">{{ badge.label }}</span>
+    {% endfor %}
+  </div>
+  <h3 class="pub-title">{{ include.pub.title }}</h3>
+  <p class="pub-venue">{{ include.pub.venue }}</p>
+  <span class="pub-more">자세히 보기 →</span>
+</button>
+{% elsif include.pub.link %}
+<a
+  href="{{ include.pub.link }}"
+  class="pub-item pub-item--link{% if include.pub.featured %} pub-item--featured{% endif %}"
+  target="_blank"
+  rel="noopener"
+>
+  <div class="pub-badges">
+    {% for badge in include.pub.badges %}
+      <span class="pub-badge pub-badge--{{ badge.type }}">{{ badge.label }}</span>
+    {% endfor %}
+  </div>
+  <h3 class="pub-title">{{ include.pub.title }}</h3>
+  <p class="pub-venue">{{ include.pub.venue }}</p>
+  <span class="pub-more">details → {{ include.pub.link_label | default: include.pub.link }}</span>
+</a>
+{% else %}
+<div class="pub-item{% if include.pub.featured %} pub-item--featured{% endif %}">
+  <div class="pub-badges">
+    {% for badge in include.pub.badges %}
+      <span class="pub-badge pub-badge--{{ badge.type }}">{{ badge.label }}</span>
+    {% endfor %}
+  </div>
+  <h3 class="pub-title">{{ include.pub.title }}</h3>
+  <p class="pub-venue">{{ include.pub.venue }}</p>
+</div>
+{% endif %}
