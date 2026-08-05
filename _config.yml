@@ -1,0 +1,60 @@
+title: Si June Hwang
+description: >-
+  AI Security Researcher · Vulnerability Researcher · Security Engineer
+  — LLM, Knowledge Graph, Multi-Agent Reasoning 기반 취약점 탐지 연구
+baseurl: "/ghkdtlwns987"
+url: "https://ghkdtlwns987.github.io"
+
+author:
+  name: 황시준 (Si June Hwang)
+  email: ghkdtlwns987@naver.com
+  github: ghkdtlwns987
+  velog: https://velog.io/@ghkdtlwns987
+  tistory: https://pwnable-study.tistory.com
+
+# GitHub Profile README는 Jekyll 빌드에서 제외
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .git
+  - .gitignore
+  - .github
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+# 네비게이션
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Research
+    url: /research/
+  - title: Projects
+    url: /projects/
+  - title: Publications
+    url: /publications/
+  - title: Blog
+    url: /blog/

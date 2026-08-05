@@ -1,48 +1,147 @@
-![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fghkdtlwns987&count_bg=%23FFDAC7&title_bg=%23FFADAD&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)
+# 황시준 (Si June Hwang)
 
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ghkdtlwns987)](https://solved.ac/ghkdtlwns987/)
+> **AI Security Researcher · Vulnerability Researcher · Security Engineer**
 
-### Best Of The Best 10th Vulnerability analysis(2021.07.01 ~ 2022.03.31)
-![Alt text](image.png)
-# 💪Skills
-### Platforms & Languages
-![Java](https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=Java&logoColor=white)
-![Spring](https://img.shields.io/badge/Spring-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=SpringBoot&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white)
+AI 기반 소프트웨어 보안을 연구하고 있습니다. **Large Language Models (LLMs), Knowledge Graph, Retrieval-Augmented Generation (RAG), Multi-Agent Reasoning**을 활용하여 소프트웨어 취약점의 **탐지뿐만 아니라 원인(Causality)까지 이해하는 지능형 보안 시스템**을 연구합니다.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?&style=for-the-badge&logo=MySQL&logoColor=white)
-![Oracle](https://img.shields.io/badge/Oracle-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624.svg?&style=for-the-badge&logo=Linux&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED.svg?&style=for-the-badge&logo=Docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5.svg?&style=for-the-badge&logo=Kubernetes&logoColor=white)
-![Amazonaws](https://img.shields.io/badge/amazonaws-232F3E.svg?&style=for-the-badge&logo=amazonaws&logoColor=white)
+🌐 **Portfolio** · https://ghkdtlwns987.github.io/ghkdtlwns987/
 
-### Tools
-![Git](https://img.shields.io/badge/Git-F05032.svg?&style=for-the-badge&logo=Git&logoColor=white)
-![intellijidea](https://img.shields.io/badge/intellijidea-000000.svg?&style=for-the-badge&logo=intellijidea&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?&style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
-![Jenkins](https://img.shields.io/badge/Jenkins-D24939.svg?&style=for-the-badge&logo=Jenkins&logoColor=white)
-![ArgoCD](https://img.shields.io/badge/argo-EF7B4D.svg?&style=for-the-badge&logo=argo&logoColor=white)
- 
-# Contacts
-Naver : ghkdtlwns987@naver.com  
-Blog1 : https://velog.io/@ghkdtlwns987  
-Blog2 : https://hard-to-study.tistory.com/
+---
 
-# Certificates
-|Organization|Name|Score|Period|
-|:---:|:---:|:---:|:---:|
-|TOEIC-SPEAKING|TOEIC-SPEAKING|AL|2024.08.04|
-|Amazon|AWS Solutions Architect - Associate|Pass|2023.10.21|
-|The Linux Foundation|Certified Kubernetes Administrator(CKA)|Pass|2023.12.29|    
-|한국산업인력공단|정보처리기사|Pass|2024.06.18|
-|KData|SQLD|Pass|2024.09.20|
+# Contact
+
+| | |
+|:--|:--|
+| **Email** | ghkdtlwns987@hanyang.ac.kr |
+| **Phone** | +82-10-4828-2771 |
+| **Birth** | 1999.05.13 |
+| **GitHub** | https://github.com/ghkdtlwns987 |
+| **Velog** | https://velog.io/@ghkdtlwns987 |
+| **Tistory** | https://pwnable-study.tistory.com |
+
+---
+
+# Highlights
+
+- 🎓 M.S. Student, Department of Information Security, Hanyang University
+- 📝 CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection  
+- ASE 2026 (IEEE/ACM Automated Software Engineering)
+  - CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection
+- 🤖 Research on AI-based Vulnerability Detection using LLMs and Knowledge Graphs
+- 🏆 Grand Prize, **2022 KOSPO Web Security Competition**
+- 🎯 **Best of the Best (BoB) 10th**, Vulnerability Analysis Track
+- 👨‍🏫 Security Instructor at Gwangju Software Meister High School
+- 💰 Unreal Engine Vulnerability Research
+  - **2 RCE**, **1 DoS**
+  - **\$17,500 Bug Bounty**
+
+---
+
+# Education
+
+| Period | Education |
+|:--|:--|
+| **2025.03 – Present** | **Hanyang University**, M.S. in Information Security |
+| **2018.03 – 2024.02** | **Chosun University**, B.S. in Computer Engineering |
+
+---
+
+# Research Interests
+
+- AI Security
+- Software Vulnerability Detection
+- Large Language Models (LLMs)
+- Knowledge Graph
+- Retrieval-Augmented Generation (RAG)
+- Multi-Agent Systems
+- Secure Code Analysis
+- Causal Reasoning
+
+---
+
+# Publications
+
+| Type | Title | Venue | Link |
+|:--|:--|:--|:--|
+| **International** | **CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection** | **Automated Software Engineering 2026** | https://arxiv.org/abs/2608.03134 |
+
+---
+
+# Research Projects
+
+| Project | Description |
+|:--|:--|
+| **CLEAR** | Multi-Agent + Vulnerability Causal Knowledge Graph 기반 AI 취약점 탐지 프레임워크 |
+| **Unreal Engine Vulnerability Analysis** | Fuzzing 기반 Unreal Engine 취약점 분석 (BoB 10th) |
+| **AI-Based Malware Detection** | Kubernetes 기반 AI 악성코드 탐지 MSA |
+| **Kubernetes MSA Platform** | Kubernetes · Docker · Jenkins · GitHub Actions 기반 CI/CD 플랫폼 |
+| **Live Coding Platform** | 조선대학교 실습 서버 구축 및 자동화 |
+
+---
+
+# Technical Skills
+
+### AI
+
+- Large Language Models (LLMs)
+- LangChain
+- Retrieval-Augmented Generation (RAG)
+- Knowledge Graph
+- PyTorch
+
+### Security
+
+- Vulnerability Research
+- Fuzzing
+- Reverse Engineering
+- Web Hacking
+- Pwnable
+- Malware Analysis
+
+### Cloud / DevOps
+
+- Kubernetes
+- Docker
+- AWS
+- Jenkins
+- GitHub Actions
+- Linux
+
+### Backend
+
+- Java
+- Spring Boot
+- Python
+- PHP
+- JavaScript
+
+---
 
 # Awards
-|Organization|Name|Award|Details|Period|
-|:-----:|:-----:|:-----:|:-----:|:----:|
-|KOSPO|정보보안 웹 서비스 경진대회|대상|웹 서비스 취약점 발굴 및 대응|2022.09.16|
-|(주)비온시이노베이터|인공지능 학습용 데이터 구축 해커톤 경진대회|장려상|CNN 신경망을 통한 화제 탐지|2022.09.29|
-|한국전력|사이버보안 컨퍼런스 침해대응/분석 경진대회|우수상|취약 서버 구축, 웹 취약점 점검 및 보안, 침해사고 대응 및 분석, 악성코드 분석, NFV구축|2022.09.30|
+
+| Date | Award | Organization |
+|:--|:--|:--|
+| **2022.09** | 🥇 Grand Prize, KOSPO Web Security Competition | KOSPO |
+| **2022.09** | 🏅 Excellence Award, HCCC Incident Response Competition | KEPCO |
+| **2022.09** | 🥉 Bronze Prize, AI Training Data Hackathon | BCE Innovator |
+| **2021** | 🥇 1st Place, NCSC Unofficial Competition | NCSC |
+
+---
+
+# Certifications
+
+| Certification | Organization | Date |
+|:--|:--|:--|
+| AWS Certified Solutions Architect – Associate | AWS | 2023.10 |
+| Certified Kubernetes Administrator (CKA) | The Linux Foundation | 2023.12 |
+| Engineer Information Processing | HRDK Korea | 2024.06 |
+| SQL Developer (SQLD) | KData | 2024.09 |
+| TOEIC Speaking AL (160) | ETS | 2024.08 |
+
+---
+
+# Research Vision
+
+> **Building AI systems that understand _why_ vulnerabilities occur, not just _where_ they exist.**
+
+My long-term goal is to develop intelligent software security systems capable of understanding the causal mechanisms behind vulnerabilities through **Large Language Models, Knowledge Graphs, and Causal Reasoning**.
