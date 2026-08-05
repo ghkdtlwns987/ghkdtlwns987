@@ -6,40 +6,8 @@ permalink: /about/
 
 <div class="hero">
   <h1>About</h1>
-  {% include intro.html %}
+  {% include page-lead.html page="about" %}
 </div>
-
-<section>
-  <h2>Contact</h2>
-  <div class="card">
-    <div class="contact-grid">
-      <div class="contact-item">
-        <span class="label">Email</span>
-        <span class="value"><a href="mailto:ghkdtlwns987@hanyang.ac.kr">ghkdtlwns987@hanyang.ac.kr</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Phone</span>
-        <span class="value">010-4828-2771</span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Birth</span>
-        <span class="value">1999.05.13</span>
-      </div>
-      <div class="contact-item">
-        <span class="label">GitHub</span>
-        <span class="value"><a href="https://github.com/ghkdtlwns987" target="_blank" rel="noopener">github.com/ghkdtlwns987</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Velog</span>
-        <span class="value"><a href="https://velog.io/@ghkdtlwns987" target="_blank" rel="noopener">velog.io/@ghkdtlwns987</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Tistory</span>
-        <span class="value"><a href="https://pwnable-study.tistory.com" target="_blank" rel="noopener">pwnable-study.tistory.com</a></span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section>
   <h2>Education</h2>
@@ -47,11 +15,6 @@ permalink: /about/
   <div class="timeline-item">
     <h3>한양대학교 일반대학원 — 정보보호학과 석사과정</h3>
     <p class="period">2025.03 ~ Present</p>
-    <p><strong>Research Interests</strong></p>
-    <ul>
-      <li>AI Security · Vulnerability Detection · Large Language Models</li>
-      <li>Knowledge Graph · Multi-Agent Systems · Software Security</li>
-    </ul>
   </div>
 
   <div class="timeline-item">
@@ -92,8 +55,7 @@ permalink: /about/
     <p class="period">2021.07.01 ~ 2022.03.31</p>
     <ul>
       <li>취약점 분석 트랙 수료</li>
-      <li>Unreal Engine 취약점 분석 프로젝트 수행 (Fuzzing 기반)</li>
-      <li>RCE 2건, DoS 1건 발견 — Bug Bounty $17,500 획득</li>
+      <li>Unreal Engine 취약점 분석 프로젝트 수행</li>
     </ul>
   </div>
 </section>
@@ -177,5 +139,39 @@ permalink: /about/
         </tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>AI</h3>
+      <ul>
+        <li>Large Language Models · LangChain</li>
+        <li>RAG · Knowledge Graph · PyTorch</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Security</h3>
+      <ul>
+        <li>Vulnerability Research · Reverse Engineering</li>
+        <li>Web Hacking · Pwnable · Malware Analysis</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Cloud / DevOps</h3>
+      <ul>
+        <li>Kubernetes · Docker · AWS</li>
+        <li>Jenkins · GitHub Actions · Linux</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Backend</h3>
+      <ul>
+        <li>Java · Spring Boot · Python</li>
+        <li>PHP · JavaScript</li>
+      </ul>
+    </div>
   </div>
 </section>
