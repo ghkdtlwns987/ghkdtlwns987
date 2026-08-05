@@ -1,0 +1,37 @@
+{% comment %}
+  카테고리별 글 목록
+  Usage: {% include poster-post-list.html cat='paper' %}
+         {% include poster-post-list.html cat='algorithm' sub='dp' %}
+{% endcomment %}
+{% assign filter_cat = include.cat %}
+{% assign filter_sub = include.sub | default: '' %}
+
+<ul class="post-list">
+  {% assign has_post = false %}
+  {% for post in site.posts %}
+    {% include poster-path.html post=post %}
+    {% assign match = false %}
+    {% if poster_cat == filter_cat %}
+      {% if filter_sub == '' %}
+        {% if poster_sub == '' %}
+          {% assign match = true %}
+        {% endif %}
+      {% elsif poster_sub == filter_sub %}
+        {% assign match = true %}
+      {% endif %}
+    {% endif %}
+    {% if match %}
+      {% assign has_post = true %}
+      <li>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+        {% if post.excerpt %}
+          <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% unless has_post %}
+  <p class="empty-state">아직 등록된 글이 없습니다.</p>
+{% endunless %}

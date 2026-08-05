@@ -30,53 +30,8 @@ title: Home
 
 <section class="content-section">
   <h2 class="section-title">Poster</h2>
-  <div class="poster-tree">
-    {% for cat in site.data.poster_categories %}
-    <div class="poster-tree-group">
-      <h3 class="poster-tree-label">{{ cat.title }}</h3>
-
-      {% if cat.slug == 'algorithm' %}
-        {% for sub in site.data.poster_algorithm.subcategories %}
-        <div class="poster-tree-sub">
-          <span class="poster-tree-sublabel">{{ sub.slug }}</span>
-          <ul class="poster-tree-list">
-            {% assign has_post = false %}
-            {% for post in site.posts %}
-              {% include poster-path.html post=post %}
-              {% if poster_cat == 'algorithm' and poster_sub == sub.slug %}
-                {% assign has_post = true %}
-                <li>
-                  <a href="{{ post.url | relative_url }}">
-                    {% if poster_id != '' %}{{ poster_sub }}/{{ poster_id }} · {% endif %}{{ post.title }}
-                  </a>
-                </li>
-              {% endif %}
-            {% endfor %}
-            {% unless has_post %}
-              <li class="poster-tree-empty">—</li>
-            {% endunless %}
-          </ul>
-        </div>
-        {% endfor %}
-      {% else %}
-        <ul class="poster-tree-list">
-          {% assign has_post = false %}
-          {% for post in site.posts %}
-            {% include poster-path.html post=post %}
-            {% if poster_cat == cat.slug and poster_sub == '' %}
-              {% assign has_post = true %}
-              <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-          {% unless has_post %}
-            <li class="poster-tree-empty">—</li>
-          {% endunless %}
-        </ul>
-      {% endif %}
-    </div>
-    {% endfor %}
-  </div>
-  <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">전체 보기 →</a></p>
+  {% include poster-tree.html %}
+  <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">Poster 바로가기 →</a></p>
 </section>
 
 <section class="content-section">

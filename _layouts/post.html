@@ -3,16 +3,10 @@ layout: default
 ---
 <article class="post">
   <header class="post-header">
+    {% include poster-breadcrumb.html post=page %}
     <h1>{{ page.title }}</h1>
     <div class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
-      {% if page.categories %}
-        <span class="post-categories">
-          {% for category in page.categories %}
-            <span class="tag">{{ category }}</span>
-          {% endfor %}
-        </span>
-      {% endif %}
     </div>
   </header>
   <div class="post-content">

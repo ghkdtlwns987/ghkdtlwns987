@@ -1,0 +1,21 @@
+{% comment %}
+  Algorithm 하위 카테고리 목록 (DP, Graph, Greedy)
+{% endcomment %}
+
+<ul class="poster-subcategory-grid">
+  {% for sub in site.data.poster_algorithm.subcategories %}
+    {% assign post_count = 0 %}
+    {% for post in site.posts %}
+      {% include poster-path.html post=post %}
+      {% if poster_cat == 'algorithm' and poster_sub == sub.slug %}
+        {% assign post_count = post_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    <li>
+      <a href="{{ '/poster/algorithm/' | append: sub.slug | append: '/' | relative_url }}" class="poster-subcategory-card">
+        <span class="poster-subcategory-card-title">{{ sub.title }}</span>
+        <span class="poster-subcategory-card-count">{{ post_count }}개</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

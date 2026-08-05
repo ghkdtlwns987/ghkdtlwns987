@@ -432,6 +432,22 @@ a:hover {
   letter-spacing: 0.04em;
 }
 
+.poster-tree-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.poster-tree-link:hover {
+  color: #79b8ff;
+  text-decoration: none;
+}
+
+.poster-tree-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
 .poster-tree-list {
   list-style: none;
   padding-left: 0.75rem;
@@ -528,6 +544,66 @@ a:hover {
   text-transform: lowercase;
   font-family: ui-monospace, monospace;
   margin-bottom: 0.25rem;
+}
+
+.poster-breadcrumb {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.poster-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.poster-breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.poster-breadcrumb-sep {
+  margin: 0 0.35rem;
+  opacity: 0.5;
+}
+
+.poster-breadcrumb-current {
+  color: var(--text);
+}
+
+.poster-subcategory-grid {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.poster-subcategory-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.125rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.poster-subcategory-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  text-decoration: none;
+}
+
+.poster-subcategory-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.poster-subcategory-card-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 /* ── Page Intro (Home) ── */

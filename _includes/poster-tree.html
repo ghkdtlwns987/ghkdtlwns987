@@ -1,0 +1,24 @@
+{% comment %}
+  Poster 트리 — 카테고리 링크만 (글 목록 없음)
+{% endcomment %}
+
+<div class="poster-tree">
+  {% for cat in site.data.poster_categories %}
+  <div class="poster-tree-group">
+    {% if cat.slug == 'algorithm' %}
+      <a href="{{ '/poster/algorithm/' | relative_url }}" class="poster-tree-label poster-tree-link">{{ cat.title }}</a>
+      {% if cat.description %}<p class="poster-tree-desc">{{ cat.description }}</p>{% endif %}
+      <ul class="poster-tree-list">
+        {% for sub in site.data.poster_algorithm.subcategories %}
+        <li>
+          <a href="{{ '/poster/algorithm/' | append: sub.slug | append: '/' | relative_url }}">{{ sub.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <a href="{{ '/poster/' | append: cat.slug | append: '/' | relative_url }}" class="poster-tree-label poster-tree-link">{{ cat.title }}</a>
+      {% if cat.description %}<p class="poster-tree-desc">{{ cat.description }}</p>{% endif %}
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

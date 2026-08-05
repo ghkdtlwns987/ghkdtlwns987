@@ -1,0 +1,53 @@
+{% comment %}
+  Breadcrumb: Poster > Category > Subcategory
+  Usage: {% include poster-breadcrumb.html post=page %}
+         {% include poster-breadcrumb.html cat='algorithm' sub='dp' %}
+{% endcomment %}
+{% if include.post %}
+  {% include poster-path.html post=include.post %}
+  {% assign bc_cat = poster_cat %}
+  {% assign bc_sub = poster_sub %}
+{% else %}
+  {% assign bc_cat = include.cat %}
+  {% assign bc_sub = include.sub | default: '' %}
+{% endif %}
+
+{% assign bc_cat_title = bc_cat %}
+{% for c in site.data.poster_categories %}
+  {% if c.slug == bc_cat %}
+    {% assign bc_cat_title = c.title %}
+  {% endif %}
+{% endfor %}
+
+{% assign bc_sub_title = bc_sub %}
+{% for s in site.data.poster_algorithm.subcategories %}
+  {% if s.slug == bc_sub %}
+    {% assign bc_sub_title = s.title %}
+  {% endif %}
+{% endfor %}
+
+<nav class="poster-breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ '/poster/' | relative_url }}">Poster</a>
+  {% if bc_cat != '' %}
+    <span class="poster-breadcrumb-sep">/</span>
+    {% if bc_sub != '' %}
+      <a href="{{ '/poster/' | append: bc_cat | append: '/' | relative_url }}">{{ bc_cat_title }}</a>
+    {% elsif include.post %}
+      <a href="{{ '/poster/' | append: bc_cat | append: '/' | relative_url }}">{{ bc_cat_title }}</a>
+      <span class="poster-breadcrumb-sep">/</span>
+      <span class="poster-breadcrumb-current">{{ include.post.title }}</span>
+    {% else %}
+      <span class="poster-breadcrumb-current">{{ bc_cat_title }}</span>
+    {% endif %}
+  {% endif %}
+  {% if bc_sub != '' %}
+    <span class="poster-breadcrumb-sep">/</span>
+    {% if include.post %}
+      <a href="{{ '/poster/' | append: bc_cat | append: '/' | append: bc_sub | append: '/' | relative_url }}">{{ bc_sub_title }}</a>
+      <span class="poster-breadcrumb-sep">/</span>
+      <span class="poster-breadcrumb-current">{{ include.post.title }}</span>
+    {% else %}
+      <span class="poster-breadcrumb-current">{{ bc_sub_title }}</span>
+    {% endif %}
+  {% endif %}
+</nav>
