@@ -1,0 +1,12 @@
+{% comment %}
+  Poster 카드 (전체 클릭 가능) — 제목 + 개시일
+  Usage: {% include poster-card.html post=post %}
+{% endcomment %}
+<li class="card post-list-card">
+  <a href="{{ include.post.url | relative_url }}" class="post-list-card-link">
+    <h3 class="post-list-card-title">{{ include.post.title }}</h3>
+    <p class="post-list-card-date">
+      개시일 : <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y.%m.%d" }}</time>
+    </p>
+  </a>
+</li>

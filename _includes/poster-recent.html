@@ -4,30 +4,7 @@
 
 <ul class="post-list post-list--cards poster-recent-list">
   {% for post in site.posts limit: 10 %}
-    {% include poster-path.html post=post %}
-    {% assign recent_label = poster_cat %}
-    {% if poster_cat == 'algorithm' and poster_sub != '' %}
-      {% for sub in site.data.poster_algorithm.subcategories %}
-        {% if sub.slug == poster_sub %}
-          {% assign recent_label = sub.title %}
-        {% endif %}
-      {% endfor %}
-    {% else %}
-      {% for cat in site.data.poster_categories %}
-        {% if cat.slug == poster_cat %}
-          {% assign recent_label = cat.title %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-    <li class="post-list-card">
-      <div class="post-list-card-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-        {% if recent_label != '' %}
-          <span class="poster-recent-tag">{{ recent_label }}</span>
-        {% endif %}
-      </div>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    </li>
+    {% include poster-card.html post=post %}
   {% else %}
     <li class="poster-recent-empty">아직 등록된 Poster가 없습니다.</li>
   {% endfor %}

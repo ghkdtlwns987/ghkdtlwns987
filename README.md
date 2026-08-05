@@ -1,7 +1,7 @@
 # 황시준 (Si June Hwang)
 
-> **LLM for Software Engineering · AI Security Researcher**
-
+> **LLM for Software Engineering / AI Security Researcher**
+ 
 저는 **Large Language Model(LLM)을 활용한 Software Engineering**, 특히 AI 기반 소프트웨어 보안 분야에 관심을 두고 연구하고 있습니다. 취약점 분석과 보안 엔지니어링 경험을 바탕으로, Knowledge Graph · Multi-Agent Reasoning · RAG를 결합해 소프트웨어 취약점을 탐지하는 것을 넘어 그 원인까지 이해하고 설명할 수 있는 지능형 시스템을 연구합니다.
 
 🌐 **Portfolio** · https://ghkdtlwns987.github.io/ghkdtlwns987/
