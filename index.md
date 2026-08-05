@@ -30,19 +30,26 @@ title: Home
 
 <section class="content-section">
   <h2 class="section-title">Poster</h2>
-  {% if site.posts.size > 0 %}
-  <ul class="post-list">
-    {% for post in site.posts limit:5 %}
-    <li>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-    </li>
+  <div class="poster-tree">
+    {% for cat in site.data.poster_categories %}
+    <div class="poster-tree-group">
+      <h3 class="poster-tree-label">{{ cat.title }}</h3>
+      <ul class="poster-tree-list">
+        {% assign has_post = false %}
+        {% for post in site.posts %}
+          {% if post.categories contains cat.slug %}
+            {% assign has_post = true %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% unless has_post %}
+          <li class="poster-tree-empty">—</li>
+        {% endunless %}
+      </ul>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
   <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">전체 보기 →</a></p>
-  {% else %}
-  <p class="empty-state">아직 등록된 포스터가 없습니다.</p>
-  {% endif %}
 </section>
 
 <section class="content-section">

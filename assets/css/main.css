@@ -395,6 +395,69 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
+/* ── Poster Categories ── */
+.poster-category {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.poster-category:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.poster-category-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: -0.5rem 0 1rem;
+}
+
+.poster-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.poster-tree-group {
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--border);
+}
+
+.poster-tree-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.poster-tree-list {
+  list-style: none;
+  padding-left: 0.75rem;
+}
+
+.poster-tree-list li {
+  font-size: 0.875rem;
+  padding: 0.2rem 0;
+  line-height: 1.5;
+}
+
+.poster-tree-list a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.poster-tree-list a:hover {
+  color: var(--accent);
+}
+
+.poster-tree-empty {
+  color: var(--text-muted);
+  opacity: 0.4;
+  font-size: 0.8125rem;
+}
+
 /* ── Page Intro (Home) ── */
 .page-intro {
   padding-bottom: 1.5rem;
