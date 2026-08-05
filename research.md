@@ -17,7 +17,7 @@ permalink: /research/
     <p>
       Knowledge Graph 기반 LLM 취약점 탐지 및 Causal Reasoning Framework를 연구하고 있습니다.
     </p>
-    <div style="margin-top: 1rem;">
+    <div class="tags">
       <span class="tag">Large Language Models</span>
       <span class="tag">RAG</span>
       <span class="tag">Knowledge Graph</span>

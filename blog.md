@@ -16,7 +16,7 @@ permalink: /blog/
       <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
       {% if post.categories %}
-        <span style="margin-left: 0.5rem;">
+        <span class="tags">
           {% for category in post.categories %}
             <span class="tag">{{ category }}</span>
           {% endfor %}
@@ -30,7 +30,7 @@ permalink: /blog/
   </ul>
 
   {% if site.posts.size == 0 %}
-    <p style="color: var(--text-muted);">아직 작성된 글이 없습니다.</p>
+    <p class="empty-state">아직 작성된 글이 없습니다.</p>
   {% endif %}
 </section>
 

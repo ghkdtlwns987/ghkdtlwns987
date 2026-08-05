@@ -54,17 +54,34 @@ title: Home
     {% endfor %}
   </ul>
   {% if site.posts.size == 0 %}
-    <p style="color: var(--text-muted);">아직 작성된 글이 없습니다. <code>_posts/</code> 디렉터리에 마크다운 파일을 추가하세요.</p>
+    <p class="empty-state">아직 작성된 글이 없습니다. <code>_posts/</code> 디렉터리에 마크다운 파일을 추가하세요.</p>
   {% endif %}
 </section>
 
 <section>
   <h2>Contact</h2>
   <div class="card">
-    <p><strong>Email</strong> : <a href="mailto:ghkdtlwns987@naver.com">ghkdtlwns987@naver.com</a></p>
-    <p><strong>Phone</strong> : 010-4828-2771</p>
-    <p><strong>GitHub</strong> : <a href="https://github.com/ghkdtlwns987" target="_blank">github.com/ghkdtlwns987</a></p>
-    <p><strong>Velog</strong> : <a href="https://velog.io/@ghkdtlwns987" target="_blank">velog.io/@ghkdtlwns987</a></p>
-    <p><strong>Tistory</strong> : <a href="https://pwnable-study.tistory.com" target="_blank">pwnable-study.tistory.com</a></p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="label">Email</span>
+        <span class="value"><a href="mailto:ghkdtlwns987@naver.com">ghkdtlwns987@naver.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Phone</span>
+        <span class="value">010-4828-2771</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">GitHub</span>
+        <span class="value"><a href="https://github.com/ghkdtlwns987" target="_blank" rel="noopener">github.com/ghkdtlwns987</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Velog</span>
+        <span class="value"><a href="https://velog.io/@ghkdtlwns987" target="_blank" rel="noopener">velog.io/@ghkdtlwns987</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Tistory</span>
+        <span class="value"><a href="https://pwnable-study.tistory.com" target="_blank" rel="noopener">pwnable-study.tistory.com</a></span>
+      </div>
+    </div>
   </div>
 </section>

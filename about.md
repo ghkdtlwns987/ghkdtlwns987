@@ -16,12 +16,32 @@ permalink: /about/
 <section>
   <h2>Contact</h2>
   <div class="card">
-    <p><strong>Email</strong> : <a href="mailto:ghkdtlwns987@naver.com">ghkdtlwns987@naver.com</a></p>
-    <p><strong>Phone</strong> : 010-4828-2771</p>
-    <p><strong>Birth</strong> : 1999.05.13</p>
-    <p><strong>GitHub</strong> : <a href="https://github.com/ghkdtlwns987" target="_blank">github.com/ghkdtlwns987</a></p>
-    <p><strong>Velog</strong> : <a href="https://velog.io/@ghkdtlwns987" target="_blank">velog.io/@ghkdtlwns987</a></p>
-    <p><strong>Tistory</strong> : <a href="https://pwnable-study.tistory.com" target="_blank">pwnable-study.tistory.com</a></p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="label">Email</span>
+        <span class="value"><a href="mailto:ghkdtlwns987@naver.com">ghkdtlwns987@naver.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Phone</span>
+        <span class="value">010-4828-2771</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Birth</span>
+        <span class="value">1999.05.13</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">GitHub</span>
+        <span class="value"><a href="https://github.com/ghkdtlwns987" target="_blank" rel="noopener">github.com/ghkdtlwns987</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Velog</span>
+        <span class="value"><a href="https://velog.io/@ghkdtlwns987" target="_blank" rel="noopener">velog.io/@ghkdtlwns987</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Tistory</span>
+        <span class="value"><a href="https://pwnable-study.tistory.com" target="_blank" rel="noopener">pwnable-study.tistory.com</a></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -90,37 +110,39 @@ permalink: /about/
 
 <section>
   <h2>Certifications</h2>
-  <table>
-    <thead>
-      <tr><th>Certification</th><th>Date</th><th>Organization</th><th>Registration No.</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>AWS Certified Solutions Architect – Associate</td>
-        <td>2023.10.21</td>
-        <td>AWS</td>
-        <td>461973410</td>
-      </tr>
-      <tr>
-        <td>Certified Kubernetes Administrator (CKA)</td>
-        <td>2023.12.29</td>
-        <td>The Linux Foundation</td>
-        <td>LF-ivspgcpjbv</td>
-      </tr>
-      <tr>
-        <td>정보처리기사</td>
-        <td>2024.06.18</td>
-        <td>한국산업인력공단</td>
-        <td>24201060948K</td>
-      </tr>
-      <tr>
-        <td>SQLD</td>
-        <td>2024.09.20</td>
-        <td>KData</td>
-        <td>—</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Certification</th><th>Date</th><th>Organization</th><th>Registration No.</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AWS Certified Solutions Architect – Associate</td>
+          <td>2023.10.21</td>
+          <td>AWS</td>
+          <td>461973410</td>
+        </tr>
+        <tr>
+          <td>Certified Kubernetes Administrator (CKA)</td>
+          <td>2023.12.29</td>
+          <td>The Linux Foundation</td>
+          <td>LF-ivspgcpjbv</td>
+        </tr>
+        <tr>
+          <td>정보처리기사</td>
+          <td>2024.06.18</td>
+          <td>한국산업인력공단</td>
+          <td>24201060948K</td>
+        </tr>
+        <tr>
+          <td>SQLD</td>
+          <td>2024.09.20</td>
+          <td>KData</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section>
@@ -133,37 +155,39 @@ permalink: /about/
 
 <section>
   <h2>Awards</h2>
-  <table>
-    <thead>
-      <tr><th>Date</th><th>Award</th><th>Organization</th><th>Details</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2022.09.28</td>
-        <td>웹 취약점 분석 경진대회 <strong>대상</strong></td>
-        <td>KOSPO</td>
-        <td>Team. 고점에 사람있어요 — 공공기관 홈페이지 취약점 발굴</td>
-      </tr>
-      <tr>
-        <td>2022.09.30</td>
-        <td>HCCC 침해대응·분석 경진대회 <strong>우수상</strong></td>
-        <td>한국전력</td>
-        <td>Team. 고점에 사람있어요 — NFV 인프라 구축, 웹 취약점 점검, 침해사고 대응·분석, 악성코드 분석</td>
-      </tr>
-      <tr>
-        <td>2022.09.29</td>
-        <td>AI 학습용 데이터 구축 해커톤 <strong>동상</strong></td>
-        <td>(주)비온시이노베이터</td>
-        <td>CNN 신경망을 통한 화재 탐지</td>
-      </tr>
-      <tr>
-        <td>2021</td>
-        <td>NCSC 비공식 대회 <strong>1위</strong></td>
-        <td>NCSC</td>
-        <td>—</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrap table-wrap--cards">
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Award</th><th>Organization</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Date">2022.09.28</td>
+          <td data-label="Award">웹 취약점 분석 경진대회 <strong>대상</strong></td>
+          <td data-label="Organization">KOSPO</td>
+          <td data-label="Details">Team. 고점에 사람있어요 — 공공기관 홈페이지 취약점 발굴</td>
+        </tr>
+        <tr>
+          <td data-label="Date">2022.09.30</td>
+          <td data-label="Award">HCCC 침해대응·분석 경진대회 <strong>우수상</strong></td>
+          <td data-label="Organization">한국전력</td>
+          <td data-label="Details">NFV 인프라 구축, 웹 취약점 점검, 침해사고 대응·분석, 악성코드 분석</td>
+        </tr>
+        <tr>
+          <td data-label="Date">2022.09.29</td>
+          <td data-label="Award">AI 학습용 데이터 구축 해커톤 <strong>동상</strong></td>
+          <td data-label="Organization">(주)비온시이노베이터</td>
+          <td data-label="Details">CNN 신경망을 통한 화재 탐지</td>
+        </tr>
+        <tr>
+          <td data-label="Date">2021</td>
+          <td data-label="Award">NCSC 비공식 대회 <strong>1위</strong></td>
+          <td data-label="Organization">NCSC</td>
+          <td data-label="Details">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section>
