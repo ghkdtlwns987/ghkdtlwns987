@@ -17,8 +17,9 @@
   --sidebar-right-width: 280px;
   --content-max: 880px;
   --layout-max: 1500px;
-  --layout-gutter-left: 1.25rem;
-  --layout-gutter-right: 2rem;
+  --layout-gutter-left: 2.5rem;
+  --layout-gutter-right: 2.5rem;
+  --sidebar-inner-width: 220px;
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
@@ -84,13 +85,13 @@ a:hover {
   min-height: 100vh;
   width: calc(100% - var(--layout-gutter-left) - var(--layout-gutter-right));
   max-width: var(--layout-max);
-  margin: 0 var(--layout-gutter-right) 0 var(--layout-gutter-left);
+  margin: 0 auto;
 }
 
 .sidebar-left {
   width: var(--sidebar-width);
   flex-shrink: 0;
-  padding: 2rem 0.875rem 2rem 0.25rem;
+  padding: 2rem 1rem;
   border-right: 1px solid var(--border-light);
   position: sticky;
   top: 0;
@@ -98,7 +99,17 @@ a:hover {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-inner {
+  width: 100%;
+  max-width: var(--sidebar-inner-width);
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
+  flex: 1;
+  margin: 0 auto;
 }
 
 .profile-card {
@@ -181,7 +192,7 @@ a:hover {
 }
 
 .sidebar-poster-nav {
-  margin: 0.125rem 0 0.5rem 0.75rem;
+  margin: 0.125rem 0 0.5rem;
   padding-left: 0.625rem;
   border-left: 1px solid var(--border-light);
   display: flex;
@@ -249,6 +260,7 @@ a:hover {
 .sidebar-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem 0.75rem;
   margin-top: auto;
   padding-top: 1rem;
@@ -1364,6 +1376,11 @@ td strong {
     border-right: none;
     border-bottom: 1px solid var(--border-light);
     padding: 1.25rem;
+    align-items: stretch;
+  }
+
+  .sidebar-inner {
+    max-width: none;
   }
 
   .profile-card {
