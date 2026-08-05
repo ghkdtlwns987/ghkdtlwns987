@@ -15,7 +15,7 @@ permalink: /about/
     <div class="contact-grid">
       <div class="contact-item">
         <span class="label">Email</span>
-        <span class="value"><a href="mailto:ghkdtlwns987@naver.com">ghkdtlwns987@naver.com</a></span>
+        <span class="value"><a href="mailto:ghkdtlwns987@hanyang.ac.kr">ghkdtlwns987@hanyang.ac.kr</a></span>
       </div>
       <div class="contact-item">
         <span class="label">Phone</span>

@@ -24,7 +24,6 @@
         {% assign is_active = true %}
       {% endif %}
       <a href="{{ item.url | relative_url }}" class="sidebar-nav-item{% if is_active %} active{% endif %}">
-        <span class="nav-icon">{% case item.title %}{% when 'Home' %}🏠{% when 'About' %}👤{% when 'Research' %}🔬{% when 'Projects' %}🚀{% when 'Publications' %}📄{% else %}›{% endcase %}</span>
         <span class="nav-label">{{ item.title }}</span>
       </a>
     {% endfor %}
