@@ -1,7 +1,6 @@
 title: Si June Hwang
 description: >-
-  AI Security Researcher · Vulnerability Researcher · Security Engineer
-  — LLM, Knowledge Graph, Multi-Agent Reasoning 기반 취약점 탐지 연구
+  LLM을 활용한 Software Engineering · AI 기반 소프트웨어 보안 연구
 baseurl: "/ghkdtlwns987"
 url: "https://ghkdtlwns987.github.io"
 
@@ -56,5 +55,6 @@ navigation:
     url: /projects/
   - title: Publications
     url: /publications/
-  - title: Blog
-    url: /blog/
+  # Blog — 글 작성 후 아래 주석 해제
+  # - title: Blog
+  #   url: /blog/

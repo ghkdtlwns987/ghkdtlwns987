@@ -1,0 +1,35 @@
+<aside class="sidebar-right">
+  <div class="widget">
+    <h3 class="widget-title">📢 Recently Updated</h3>
+    <ul class="widget-list">
+      {% for item in site.data.profile.news %}
+      <li class="widget-list-item">
+        <span class="widget-date">{{ item.date }}</span>
+        <p>
+          {{ item.text }}
+          {% if item.link %}
+            — <a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.link_label }}</a>
+          {% endif %}
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="widget">
+    <h3 class="widget-title">🏷️ Research Tags</h3>
+    <div class="tag-cloud">
+      {% for tag in site.data.profile.tags %}
+        <span class="tag-cloud-item">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="widget">
+    <h3 class="widget-title">📫 Contact</h3>
+    <ul class="widget-contact">
+      <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+      <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</aside>

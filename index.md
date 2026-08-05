@@ -3,122 +3,88 @@ layout: default
 title: Home
 ---
 
-<div class="hero">
-  <h1>황시준 (Si June Hwang)</h1>
-  <p class="subtitle">AI Security Researcher · Vulnerability Researcher · Security Engineer</p>
-  <p class="bio">
-    취약점 분석 경험과 소프트웨어 보안 연구를 기반으로
-    <strong>Large Language Models (LLMs), Knowledge Graph, Multi-Agent Reasoning</strong>을
-    활용한 차세대 AI 기반 취약점 탐지 기술을 연구하고 있습니다.
-  </p>
-  <div class="hero-links">
-    <a class="btn btn-primary" href="{{ '/research/' | relative_url }}">Research</a>
-    <a class="btn" href="{{ '/publications/' | relative_url }}">Publications</a>
-    <a class="btn" href="{{ '/blog/' | relative_url }}">Blog</a>
-    <a class="btn" href="https://github.com/ghkdtlwns987" target="_blank" rel="noopener">GitHub</a>
+<div class="hero-banner">
+  <h2 class="hero-banner-title">👋 안녕하세요, {{ site.data.profile.name }}입니다</h2>
+  <p class="hero-banner-sub">{{ site.data.profile.tagline }}</p>
+  <div class="hero-banner-actions">
+    <a class="btn btn-white" href="{{ '/publications/' | relative_url }}">Publications</a>
+    <a class="btn btn-white" href="{{ '/research/' | relative_url }}">Research</a>
+    <a class="btn btn-white" href="{{ '/about/' | relative_url }}">About Me</a>
   </div>
 </div>
 
-<section>
-  <h2>News</h2>
-  <ul class="news-list">
-    <li class="news-item">
-      <div class="news-meta">
-        <time class="news-date">Aug 2026</time>
-        <span class="news-badge">New</span>
-        <span class="news-tag">ASE 2026</span>
-      </div>
-      <p class="news-text">
-        <strong>CLEAR</strong> 논문이 arXiv에 게재되었습니다.
-        <em>CLEAR: Causal Context-Based Agentic Reasoning for Vulnerability Detection</em>
-        — IEEE/ACM ASE 2026 ·
-        <a href="https://arxiv.org/abs/2608.03134" target="_blank" rel="noopener">arXiv:2608.03134</a>
-      </p>
-    </li>
-    <li class="news-item">
-      <div class="news-meta">
-        <time class="news-date">2025</time>
-        <span class="news-tag">Research</span>
-      </div>
-      <p class="news-text">
-        한양대학교 정보보호학과 석사과정 입학 — AI Security · Knowledge Graph · Vulnerability Detection 연구 시작
-      </p>
-    </li>
-    <li class="news-item">
-      <div class="news-meta">
-        <time class="news-date">2025</time>
-        <span class="news-tag">Publication</span>
-      </div>
-      <p class="news-text">
-        국내 학술대회 2편 발표 — CISC-S 2025, 한국통신학회 AI학술대회
-      </p>
-    </li>
-  </ul>
+<section class="content-section">
+  <h2 class="section-title">📌 Featured</h2>
+  <article class="featured-card">
+    <div class="featured-visual">
+      <div class="featured-icon">📄</div>
+    </div>
+    <div class="featured-body">
+      <span class="featured-tag">{{ site.data.profile.featured.tag }}</span>
+      <h3 class="featured-title">
+        <a href="{{ site.data.profile.featured.link }}" target="_blank" rel="noopener">
+          {{ site.data.profile.featured.title }}
+        </a>
+      </h3>
+      <p class="featured-meta">{{ site.data.profile.featured.venue }} · <a href="{{ site.data.profile.featured.link }}" target="_blank" rel="noopener">arXiv:2608.03134</a></p>
+      <p class="featured-desc">{{ site.data.profile.intro | truncate: 180 }}</p>
+    </div>
+  </article>
 </section>
 
-<section>
-  <h2>Highlights</h2>
-  <div class="card-grid">
-    <div class="card">
-      <h3>ASE 2026 Full Paper (1st Author)</h3>
-      <p class="meta">IEEE/ACM Automated Software Engineering</p>
-      <p><em>CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection</em></p>
+<section class="content-section">
+  <h2 class="section-title">🔬 Research in Progress</h2>
+  <div class="series-grid">
+    {% for area in site.data.profile.research_areas %}
+    <div class="series-card">
+      <h3 class="series-name">{{ area.name }}</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ area.progress }}%;"></div>
+      </div>
+      <p class="series-meta">Ongoing research</p>
     </div>
-    <div class="card">
-      <h3>Bug Bounty — Unreal Engine</h3>
-      <p class="meta">RCE ×2 · DoS ×1</p>
-      <p>총 <strong>$17,500</strong> 획득</p>
-    </div>
-    <div class="card">
-      <h3>한양대학교 정보보호학과</h3>
-      <p class="meta">석사과정 · 2025 ~</p>
-      <p>AI Security · Vulnerability Detection · Knowledge Graph</p>
-    </div>
+    {% endfor %}
   </div>
 </section>
 
-<section>
-  <h2>Recent Posts</h2>
-  <ul class="post-list">
-    {% for post in site.posts limit:5 %}
-    <li>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-      {% if post.excerpt %}
-        <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-      {% endif %}
+<section class="content-section mobile-only">
+  <h2 class="section-title">📢 News</h2>
+  <ul class="news-list">
+    {% for item in site.data.profile.news %}
+    <li class="news-item">
+      <div class="news-meta">
+        <time class="news-date">{{ item.date }}</time>
+        {% if item.badge %}<span class="news-badge">{{ item.badge }}</span>{% endif %}
+        {% if item.tag %}<span class="news-tag">{{ item.tag }}</span>{% endif %}
+      </div>
+      <p class="news-text">
+        {{ item.text }}
+        {% if item.link %}
+          — <a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.link_label }}</a>
+        {% endif %}
+      </p>
     </li>
     {% endfor %}
   </ul>
-  {% if site.posts.size == 0 %}
-    <p class="empty-state">아직 작성된 글이 없습니다. <code>_posts/</code> 디렉터리에 마크다운 파일을 추가하세요.</p>
-  {% endif %}
 </section>
 
-<section>
-  <h2>Contact</h2>
-  <div class="card">
-    <div class="contact-grid">
-      <div class="contact-item">
-        <span class="label">Email</span>
-        <span class="value"><a href="mailto:ghkdtlwns987@naver.com">ghkdtlwns987@naver.com</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Phone</span>
-        <span class="value">010-4828-2771</span>
-      </div>
-      <div class="contact-item">
-        <span class="label">GitHub</span>
-        <span class="value"><a href="https://github.com/ghkdtlwns987" target="_blank" rel="noopener">github.com/ghkdtlwns987</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Velog</span>
-        <span class="value"><a href="https://velog.io/@ghkdtlwns987" target="_blank" rel="noopener">velog.io/@ghkdtlwns987</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Tistory</span>
-        <span class="value"><a href="https://pwnable-study.tistory.com" target="_blank" rel="noopener">pwnable-study.tistory.com</a></span>
-      </div>
+<section class="content-section">
+  <h2 class="section-title">✨ Highlights</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>ASE 2026</h3>
+      <p class="meta">IEEE/ACM Automated Software Engineering</p>
+      <p><em>CLEAR</em> — Multi-Agent + VCKG 기반 취약점 탐지</p>
+    </div>
+    <div class="card">
+      <h3>Bug Bounty</h3>
+      <p class="meta">Unreal Engine · RCE ×2 · DoS ×1</p>
+      <p>총 <strong>$17,500</strong></p>
+    </div>
+    <div class="card">
+      <h3>BoB 10기</h3>
+      <p class="meta">취약점 분석 트랙 수료</p>
+      <p>Fuzzing · Reverse Engineering</p>
     </div>
   </div>
 </section>

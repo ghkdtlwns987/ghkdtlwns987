@@ -4,6 +4,7 @@ title: "GitHub Pages 블로그 시작하기"
 date: 2026-03-19
 categories: [Meta]
 tags: [GitHub Pages, Jekyll, Blog]
+published: false
 ---
 
 이 저장소는 **포트폴리오 + 기술 블로그**를 위한 GitHub Pages 사이트입니다.

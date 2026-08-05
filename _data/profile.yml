@@ -1,0 +1,59 @@
+name: "황시준"
+name_en: "Si June Hwang"
+affiliation: "한양대학교 정보보호학과 석사과정"
+
+tagline: "LLM for Software Engineering · AI Security Researcher"
+
+intro: >
+  저는 Large Language Model(LLM)을 활용한 Software Engineering, 특히 AI 기반
+  소프트웨어 보안 분야에 관심을 두고 연구하고 있습니다. 취약점 분석과 보안
+  엔지니어링 경험을 바탕으로, Knowledge Graph · Multi-Agent Reasoning · RAG를
+  결합해 소프트웨어 취약점을 탐지하는 것을 넘어 그 원인까지 이해하고 설명할
+  수 있는 지능형 시스템을 연구합니다.
+
+description: >
+  LLM을 활용한 Software Engineering 및 AI 기반 소프트웨어 보안 연구
+
+research_focus: "Knowledge Graph · Multi-Agent · RAG · Causal Reasoning"
+
+tags:
+  - LLM
+  - Knowledge Graph
+  - Multi-Agent
+  - RAG
+  - Vulnerability Detection
+  - Software Security
+  - Causal Reasoning
+  - Kubernetes
+  - Fuzzing
+
+news:
+  - date: "Aug 2026"
+    badge: "New"
+    tag: "ASE 2026"
+    text: "CLEAR 논문 arXiv 게재"
+    link: "https://arxiv.org/abs/2608.03134"
+    link_label: "arXiv:2608.03134"
+  - date: "2025"
+    tag: "Research"
+    text: "한양대학교 정보보호학과 석사과정 입학"
+  - date: "2025"
+    tag: "Publication"
+    text: "CISC-S 2025 · 한국통신학회 AI학술대회 발표"
+
+featured:
+  title: "CLEAR: Causal Context-Based Agentic Reasoning for Vulnerability Detection"
+  venue: "IEEE/ACM ASE 2026"
+  link: "https://arxiv.org/abs/2608.03134"
+  tag: "Featured Paper"
+
+research_areas:
+  - name: "AI Vulnerability Detection"
+    progress: 80
+    total: 100
+  - name: "Knowledge Graph & RAG"
+    progress: 70
+    total: 100
+  - name: "Multi-Agent Reasoning"
+    progress: 65
+    total: 100

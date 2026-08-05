@@ -1,0 +1,38 @@
+<aside class="sidebar-left">
+  <div class="profile-card">
+    <a href="{{ '/' | relative_url }}" class="profile-avatar-link">
+      <img
+        class="profile-avatar"
+        src="{{ '/assets/images/profile.png' | relative_url }}"
+        alt="{{ site.data.profile.name }}"
+        width="120"
+        height="120"
+      >
+    </a>
+    <h1 class="profile-name">{{ site.data.profile.name }}</h1>
+    <p class="profile-name-en">{{ site.data.profile.name_en }}</p>
+    <p class="profile-tagline">{{ site.data.profile.tagline }}</p>
+    <p class="profile-affiliation">{{ site.data.profile.affiliation }}</p>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Main navigation">
+    {% for item in site.navigation %}
+      {% assign is_active = false %}
+      {% if page.url == item.url %}
+        {% assign is_active = true %}
+      {% elsif item.url != '/' and page.url contains item.url %}
+        {% assign is_active = true %}
+      {% endif %}
+      <a href="{{ item.url | relative_url }}" class="sidebar-nav-item{% if is_active %} active{% endif %}">
+        <span class="nav-icon">{% case item.title %}{% when 'Home' %}🏠{% when 'About' %}👤{% when 'Research' %}🔬{% when 'Projects' %}🚀{% when 'Publications' %}📄{% else %}›{% endcase %}</span>
+        <span class="nav-label">{{ item.title }}</span>
+      </a>
+    {% endfor %}
+  </nav>
+
+  <div class="sidebar-links">
+    <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener" title="GitHub">GitHub</a>
+    <a href="{{ site.author.velog }}" target="_blank" rel="noopener" title="Velog">Velog</a>
+    <a href="{{ site.author.tistory }}" target="_blank" rel="noopener" title="Tistory">Tistory</a>
+  </div>
+</aside>

@@ -6,11 +6,7 @@ permalink: /about/
 
 <div class="hero">
   <h1>About</h1>
-  <p class="bio">
-    AI Security Researcher로서 LLM, Knowledge Graph, Multi-Agent Reasoning을 활용한
-    소프트웨어 취약점 탐지 기술을 연구합니다.
-    Kubernetes 기반 클라우드 인프라와 백엔드 시스템 설계·운영 경험도 보유하고 있습니다.
-  </p>
+  {% include intro.html %}
 </div>
 
 <section>
@@ -182,13 +178,4 @@ permalink: /about/
       </tbody>
     </table>
   </div>
-</section>
-
-<section>
-  <h2>Research Vision</h2>
-  <p>
-    AI가 취약점을 단순히 탐지하는 것을 넘어
-    <strong>취약점의 발생 원인을 이해하고 설명할 수 있는 지능형 보안 시스템</strong>을
-    연구하는 것을 목표로 하고 있습니다.
-  </p>
 </section>

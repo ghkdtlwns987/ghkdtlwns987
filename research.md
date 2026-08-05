@@ -6,16 +6,17 @@ permalink: /research/
 
 <div class="hero">
   <h1>Research</h1>
-  <p class="bio">AI 기반 소프트웨어 취약점 탐지 및 Knowledge Graph 연구</p>
+  {% include intro.html %}
 </div>
 
 <section>
   <h2>Current Research</h2>
   <div class="card">
     <h3>AI 기반 취약점 탐지 연구</h3>
-    <p class="meta">2025 ~ Present</p>
+    <p class="meta">2025 ~ Present · {{ site.data.profile.research_focus }}</p>
     <p>
-      Knowledge Graph 기반 LLM 취약점 탐지 및 Causal Reasoning Framework를 연구하고 있습니다.
+      LLM과 Software Engineering을 결합한 취약점 탐지·분석 프레임워크를 연구합니다.
+      Knowledge Graph 기반 Causal Reasoning을 통해 취약점의 원인까지 추론하는 CLEAR 프레임워크를 개발 중입니다.
     </p>
     <div class="tags">
       <span class="tag">Large Language Models</span>

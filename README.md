@@ -1,8 +1,8 @@
 # 황시준 (Si June Hwang)
 
-> **AI Security Researcher · Vulnerability Researcher · Security Engineer**
+> **LLM for Software Engineering · AI Security Researcher**
 
-AI 기반 소프트웨어 보안을 연구하고 있습니다. **Large Language Models (LLMs), Knowledge Graph, Retrieval-Augmented Generation (RAG), Multi-Agent Reasoning**을 활용하여 소프트웨어 취약점의 **탐지뿐만 아니라 원인(Causality)까지 이해하는 지능형 보안 시스템**을 연구합니다.
+저는 **Large Language Model(LLM)을 활용한 Software Engineering**, 특히 AI 기반 소프트웨어 보안 분야에 관심을 두고 연구하고 있습니다. 취약점 분석과 보안 엔지니어링 경험을 바탕으로, Knowledge Graph · Multi-Agent Reasoning · RAG를 결합해 소프트웨어 취약점을 탐지하는 것을 넘어 그 원인까지 이해하고 설명할 수 있는 지능형 시스템을 연구합니다.
 
 🌐 **Portfolio** · https://ghkdtlwns987.github.io/ghkdtlwns987/
 
@@ -137,11 +137,3 @@ AI 기반 소프트웨어 보안을 연구하고 있습니다. **Large Language 
 | Engineer Information Processing | HRDK Korea | 2024.06 |
 | SQL Developer (SQLD) | KData | 2024.09 |
 | TOEIC Speaking AL (160) | ETS | 2024.08 |
-
----
-
-# Research Vision
-
-> **Building AI systems that understand _why_ vulnerabilities occur, not just _where_ they exist.**
-
-My long-term goal is to develop intelligent software security systems capable of understanding the causal mechanisms behind vulnerabilities through **Large Language Models, Knowledge Graphs, and Causal Reasoning**.
