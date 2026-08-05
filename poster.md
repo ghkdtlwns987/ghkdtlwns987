@@ -1,13 +1,12 @@
 ---
 layout: default
-title: Blog
-permalink: /blog/
-published: false
+title: Poster
+permalink: /poster/
 ---
 
 <div class="hero">
-  <h1>Blog</h1>
-  <p class="bio">AI Security, Vulnerability Research, 그리고 기술에 관한 글</p>
+  <h1>Poster</h1>
+  {% include page-lead.html page="poster" %}
 </div>
 
 <section>
@@ -31,22 +30,6 @@ published: false
   </ul>
 
   {% if site.posts.size == 0 %}
-    <p class="empty-state">아직 작성된 글이 없습니다.</p>
+    <p class="empty-state">아직 등록된 포스터가 없습니다.</p>
   {% endif %}
-</section>
-
-<section>
-  <h2>글 작성 방법</h2>
-  <div class="card">
-    <p><code>_posts/</code> 디렉터리에 다음 형식의 파일을 추가하세요:</p>
-    <pre><code>---
-layout: post
-title: "글 제목"
-date: 2026-03-19
-categories: [AI Security, Research]
-tags: [LLM, Vulnerability]
----
-
-본문 내용...</code></pre>
-  </div>
 </section>

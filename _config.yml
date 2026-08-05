@@ -26,7 +26,7 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-permalink: /blog/:year/:month/:day/:title/
+permalink: /poster/:year/:month/:day/:title/
 
 defaults:
   - scope:
@@ -55,6 +55,5 @@ navigation:
     url: /projects/
   - title: Publications
     url: /publications/
-  # Blog — 글 작성 후 아래 주석 해제
-  # - title: Blog
-  #   url: /blog/
+  - title: Poster
+    url: /poster/

@@ -29,7 +29,7 @@ title: Home
 </section>
 
 <section class="content-section">
-  <h2 class="section-title">Recent Posts</h2>
+  <h2 class="section-title">Poster</h2>
   {% if site.posts.size > 0 %}
   <ul class="post-list">
     {% for post in site.posts limit:5 %}
@@ -39,8 +39,9 @@ title: Home
     </li>
     {% endfor %}
   </ul>
+  <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">전체 보기 →</a></p>
   {% else %}
-  <p class="empty-state">아직 작성된 글이 없습니다.</p>
+  <p class="empty-state">아직 등록된 포스터가 없습니다.</p>
   {% endif %}
 </section>
 
