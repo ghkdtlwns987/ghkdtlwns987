@@ -29,7 +29,7 @@ permalink: /research/
     <p class="meta">2025 ~ Present</p>
     <p>
       LLM과 Software Engineering을 결합하여, 취약점의 탐지를 넘어
-      <strong>발생 원인(Causality)을 추론</strong>하는 연구를 수행하고 있습니다.
+      <strong>발생 원인(Causality)을 추론</strong>하는 연구를 수행하고 있습니다.  
       Knowledge Graph · Multi-Agent Reasoning · RAG를 활용한 Causal Reasoning Framework를 개발 중입니다.
     </p>
     <p class="cross-link">

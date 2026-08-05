@@ -1060,6 +1060,8 @@ section ul:not(.post-list) li::before {
   border: 1px solid var(--border-poster);
   border-radius: var(--radius);
   padding: 1.5rem 1.75rem;
+  min-width: 0;
+  overflow: hidden;
   transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
@@ -1093,11 +1095,15 @@ section ul:not(.post-list) li::before {
 
 .post-list-card h3 {
   margin-bottom: 0;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .post-list h3 a {
   text-decoration: none;
   color: var(--text);
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .post-list h3 a:hover {
@@ -1116,6 +1122,9 @@ section ul:not(.post-list) li::before {
   margin-bottom: 0;
   line-height: 1.7;
   overflow-wrap: break-word;
+  word-break: keep-all;
+  white-space: pre-line;
+  max-width: 100%;
 }
 
 .post-list p {

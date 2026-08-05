@@ -27,8 +27,8 @@
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
         </div>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        {% if post.excerpt %}
-          <p class="post-list-card-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+        {% if post.description %}
+          <p class="post-list-card-excerpt">{{ post.description }}</p>
         {% endif %}
       </li>
     {% endif %}
