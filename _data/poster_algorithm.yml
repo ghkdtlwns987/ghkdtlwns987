@@ -1,0 +1,7 @@
+subcategories:
+  - slug: dp
+    title: DP
+  - slug: graph
+    title: Graph
+  - slug: greedy
+    title: Greedy
