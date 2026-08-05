@@ -6,7 +6,7 @@
 {% assign filter_cat = include.cat %}
 {% assign filter_sub = include.sub | default: '' %}
 
-<ul class="post-list">
+<ul class="post-list post-list--cards">
   {% assign has_post = false %}
   {% for post in site.posts %}
     {% include poster-path.html post=post %}
@@ -22,11 +22,13 @@
     {% endif %}
     {% if match %}
       {% assign has_post = true %}
-      <li>
+      <li class="post-list-card">
+        <div class="post-list-card-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+        </div>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
         {% if post.excerpt %}
-          <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+          <p class="post-list-card-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
         {% endif %}
       </li>
     {% endif %}

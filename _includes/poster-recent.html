@@ -2,7 +2,7 @@
   Home Recent Poster — 최신 10개 (site.posts는 날짜 내림차순)
 {% endcomment %}
 
-<ul class="poster-recent-list">
+<ul class="post-list post-list--cards poster-recent-list">
   {% for post in site.posts limit: 10 %}
     {% include poster-path.html post=post %}
     {% assign recent_label = poster_cat %}
@@ -19,14 +19,14 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-    <li class="poster-recent-item">
-      <div class="poster-recent-meta">
+    <li class="post-list-card">
+      <div class="post-list-card-meta">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
         {% if recent_label != '' %}
           <span class="poster-recent-tag">{{ recent_label }}</span>
         {% endif %}
       </div>
-      <a href="{{ post.url | relative_url }}" class="poster-recent-title">{{ post.title }}</a>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
     </li>
   {% else %}
     <li class="poster-recent-empty">아직 등록된 Poster가 없습니다.</li>

@@ -1,0 +1,43 @@
+{% comment %}
+  Usage: {% include news-item.html item=item featured=true %}
+{% endcomment %}
+<li class="news-item{% if include.featured %} news-item--featured{% endif %}">
+  <div class="news-meta">
+    <time class="news-date">{{ include.item.date }}</time>
+    {% if include.item.badges %}
+      {% for badge in include.item.badges %}
+        <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
+      {% endfor %}
+    {% elsif include.item.badge %}
+      <span class="news-badge">{{ include.item.badge }}</span>
+    {% endif %}
+    {% if include.item.tag %}<span class="news-tag">{{ include.item.tag }}</span>{% endif %}
+  </div>
+
+  {% if include.item.title %}
+    <dl class="news-details">
+      <div class="news-detail-row">
+        <dt>title :</dt>
+        <dd>{{ include.item.title }}</dd>
+      </div>
+      {% if include.item.conference %}
+      <div class="news-detail-row">
+        <dt>Conference :</dt>
+        <dd>{{ include.item.conference }}</dd>
+      </div>
+      {% endif %}
+      {% if include.item.link %}
+      <div class="news-detail-row">
+        <dt>Link :</dt>
+        <dd>
+          <a href="{{ include.item.link }}" target="_blank" rel="noopener">
+            {{ include.item.link_label | default: include.item.link }}
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  {% else %}
+    <p class="news-text">{{ include.item.text }}</p>
+  {% endif %}
+</li>
