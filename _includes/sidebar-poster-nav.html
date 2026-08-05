@@ -1,0 +1,51 @@
+{% comment %}
+  사이드바 Poster 하위 메뉴
+{% endcomment %}
+{% assign nav_cat = '' %}
+{% assign nav_sub = '' %}
+{% if page.layout == 'post' %}
+  {% include poster-path.html post=page %}
+  {% assign nav_cat = poster_cat %}
+  {% assign nav_sub = poster_sub %}
+{% endif %}
+
+<div class="sidebar-poster-nav">
+  {% for cat in site.data.poster_categories %}
+    {% assign cat_url = '/poster/' | append: cat.slug | append: '/' %}
+    {% assign cat_active = false %}
+    {% if nav_cat != '' %}
+      {% if nav_cat == cat.slug %}
+        {% assign cat_active = true %}
+      {% endif %}
+    {% elsif cat.slug == 'algorithm' %}
+      {% if page.url contains '/poster/algorithm/' %}
+        {% assign cat_active = true %}
+      {% endif %}
+    {% elsif page.url contains cat_url %}
+      {% assign cat_active = true %}
+    {% endif %}
+
+    <div class="sidebar-poster-group">
+      <a href="{{ cat_url | relative_url }}" class="sidebar-poster-cat{% if cat_active %} active{% endif %}">{{ cat.title }}</a>
+
+      {% if cat.slug == 'algorithm' %}
+        <ul class="sidebar-poster-sub">
+          {% for sub in site.data.poster_algorithm.subcategories %}
+            {% assign sub_url = '/poster/algorithm/' | append: sub.slug | append: '/' %}
+            {% assign sub_active = false %}
+            {% if nav_sub != '' %}
+              {% if nav_sub == sub.slug %}
+                {% assign sub_active = true %}
+              {% endif %}
+            {% elsif page.url contains sub_url %}
+              {% assign sub_active = true %}
+            {% endif %}
+            <li>
+              <a href="{{ sub_url | relative_url }}" class="sidebar-poster-sub-item{% if sub_active %} active{% endif %}">{{ sub.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

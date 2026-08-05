@@ -29,9 +29,9 @@ title: Home
 </section>
 
 <section class="content-section">
-  <h2 class="section-title">Poster</h2>
-  {% include poster-tree.html %}
-  <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">Poster 바로가기 →</a></p>
+  <h2 class="section-title">Recent Poster</h2>
+  {% include poster-recent.html %}
+  <p class="cross-link"><a href="{{ '/poster/' | relative_url }}">Poster 전체 보기 →</a></p>
 </section>
 
 <section class="content-section">

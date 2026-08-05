@@ -26,6 +26,9 @@
       <a href="{{ item.url | relative_url }}" class="sidebar-nav-item{% if is_active %} active{% endif %}">
         <span class="nav-label">{{ item.title }}</span>
       </a>
+      {% if item.title == 'Poster' %}
+        {% include sidebar-poster-nav.html %}
+      {% endif %}
     {% endfor %}
   </nav>
 
