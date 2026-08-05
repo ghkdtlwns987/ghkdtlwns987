@@ -18,7 +18,7 @@ permalink: /projects/
       <p>LLM · Knowledge Graph · Multi-Agent 기반 취약점 탐지 프레임워크 구현.</p>
       <p class="cross-link">
         <a href="https://arxiv.org/abs/2608.03134" target="_blank" rel="noopener">arXiv:2608.03134</a>
-        · <a href="{{ '/publications/' | relative_url }}">논문 상세</a>
+        · <a href="{{ '/publications/' | relative_url }}">details</a>
       </p>
       <div class="tags">
         <span class="tag">LLM</span>
