@@ -33,7 +33,7 @@ news:
     tag: "ASE 2026"
     text: "CLEAR:Causal Context-based Agentic Reasoning for Vulnerability Detection has been accepted to IEEE/ACM International conference on automated software engineering 2026"
     link: "https://conferences.computer.org/ase/2026/program/eventDetails.html?eventId=315325"
-    link_label: "arXiv:2608.03134"
+    link_label: "http://arxiv.org/abs/2608.03134"
   - date: "2025"
     tag: "Research"
     text: "한양대학교 정보보호학과 석사과정 입학"

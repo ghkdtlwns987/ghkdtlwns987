@@ -17,7 +17,8 @@ permalink: /projects/
       <p class="meta">Multi-Agent Vulnerability Detection Framework</p>
       <p>LLM · Knowledge Graph · Multi-Agent 기반 취약점 탐지 프레임워크 구현.</p>
       <p class="cross-link">
-        <a href="https://arxiv.org/abs/2608.03134" target="_blank" rel="noopener">http://arxiv.org/abs/2608.03134</a>
+        <a href="https://arxiv.org/abs/2608.03134" target="_blank" rel="noopener">http://arxiv.org/abs/2608.03134
+</a>
         · <a href="{{ '/publications/' | relative_url }}">details</a>
       </p>
       <div class="tags">
