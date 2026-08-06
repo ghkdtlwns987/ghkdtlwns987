@@ -8,3 +8,4 @@ Gemfile.lock
 *.un~
 .DS_Store
 script.sh
+*.sh

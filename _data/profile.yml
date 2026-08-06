@@ -5,18 +5,14 @@ affiliation: "한양대학교 정보보호학과 석사과정"
 tagline: "LLM for Software Engineering · AI Security Researcher"
 
 intro: >
-  저는 Large Language Model(LLM)을 활용한 Software Engineering,
-  특히 AI 기반 소프트웨어 보안 분야에 관심을 두고 연구하고 있습니다.
-  취약점 분석과 보안 엔지니어링 경험을 바탕으로,
-  Knowledge Graph · Multi-Agent Reasoning · RAG를 결합해 소프트웨어 취약점을
-  탐지하는 것을 넘어 그 원인까지 이해하고 설명할 수 있는 지능형 시스템을 연구합니다.
+  Large Language Model(LLM) 기반 Software Engineering 및 AI 소프트웨어 보안을 연구하고 있습니다. 
+  Knowledge Graph를 활용한 구조화된 지식 표현, Retrieval-Augmented Generation(RAG) 기반의 근거 중심 정보 검색, 
+  Multi-Agent Reasoning 기반의 협력적 추론 기법을 결합하여 LLM의 코드 이해 및 추론 능력을 향상시키는 연구를 수행하고 있습니다.
 
 intro_en: >
-  I research Software Engineering powered by Large Language Models (LLMs),
-  with a focus on AI-based software security. Building on vulnerability analysis
-  and security engineering experience, I study intelligent systems that combine
-  Knowledge Graphs, Multi-Agent Reasoning, and RAG to not only detect software
-  vulnerabilities but also understand and explain their root causes.
+  My research focuses on Software Engineering and AI-driven software security with Large Language Models (LLMs). 
+  I investigate methods to improve LLMs’ understanding and reasoning over software by integrating Knowledge Graphs for structured knowledge representation, 
+  Retrieval-Augmented Generation (RAG) for evidence-grounded information retrieval, and Multi-Agent Reasoning for collaborative problem solving.
 
 description: >
   LLM을 활용한 Software Engineering 및 AI 기반 소프트웨어 보안 연구

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{% assign cat_slug = page.category %}
+{% assign sub_slug = page.subcategory | default: '' %}
+{% assign cat_data = nil %}
+{% for c in site.data.poster.categories %}
+  {% if c.slug == cat_slug %}
+    {% assign cat_data = c %}
+  {% endif %}
+{% endfor %}
+
+<div class="hero">
+  <h1>{{ page.title }}</h1>
+  {% if sub_slug != '' %}
+    {% include poster-breadcrumb.html cat=cat_slug sub=sub_slug %}
+  {% else %}
+    {% include poster-breadcrumb.html cat=cat_slug %}
+  {% endif %}
+  {% if cat_data.description and sub_slug == '' %}
+    <p class="poster-category-desc">{{ cat_data.description }}</p>
+  {% endif %}
+</div>
+
+{% if cat_slug == 'algorithm' and sub_slug == '' %}
+  {% include poster-algorithm-index.html %}
+{% else %}
+  {% include poster-post-list.html cat=cat_slug sub=sub_slug %}
+{% endif %}

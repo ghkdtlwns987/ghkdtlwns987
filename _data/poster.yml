@@ -1,0 +1,29 @@
+# Poster 카테고리 — 이 파일만 수정하면 됩니다.
+# 변경 후: ruby script/generate_poster_pages.rb
+#
+# algorithm 하위 카테고리 추가:
+#   1) subcategories에 slug/title 추가 (중첩: bfs/dfs)
+#   2) ruby script/generate_poster_pages.rb
+#   3) _posts/algorithm/{slug}/ 또는 _posts/algorithm/bfs/dfs/ 에 글 작성
+
+categories:
+  - slug: paper
+    title: Paper
+    description: 학술 논문 및 연구 관련 포스터
+
+  - slug: algorithm
+    title: Algorithm
+    description: 알고리즘 정리 및 Deep Dive
+    subcategories:
+      - slug: dp
+        title: DP
+      - slug: graph
+        title: Graph
+      - slug: bfs/dfs
+        title: BFS · DFS
+      - slug: greedy
+        title: Greedy
+
+  - slug: etc
+    title: Etc
+    description: 기타 자료

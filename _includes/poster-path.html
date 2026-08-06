@@ -1,12 +1,11 @@
 {% comment %}
-  _posts/algorithm/{subcategory}/YYYY-MM-DD-slug.md
-  _posts/algorithm/{subcategory}/{id}/YYYY-MM-DD-slug.md  (legacy)
+  _posts/algorithm/{sub}/YYYY-MM-DD-slug.md
+  _posts/algorithm/{sub1}/{sub2}/YYYY-MM-DD-slug.md  (예: bfs/dfs)
+  _posts/algorithm/{sub}/{id}/YYYY-MM-DD-slug.md  (legacy)
   _posts/{category}/YYYY-MM-DD-slug.md  (paper, etc)
 
   Usage: {% include poster-path.html post=post %}
   Sets:  poster_cat, poster_sub, poster_id
-
-  poster_id 우선순위: front matter `problem` → legacy 폴더명 → 파일명 YYYY-MM-DD-{id}-slug.md
 {% endcomment %}
 {% assign poster_parts = include.post.path | remove: '_posts/' | split: '/' %}
 {% assign poster_cat = poster_parts[0] %}
@@ -14,16 +13,25 @@
 {% assign poster_id = '' %}
 
 {% if poster_cat == 'algorithm' and poster_parts.size >= 3 %}
-  {% assign poster_sub = poster_parts[1] %}
-  {% if poster_parts.size >= 4 %}
+  {% assign last_index = poster_parts.size | minus: 1 %}
+  {% assign fname = poster_parts[last_index] | remove: '.md' | remove: '.markdown' %}
+  {% assign fname_parts = fname | split: '-' %}
+
+  {% if poster_parts.size >= 5 %}
+    {% assign poster_sub = poster_parts[1] %}
     {% assign poster_id = poster_parts[2] %}
-  {% elsif include.post.problem %}
-    {% assign poster_id = include.post.problem %}
+  {% elsif poster_parts.size == 4 and fname_parts.size >= 3 %}
+    {% assign poster_sub = poster_parts[1] | append: '/' | append: poster_parts[2] %}
   {% else %}
-    {% assign fname = poster_parts[2] | remove: '.md' | remove: '.markdown' %}
-    {% assign fparts = fname | split: '-' %}
-    {% if fparts.size >= 4 %}
-      {% assign poster_id = fparts[3] %}
+    {% assign poster_sub = poster_parts[1] %}
+    {% if poster_parts.size >= 4 %}
+      {% assign poster_id = poster_parts[2] %}
+    {% elsif include.post.problem %}
+      {% assign poster_id = include.post.problem %}
+    {% else %}
+      {% if fname_parts.size >= 4 %}
+        {% assign poster_id = fname_parts[3] %}
+      {% endif %}
     {% endif %}
   {% endif %}
 {% endif %}

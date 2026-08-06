@@ -1,0 +1,18 @@
+{% comment %}
+  Paper figure
+  Usage:
+    {% include paper-figure.html src="papers/vultrial/figure-1.png" caption="Figure 1. VulTrial overview." %}
+    {% include paper-figure.html src="papers/vultrial/figure-1.png" alt="VulTrial overview" caption="Figure 1. ..." width="720" %}
+  이미지 경로: assets/images/{src}
+{% endcomment %}
+<figure class="post-figure">
+  <img
+    src="{{ '/assets/images/' | append: include.src | relative_url }}"
+    alt="{{ include.alt | default: include.caption | strip_html }}"
+    {% if include.width %}width="{{ include.width }}"{% endif %}
+    loading="lazy"
+  >
+  {% if include.caption %}
+  <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

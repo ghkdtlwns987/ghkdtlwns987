@@ -13,16 +13,17 @@
 {% endif %}
 
 {% assign bc_cat_title = bc_cat %}
-{% for c in site.data.poster_categories %}
+{% assign bc_sub_title = bc_sub %}
+{% for c in site.data.poster.categories %}
   {% if c.slug == bc_cat %}
     {% assign bc_cat_title = c.title %}
-  {% endif %}
-{% endfor %}
-
-{% assign bc_sub_title = bc_sub %}
-{% for s in site.data.poster_algorithm.subcategories %}
-  {% if s.slug == bc_sub %}
-    {% assign bc_sub_title = s.title %}
+    {% if bc_sub != '' and c.subcategories %}
+      {% for s in c.subcategories %}
+        {% if s.slug == bc_sub %}
+          {% assign bc_sub_title = s.title %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 
