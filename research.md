@@ -36,8 +36,7 @@ permalink: /research/
       Causal Reasoning Framework를 개발 중입니다.
     </p>
     <p class="cross-link">
-      관련 논문 → <a href="{{ '/publications/' | relative_url }}">Publications</a><br>
-      구현 → <a href="{{ '/publications/' | relative_url }}">Publications (CLEAR)</a>
+      바로가기 → <a href="{{ '/publications/' | relative_url }}">Publications</a><br>
     </p>
   </div>
 </section>
