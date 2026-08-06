@@ -300,6 +300,28 @@ a:hover {
   padding: 2rem 2rem 3rem 1.5rem;
 }
 
+.content-topbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: -0.5rem 0 1.25rem;
+}
+
+.content-topbar-contact {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background 0.15s;
+}
+
+.content-topbar-contact:hover {
+  color: var(--accent);
+  background: var(--accent-dim);
+  text-decoration: none;
+}
+
 .sidebar-right {
   width: var(--sidebar-right-width);
   flex-shrink: 0;
