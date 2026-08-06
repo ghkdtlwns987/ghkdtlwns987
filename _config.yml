@@ -45,6 +45,8 @@ feed:
 
 # 네비게이션
 navigation:
+  - title: Contact
+    url: /contact/
   - title: Home
     url: /
   - title: About

@@ -744,6 +744,10 @@ a:hover {
   line-height: 1.85;
 }
 
+.contact-actions {
+  margin: 1.25rem 0 1.75rem;
+}
+
 .contact-card {
   background: var(--bg-card);
   border: 1px solid var(--border);

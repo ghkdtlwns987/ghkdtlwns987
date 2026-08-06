@@ -13,7 +13,6 @@
 | | |
 |:--|:--|
 | **Email** | ghkdtlwns987@hanyang.ac.kr |
-| **Phone** | +82-10-4828-2771 |
 | **Birth** | 1999.05.13 |
 | **GitHub** | https://github.com/ghkdtlwns987 |
 | **Velog** | https://velog.io/@ghkdtlwns987 |
