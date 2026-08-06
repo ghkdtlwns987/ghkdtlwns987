@@ -75,7 +75,7 @@
 | **Unreal Engine Vulnerability Analysis** | Fuzzing 기반 Unreal Engine 취약점 분석 (BoB 10th) |
 | **AI-Based Malware Detection** | Kubernetes 기반 AI 악성코드 탐지 MSA |
 | **Kubernetes MSA Platform** | Kubernetes · Docker · Jenkins · GitHub Actions 기반 CI/CD 플랫폼 |
-| **Live Coding Platform** | 조선대학교 실습 서버 구축 및 자동화 |
+| **Live Coding Platform** | 교내 실습 서버 구축 및 자동화 |
 
 ---
 

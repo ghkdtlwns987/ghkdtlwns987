@@ -1,0 +1,188 @@
+{% comment %}
+  Project detail modals
+{% endcomment %}
+<div class="pub-modal-backdrop" id="project-modal-backdrop" aria-hidden="true"></div>
+
+{% for section in site.data.projects.sections %}
+  {% for project in section.projects %}
+<div
+  class="pub-modal"
+  id="project-modal-{{ project.slug }}"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="project-modal-title-{{ project.slug }}"
+  aria-hidden="true"
+>
+  <div class="pub-modal-panel">
+    <div class="pub-modal-header">
+      <span class="pub-modal-label">{{ section.title }}</span>
+      <button type="button" class="pub-modal-close" data-project-close aria-label="닫기">×</button>
+    </div>
+
+    <h2 class="pub-modal-title" id="project-modal-title-{{ project.slug }}">
+      {{ project.title }}
+    </h2>
+
+    {% if project.meta %}
+    <p class="pub-modal-venue">{{ project.meta }}</p>
+    {% endif %}
+
+    <div class="pub-modal-body">
+      {% for paragraph in project.detail.summary %}
+        <p>{{ paragraph }}</p>
+      {% endfor %}
+
+      {% if project.detail.role %}
+      <div class="pub-modal-contributions">
+        <h3>Role</h3>
+        <ul>
+          {% for item in project.detail.role %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if project.detail.features %}
+      <div class="pub-modal-contributions">
+        <h3>Key Features</h3>
+        <ul>
+          {% for item in project.detail.features %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if project.detail.extra_sections %}
+        {% for sec in project.detail.extra_sections %}
+      <div class="pub-modal-contributions">
+        <h3>{{ sec.heading }}</h3>
+        {% for paragraph in sec.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        {% if sec.items %}
+        <ul>
+          {% for item in sec.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% for group in sec.groups %}
+        <h4 class="project-modal-subheading">{{ group.title }}</h4>
+        {% for paragraph in group.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        {% if group.items %}
+        <ul>
+          {% for item in group.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endfor %}
+      </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if project.detail.achievements %}
+      <div class="pub-modal-contributions">
+        <h3>Key Achievements</h3>
+        <ul>
+          {% for item in project.detail.achievements %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if project.detail.tech %}
+      <div class="pub-modal-contributions">
+        <h3>Tech Stack</h3>
+        <ul>
+          {% for item in project.detail.tech %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if project.tags %}
+      <div class="project-modal-tags">
+        {% for tag in project.tags %}
+          {% if tag.label %}
+            <span class="tag{% if tag.style %} tag-{{ tag.style }}{% endif %}">{{ tag.label }}</span>
+          {% else %}
+            <span class="tag">{{ tag }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if project.detail.link or project.detail.internal_link %}
+    <p class="pub-modal-footer">
+      {% if project.detail.link %}
+      <a href="{{ project.detail.link }}" target="_blank" rel="noopener" class="pub-modal-details">
+        details → {{ project.detail.link_label | default: project.detail.link }}
+      </a>
+      {% endif %}
+      {% if project.detail.internal_link %}
+      <a href="{{ project.detail.internal_link | relative_url }}" class="pub-modal-details">
+        {{ project.detail.internal_link_label | default: '자세히 보기' }}
+      </a>
+      {% endif %}
+    </p>
+    {% endif %}
+  </div>
+</div>
+  {% endfor %}
+{% endfor %}
+
+<script>
+(function () {
+  var backdrop = document.getElementById('project-modal-backdrop');
+  var activeModal = null;
+
+  function openModal(slug) {
+    var modal = document.getElementById('project-modal-' + slug);
+    if (!modal) return;
+    activeModal = modal;
+    backdrop.classList.add('is-open');
+    backdrop.setAttribute('aria-hidden', 'false');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('pub-modal-open');
+    var closeBtn = modal.querySelector('.pub-modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    if (!activeModal) return;
+    activeModal.classList.remove('is-open');
+    activeModal.setAttribute('aria-hidden', 'true');
+    activeModal = null;
+    backdrop.classList.remove('is-open');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('pub-modal-open');
+  }
+
+  document.querySelectorAll('[data-project-modal]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openModal(btn.getAttribute('data-project-modal'));
+    });
+  });
+
+  document.querySelectorAll('[data-project-close]').forEach(function (btn) {
+    btn.addEventListener('click', closeModal);
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeModal);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+</script>

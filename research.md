@@ -37,7 +37,7 @@ permalink: /research/
     </p>
     <p class="cross-link">
       관련 논문 → <a href="{{ '/publications/' | relative_url }}">Publications</a><br>
-      구현 → <a href="{{ '/projects/' | relative_url }}">Projects (CLEAR)</a>
+      구현 → <a href="{{ '/publications/' | relative_url }}">Publications (CLEAR)</a>
     </p>
   </div>
 </section>

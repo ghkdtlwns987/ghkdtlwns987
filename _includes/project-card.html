@@ -1,0 +1,25 @@
+{% comment %}
+  Usage: {% include project-card.html project=project %}
+{% endcomment %}
+<button
+  type="button"
+  class="card card--project"
+  data-project-modal="{{ include.project.slug }}"
+  aria-haspopup="dialog"
+>
+  <div class="card--project-body">
+    <h3>{{ include.project.title }}</h3>
+    <p class="meta">{{ include.project.meta }}</p>
+    <p class="card--project-summary">{{ include.project.summary }}</p>
+  </div>
+  <div class="tags">
+    {% for tag in include.project.tags %}
+      {% if tag.label %}
+        <span class="tag{% if tag.style %} tag-{{ tag.style }}{% endif %}">{{ tag.label }}</span>
+      {% else %}
+        <span class="tag">{{ tag }}</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <span class="card-more">자세히 보기 →</span>
+</button>
