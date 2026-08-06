@@ -55,8 +55,6 @@
 - Retrieval-Augmented Generation (RAG)
 - Multi-Agent Systems
 - Secure Code Analysis
-- Causal Reasoning
-
 ---
 
 # Publications

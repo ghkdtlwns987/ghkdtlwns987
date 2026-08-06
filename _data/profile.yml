@@ -17,7 +17,7 @@ intro_en: >
 description: >
   LLM을 활용한 Software Engineering 및 AI 기반 소프트웨어 보안 연구
 
-research_focus: "Knowledge Graph · Multi-Agent · RAG · Causal Reasoning"
+research_focus: "Knowledge Graph / Multi-Agent / RAG"
 
 tags:
   - LLM
@@ -26,7 +26,6 @@ tags:
   - RAG
   - Vulnerability Detection
   - Software Security
-  - Causal Reasoning
   - Kubernetes
   - Fuzzing
 
