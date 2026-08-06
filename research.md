@@ -17,7 +17,6 @@ permalink: /research/
     <span class="tag">Large Language Models</span>
     <span class="tag">Knowledge Graph</span>
     <span class="tag">Multi-Agent Systems</span>
-    <span class="tag tag-green">Causal Reasoning</span>
     <span class="tag tag-purple">Secure Code Analysis</span>
   </div>
 </section>
@@ -32,8 +31,7 @@ permalink: /research/
       <strong>발생 원인(Causality)을 추론</strong>하는 연구를 수행하고 있습니다.
     </p>
     <p>
-      Knowledge Graph · Multi-Agent Reasoning · RAG를 활용한<br>
-      Causal Reasoning Framework를 개발 중입니다.
+      Knowledge Graph 를 설계하고 RAG 파이프라인에 Multi-Agent를 결합해 최첨단 LLM Agent 성능보다 우수한 성능을 보이는 Framework 를 개발중입니다. <br>
     </p>
     <p class="cross-link">
       바로가기 → <a href="{{ '/publications/' | relative_url }}">Publications</a><br>
@@ -58,7 +56,6 @@ permalink: /research/
         <li>Retrieval-Augmented Generation (RAG)</li>
         <li>Knowledge Graph Construction</li>
         <li>Multi-Agent Orchestration</li>
-        <li>Causal Reasoning</li>
       </ul>
     </div>
     <div class="skill-group">
