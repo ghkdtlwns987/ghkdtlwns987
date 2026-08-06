@@ -10,6 +10,8 @@
     {% assign has_detail = true %}
   {% elsif pub.contributions and pub.contributions.size > 0 %}
     {% assign has_detail = true %}
+  {% elsif pub.figures and pub.figures.size > 0 %}
+    {% assign has_detail = true %}
   {% endif %}
   {% if has_detail %}
 <div
@@ -89,6 +91,15 @@
             <li>{{ item }}</li>
           {% endfor %}
         </ul>
+      </div>
+      {% endif %}
+
+      {% if pub.figures %}
+      <div class="project-modal-figures">
+        <h3 class="project-modal-figures-title">Figures</h3>
+        {% for fig in pub.figures %}
+          {% include project-figure.html src=fig.src caption=fig.caption %}
+        {% endfor %}
       </div>
       {% endif %}
     </div>

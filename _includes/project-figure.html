@@ -1,0 +1,25 @@
+{% comment %}
+  Clickable figure with lightbox zoom
+  Usage:
+    {% include project-figure.html src="figure/capstone/capstone1.png" caption="Overview" %}
+{% endcomment %}
+{% assign figure_src = include.src | relative_url %}
+<figure class="project-figure">
+  <button
+    type="button"
+    class="project-figure-zoom figure-zoom-trigger"
+    data-zoom-src="{{ figure_src }}"
+    {% if include.caption %}data-zoom-caption="{{ include.caption }}"{% endif %}
+    aria-label="{{ include.caption | default: '이미지 확대' }}"
+  >
+    <img
+      src="{{ figure_src }}"
+      alt="{{ include.alt | default: include.caption | default: 'Figure' }}"
+      loading="lazy"
+    >
+    <span class="project-figure-hint" aria-hidden="true">클릭하여 확대</span>
+  </button>
+  {% if include.caption %}
+  <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

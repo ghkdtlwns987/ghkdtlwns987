@@ -36,7 +36,12 @@ international:
     contributions:
       - Multi-Agent 기반 취약점 탐지 프레임워크 제안
       - Vulnerability Causal Knowledge Graph (VCKG) 설계
-      - AI 기반 Causal Reasoning을 통한 취약점 탐지 성능 향상
+      - LLM 기반 Multi-Agent Reasoning을 통한 취약점 탐지 성능 향상
+    figures:
+      - src: figure/paper/clear1.png
+        caption: CLEAR 프레임워크 개요
+      - src: figure/paper/clear2.png
+        caption: VCKG 및 Multi-Agent Reasoning 구조
 
 domestic:
   - slug: cisc-s-2025

@@ -45,6 +45,11 @@ sections:
         title: AI Malware Detector Platform
         meta: Capstone Design
         summary: AI 악성코드 탐지 MSA 플랫폼. Kubernetes · GitOps CI/CD · 모니터링 인프라 구축.
+        figures:
+          - src: figure/capstone/capstone1.png
+            caption: AI Malware Detector Platform 아키텍처
+          - src: figure/capstone/capstone2.png
+            caption: 서비스 구성 및 배포 파이프라인
         tags:
           - AI
           - MSA
@@ -89,6 +94,11 @@ sections:
         title: HCCC 침해사고 대응
         meta: "2022"
         summary: 웹 서버 침해사고 디지털 포렌식 · 웹셸·백도어·권한 상승·SQL Injection 분석 및 대응.
+        figures:
+          - src: figure/hccc/hccc1.png
+            caption: 침해사고 분석 개요
+          - src: figure/hccc/hccc2.png
+            caption: 공격 경로 및 로그 분석
         tags:
           - Digital Forensics
           - Apache
@@ -136,6 +146,11 @@ sections:
         title: Zero-Downtime Service Deployment Platform
         meta: Cloud Native Deployment Platform
         summary: EKS · GitOps · 무중단 Rolling Update · HPA 오토스케일링 MSA 배포 플랫폼.
+        figures:
+          - src: figure/zero-downstream/architecture.png
+            caption: MSA 플랫폼 아키텍처
+          - src: figure/zero-downstream/diagram.png
+            caption: 배포 및 CI/CD 흐름
         tags:
           - Kubernetes
           - AWS
@@ -232,6 +247,9 @@ sections:
         title: 교내 라이브코딩 플랫폼 구축
         meta: Live Coding Platform
         summary: Web · DB · Worker 인프라 구축 및 3년 운영. MySQL Replication 성능 개선.
+        figures:
+          - src: figure/live-coding/overview.png
+            caption: 라이브코딩 플랫폼 인프라 구성
         tags:
           - Linux
           - MySQL
@@ -317,6 +335,15 @@ sections:
         title: SW마이스터고등학교 정보보안 강사
         meta: 2022.01 – 2023.07
         summary: VMware 실습 환경 · 기능경기대회 대비 정보보안 교육 설계·운영.
+        figures:
+          - src: figure/education/pikachu1.png
+            caption: Reversing 실습 자료
+          - src: figure/education/pikachu2.png
+            caption: Reversing 실습 예제
+          - src: figure/education/pwnable1.png
+            caption: Pwnable 실습 자료
+          - src: figure/education/packet_tracer.png
+            caption: Packet Tracer 네트워크 실습
         tags:
           - VMware
           - Linux

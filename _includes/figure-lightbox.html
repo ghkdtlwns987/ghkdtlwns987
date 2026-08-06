@@ -1,0 +1,59 @@
+<div class="figure-lightbox" id="figure-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button type="button" class="figure-lightbox-close" data-figure-lightbox-close aria-label="닫기">×</button>
+  <img class="figure-lightbox-img" id="figure-lightbox-img" src="" alt="">
+  <p class="figure-lightbox-caption" id="figure-lightbox-caption"></p>
+</div>
+
+<script>
+(function () {
+  var lightbox = document.getElementById('figure-lightbox');
+  var lightboxImg = document.getElementById('figure-lightbox-img');
+  var lightboxCaption = document.getElementById('figure-lightbox-caption');
+  if (!lightbox || !lightboxImg) return;
+
+  function openLightbox(src, caption, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || caption || 'Figure';
+    lightboxCaption.textContent = caption || '';
+    lightboxCaption.hidden = !caption;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('figure-lightbox-open');
+    var closeBtn = lightbox.querySelector('[data-figure-lightbox-close]');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.classList.remove('figure-lightbox-open');
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.figure-zoom-trigger');
+    if (!trigger) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var img = trigger.querySelector('img');
+    openLightbox(
+      trigger.getAttribute('data-zoom-src'),
+      trigger.getAttribute('data-zoom-caption') || '',
+      img ? img.getAttribute('alt') : ''
+    );
+  });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox || e.target.closest('[data-figure-lightbox-close]')) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      e.stopImmediatePropagation();
+      closeLightbox();
+    }
+  }, true);
+})();
+</script>

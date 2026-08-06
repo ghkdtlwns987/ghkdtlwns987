@@ -118,6 +118,15 @@
         {% endfor %}
       </div>
       {% endif %}
+
+      {% if project.figures %}
+      <div class="project-modal-figures">
+        <h3 class="project-modal-figures-title">Figures</h3>
+        {% for fig in project.figures %}
+          {% include project-figure.html src=fig.src caption=fig.caption %}
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
 
     {% if project.detail.link or project.detail.internal_link %}
