@@ -99,6 +99,10 @@ sections:
             caption: 침해사고 분석 개요
           - src: figure/hccc/hccc2.png
             caption: 공격 경로 및 로그 분석
+          - src: figure/hccc/hccc3.png
+            caption: 침해 행위 분석
+          - src: figure/hccc/hccc4.png
+            caption: 대응 및 보안 강화
         tags:
           - Digital Forensics
           - Apache
