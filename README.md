@@ -8,16 +8,6 @@
 
 ---
 
-# Contact
-
-| | |
-|:--|:--|
-| **Email** | ghkdtlwns987@hanyang.ac.kr |
-| **Birth** | 1999.05.13 |
-| **GitHub** | https://github.com/ghkdtlwns987 |
-| **Velog** | https://velog.io/@ghkdtlwns987 |
-| **Tistory** | https://pwnable-study.tistory.com |
-
 ---
 
 # Highlights

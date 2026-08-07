@@ -338,7 +338,7 @@ sections:
       - slug: sw-meister-security
         title: SW마이스터고등학교 정보보안 강사
         meta: 2022.01 – 2023.07
-        summary: VMware 실습 환경 · 기능경기대회 대비 정보보안 교육 설계·운영.
+        summary: 정보보안 특성화고 학생들을 대상으로 실무 중심의 정보보안 교육과 기능경기대회 대비 커리큘럼을 설계 및 운영하였습니다. VMware 기반 실습 환경을 구축하여 시스템 보안, 웹 보안, 보안 코딩, 정적 분석 등 실습 위주의 교육을 진행하였습니다.
         figures:
           - src: figure/education/pikachu1.png
             caption: Reversing 실습 자료
