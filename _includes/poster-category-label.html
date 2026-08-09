@@ -1,12 +1,20 @@
 {% comment %}
   poster-path.html 실행 후 poster.yml에서 카테고리 표시명 조회
   Usage: {% include poster-category-label.html post=post %}
-  Sets: poster_cat_label (예: Algorithm, Paper)
+  Sets: poster_cat_label, poster_sub_label
 {% endcomment %}
 {% include poster-path.html post=include.post %}
 {% assign poster_cat_label = '' %}
+{% assign poster_sub_label = '' %}
 {% for c in site.data.poster.categories %}
   {% if c.slug == poster_cat %}
     {% assign poster_cat_label = c.title %}
+    {% if poster_cat == 'algorithm' and poster_sub != '' and c.subcategories %}
+      {% for sub in c.subcategories %}
+        {% if sub.slug == poster_sub %}
+          {% assign poster_sub_label = sub.title %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   {% endif %}
 {% endfor %}

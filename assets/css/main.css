@@ -1406,10 +1406,18 @@ section ul:not(.post-list) li::before {
 
 .post-list-card-link {
   display: block;
-  padding: 1.625rem 1.875rem 1.625rem 2.5rem;
+  padding: 1.125rem 1.375rem 1.25rem 1.625rem;
   text-decoration: none;
   color: inherit;
   border-radius: inherit;
+}
+
+.post-list-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .post-list-card:hover {
@@ -1419,10 +1427,10 @@ section ul:not(.post-list) li::before {
 }
 
 .post-list-card .post-list-card-title {
-  font-size: 1.375rem;
-  font-weight: 700;
-  margin-bottom: 0.625rem;
-  line-height: 1.4;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  line-height: 1.45;
   color: var(--text);
   transition: color 0.15s ease;
 }
@@ -1445,9 +1453,11 @@ section ul:not(.post-list) li::before {
 
 .post-list-card .post-list-card-date {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
 }
 
 .post-list-card-date time {
@@ -2470,6 +2480,53 @@ body.pub-modal-open {
 }
 
 .news-badge--venue {
+  background: #1f6feb;
+  color: #ffffff;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.news-badge--poster-paper {
+  background: #8957e5;
+  color: #ffffff;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.news-badge--poster-algorithm {
+  background: #238636;
+  color: #ffffff;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.news-badge--poster-etc {
+  background: var(--accent-dim);
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.news-badge--poster-sub {
+  background: #1f6feb;
+  color: #ffffff;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.news-badge--poster-platform {
+  background: rgba(240, 136, 62, 0.2);
+  color: var(--accent-orange);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="light"] .news-badge--poster-platform {
+  background: rgba(188, 76, 0, 0.12);
+  color: #bc4c00;
+}
+
+.news-badge--poster-venue {
   background: #1f6feb;
   color: #ffffff;
   text-transform: none;

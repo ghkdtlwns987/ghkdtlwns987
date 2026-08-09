@@ -3,6 +3,7 @@ layout: post
 title: "단어 변환"
 date: 2026-08-06
 problem: "43163"
+platform: 프로그래머스
 description: |
   Platform : 프로그래머스
   난이도 : 3

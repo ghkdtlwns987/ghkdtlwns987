@@ -1,0 +1,19 @@
+{% comment %}
+  포스트 front matter / description 에서 platform, venue 추출
+  Usage: {% include poster-post-meta.html post=post %}
+  Sets: poster_platform, poster_venue
+{% endcomment %}
+{% assign poster_platform = include.post.platform | default: '' %}
+{% assign poster_venue = include.post.venue | default: '' %}
+
+{% if poster_platform == '' and include.post.description %}
+  {% assign desc_lines = include.post.description | split: '
+' %}
+  {% for line in desc_lines %}
+    {% assign trimmed = line | strip %}
+    {% if trimmed contains 'Platform :' %}
+      {% assign poster_platform = trimmed | remove: 'Platform :' | strip %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
