@@ -39,7 +39,7 @@ sections:
             - Clang/LLVM
             - Unreal Engine
             - WinDbg / GDB
-            - Linux
+            - Linux≈
 
       - slug: malware-msa
         title: AI Malware Detector Platform
