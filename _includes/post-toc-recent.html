@@ -1,0 +1,45 @@
+{% comment %}
+  Poster 글 Contents 하단 Recent Poster (현재 글 제외)
+{% endcomment %}
+{% assign recent_shown = 0 %}
+{% for post in site.posts %}
+  {% if post.url != page.url and recent_shown < 5 %}
+    {% assign recent_shown = recent_shown | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if recent_shown > 0 %}
+<div class="post-toc-recent" id="post-toc-recent">
+  <h3 class="post-toc-subtitle">Recent Poster</h3>
+  <ul class="post-toc-list post-toc-recent-list">
+    {% assign recent_shown = 0 %}
+    {% for post in site.posts %}
+      {% if post.url != page.url and recent_shown < 5 %}
+        {% assign recent_shown = recent_shown | plus: 1 %}
+        {% include poster-category-label.html post=post %}
+        {% include poster-post-meta.html post=post %}
+        <li class="post-toc-item page-rail-card-item">
+          <a class="post-toc-link page-rail-entry" href="{{ post.url | relative_url }}" title="{{ post.title | strip_html | strip }}">
+            <span class="page-rail-entry-meta">
+              <time class="page-rail-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+              {% if poster_cat_label != '' %}
+                <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
+              {% endif %}
+              {% if poster_sub_label != '' %}
+                <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
+              {% endif %}
+              {% if poster_cat == 'algorithm' and poster_platform != '' %}
+                <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
+              {% endif %}
+              {% if poster_cat == 'paper' and poster_venue != '' %}
+                <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
+              {% endif %}
+            </span>
+            <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

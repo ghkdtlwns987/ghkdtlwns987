@@ -1,5 +1,5 @@
 ---
-layout: with-rail
+layout: default
 title: Home
 ---
 

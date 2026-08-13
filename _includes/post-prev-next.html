@@ -1,0 +1,42 @@
+{% comment %}
+  Poster 글 하단 이전/다음 네비게이션
+  site.posts는 최신순 → 이전=더 오래된 글, 다음=더 최신 글
+{% endcomment %}
+{% assign older_post = nil %}
+{% assign newer_post = nil %}
+{% assign saw_current = false %}
+{% assign candidate_newer = nil %}
+
+{% for post in site.posts %}
+  {% if saw_current %}
+    {% unless older_post %}
+      {% assign older_post = post %}
+    {% endunless %}
+  {% elsif post.url == page.url %}
+    {% assign saw_current = true %}
+    {% assign newer_post = candidate_newer %}
+  {% else %}
+    {% assign candidate_newer = post %}
+  {% endif %}
+{% endfor %}
+
+{% if older_post or newer_post %}
+<nav class="post-prev-next" aria-label="Poster navigation">
+  <div class="post-prev-next-item post-prev-next-item--prev">
+    {% if older_post %}
+      <a class="post-prev-next-link" href="{{ older_post.url | relative_url }}">
+        <span class="post-prev-next-label">이전 Poster</span>
+        <span class="post-prev-next-title">{{ older_post.title | strip_html | strip }}</span>
+      </a>
+    {% endif %}
+  </div>
+  <div class="post-prev-next-item post-prev-next-item--next">
+    {% if newer_post %}
+      <a class="post-prev-next-link" href="{{ newer_post.url | relative_url }}">
+        <span class="post-prev-next-label">Next Poster</span>
+        <span class="post-prev-next-title">{{ newer_post.title | strip_html | strip }}</span>
+      </a>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}

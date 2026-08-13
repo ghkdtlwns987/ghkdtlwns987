@@ -1,6 +1,6 @@
 {% comment %}
   Home / Projects 오른쪽 Contents 레일
-  - News, Recent Poster로 바로 이동 (+ 뱃지)
+  - News, Recent Poster로 바로 이동 (+ 날짜/뱃지)
 {% endcomment %}
 {% assign home_url = '/' | relative_url %}
 {% assign is_home = false %}
@@ -28,11 +28,13 @@
         {% assign rail_venue = '' %}
         {% assign rail_tag = item.tag | default: '' %}
         {% assign rail_badges = nil %}
+        {% assign rail_date = item.date | default: '' %}
 
         {% if item.publication %}
           {% include find-publication.html slug=item.publication %}
           {% assign news_meta = found_pub.news %}
           {% assign rail_news_text = item.text | default: news_meta.text | default: found_pub.headline | default: found_pub.title %}
+          {% assign rail_date = news_meta.date | default: item.date | default: '' %}
           {% if news_meta.tag %}
             {% assign rail_venue = news_meta.tag %}
           {% elsif news_meta.venue %}
@@ -50,9 +52,10 @@
         {% endif %}
 
         {% if rail_news_text and rail_news_text != '' %}
-        <li class="post-toc-item post-toc-item--h3">
+        <li class="post-toc-item page-rail-card-item">
           <a class="post-toc-link page-rail-entry{% if is_home %} js-page-rail-link{% endif %}" href="{{ news_href }}" title="{{ rail_news_text | strip_html | strip }}">
             <span class="page-rail-entry-meta">
+              {% if rail_date != '' %}<time class="page-rail-date">{{ rail_date }}</time>{% endif %}
               {% if rail_venue != '' %}<span class="news-badge news-badge--venue">{{ rail_venue }}</span>{% endif %}
               {% if rail_tag != '' %}<span class="news-tag">{{ rail_tag }}</span>{% endif %}
               {% if rail_badges %}
@@ -73,9 +76,10 @@
       {% for post in site.posts limit: 8 %}
         {% include poster-category-label.html post=post %}
         {% include poster-post-meta.html post=post %}
-        <li class="post-toc-item post-toc-item--h3">
+        <li class="post-toc-item page-rail-card-item">
           <a class="post-toc-link page-rail-entry" href="{{ post.url | relative_url }}" title="{{ post.title | strip_html | strip }}">
             <span class="page-rail-entry-meta">
+              <time class="page-rail-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
               {% if poster_cat_label != '' %}
                 <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
               {% endif %}

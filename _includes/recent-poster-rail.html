@@ -1,0 +1,52 @@
+{% comment %}
+  Recent Poster 오른쪽 레일
+  Usage:
+    {% include recent-poster-rail.html %}
+    {% include recent-poster-rail.html exclude_url=page.url limit=6 %}
+{% endcomment %}
+{% assign rail_limit = include.limit | default: 5 %}
+{% assign rail_exclude = include.exclude_url | default: '' %}
+{% assign rail_title = include.title | default: 'Recent Poster' %}
+{% assign recent_shown = 0 %}
+
+{% for post in site.posts %}
+  {% if post.url != rail_exclude and recent_shown < rail_limit %}
+    {% assign recent_shown = recent_shown | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if recent_shown > 0 %}
+<aside class="post-toc page-rail" id="poster-recent-rail" aria-label="{{ rail_title }}">
+  <h2 class="post-toc-title">{{ rail_title }}</h2>
+  <ul class="post-toc-list">
+    {% assign recent_shown = 0 %}
+    {% for post in site.posts %}
+      {% if post.url != rail_exclude and recent_shown < rail_limit %}
+        {% assign recent_shown = recent_shown | plus: 1 %}
+        {% include poster-category-label.html post=post %}
+        {% include poster-post-meta.html post=post %}
+        <li class="post-toc-item page-rail-card-item">
+          <a class="post-toc-link page-rail-entry" href="{{ post.url | relative_url }}" title="{{ post.title | strip_html | strip }}">
+            <span class="page-rail-entry-meta">
+              <time class="page-rail-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+              {% if poster_cat_label != '' %}
+                <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
+              {% endif %}
+              {% if poster_sub_label != '' %}
+                <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
+              {% endif %}
+              {% if poster_cat == 'algorithm' and poster_platform != '' %}
+                <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
+              {% endif %}
+              {% if poster_cat == 'paper' and poster_venue != '' %}
+                <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
+              {% endif %}
+            </span>
+            <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</aside>
+{% endif %}
