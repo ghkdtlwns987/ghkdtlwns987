@@ -341,7 +341,8 @@ a:hover {
   padding: 2rem 2rem 3rem 1.5rem;
 }
 
-.content-area--wide .main-content:has(.post-layout) {
+.content-area--wide .main-content:has(.post-layout),
+.content-area--wide .main-content:has(.page-layout) {
   padding-right: 0.25rem;
 }
 
@@ -1500,10 +1501,48 @@ section ul:not(.post-list) li::before {
   justify-content: space-between;
 }
 
-.post-layout .post {
+.post-layout .post,
+.page-layout-main {
   flex: 1 1 auto;
   min-width: 0;
   max-width: var(--content-max);
+}
+
+.page-layout-main section[id] {
+  scroll-margin-top: 5rem;
+}
+
+.page-rail .page-rail-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  line-height: 1.35;
+}
+
+.page-rail .page-rail-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  max-width: 100%;
+}
+
+.page-rail .page-rail-entry-meta .news-badge,
+.page-rail .page-rail-entry-meta .news-tag {
+  font-size: 0.6875rem;
+  padding: 0.1rem 0.35rem;
+  line-height: 1.3;
+}
+
+.page-rail .page-rail-entry-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9375rem;
 }
 
 .post-toc {
@@ -1523,7 +1562,7 @@ section ul:not(.post-list) li::before {
 }
 
 .post-toc-title {
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--text);
   margin: 0 0 0.875rem;
@@ -1546,17 +1585,17 @@ section ul:not(.post-list) li::before {
 
 .post-toc-item--h3 .post-toc-link {
   padding-left: 1.35rem;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 
 .post-toc-link {
   display: block;
   position: relative;
-  padding: 0.35rem 0.5rem 0.35rem 0.875rem;
+  padding: 0.4rem 0.5rem 0.4rem 0.875rem;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.45;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

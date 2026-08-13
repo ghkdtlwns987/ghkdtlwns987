@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: with-rail
 title: Projects
 permalink: /projects/
 ---

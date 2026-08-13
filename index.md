@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: with-rail
 title: Home
 ---
 
@@ -7,7 +7,7 @@ title: Home
   {% include intro.html %}
 </div>
 
-<section class="content-section content-section--feed">
+<section class="content-section content-section--feed" id="news">
   <h2 class="section-title section-title--feed">News</h2>
   <ul class="news-list">
     {% for item in site.data.profile.news %}
@@ -17,13 +17,13 @@ title: Home
   {% include publication-modal.html %}
 </section>
 
-<section class="content-section content-section--feed">
+<section class="content-section content-section--feed" id="recent-poster">
   <h2 class="section-title section-title--feed">Recent Poster</h2>
   {% include poster-recent.html %}
   <p class="cross-link cross-link--feed"><a href="{{ '/poster/' | relative_url }}">Poster 전체 보기 →</a></p>
 </section>
 
-<section class="content-section">
+<section class="content-section" id="contact">
   <h2 class="section-title">Contact</h2>
   <div class="contact-card">
     <div class="contact-grid">

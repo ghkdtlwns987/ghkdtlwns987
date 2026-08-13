@@ -1,0 +1,98 @@
+{% comment %}
+  Home / Projects 오른쪽 Contents 레일
+  - News, Recent Poster로 바로 이동 (+ 뱃지)
+{% endcomment %}
+{% assign home_url = '/' | relative_url %}
+{% assign is_home = false %}
+{% if page.url == '/' or page.url == home_url %}
+  {% assign is_home = true %}
+{% endif %}
+
+{% if is_home %}
+  {% assign news_href = '#news' %}
+  {% assign poster_href = '#recent-poster' %}
+{% else %}
+  {% assign news_href = home_url | append: '#news' %}
+  {% assign poster_href = home_url | append: '#recent-poster' %}
+{% endif %}
+
+<aside class="post-toc page-rail" id="page-rail" aria-label="Contents">
+  <h2 class="post-toc-title">Contents</h2>
+  <nav class="post-toc-nav">
+    <ul class="post-toc-list" id="page-rail-list">
+      <li class="post-toc-item">
+        <a class="post-toc-link{% if is_home %} js-page-rail-link{% endif %}" href="{{ news_href }}" data-rail-target="news">News</a>
+      </li>
+      {% for item in site.data.profile.news limit: 5 %}
+        {% assign rail_news_text = item.text %}
+        {% assign rail_venue = '' %}
+        {% assign rail_tag = item.tag | default: '' %}
+        {% assign rail_badges = nil %}
+
+        {% if item.publication %}
+          {% include find-publication.html slug=item.publication %}
+          {% assign news_meta = found_pub.news %}
+          {% assign rail_news_text = item.text | default: news_meta.text | default: found_pub.headline | default: found_pub.title %}
+          {% if news_meta.tag %}
+            {% assign rail_venue = news_meta.tag %}
+          {% elsif news_meta.venue %}
+            {% assign rail_venue = news_meta.venue %}
+          {% endif %}
+          {% if rail_venue == '' and found_pub.badges %}
+            {% for badge in found_pub.badges %}
+              {% if badge.type == 'year' %}
+                {% assign rail_venue = badge.label %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          {% assign rail_badges = news_meta.badges %}
+          {% assign rail_tag = '' %}
+        {% endif %}
+
+        {% if rail_news_text and rail_news_text != '' %}
+        <li class="post-toc-item post-toc-item--h3">
+          <a class="post-toc-link page-rail-entry{% if is_home %} js-page-rail-link{% endif %}" href="{{ news_href }}" title="{{ rail_news_text | strip_html | strip }}">
+            <span class="page-rail-entry-meta">
+              {% if rail_venue != '' %}<span class="news-badge news-badge--venue">{{ rail_venue }}</span>{% endif %}
+              {% if rail_tag != '' %}<span class="news-tag">{{ rail_tag }}</span>{% endif %}
+              {% if rail_badges %}
+                {% for badge in rail_badges %}
+                  <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
+                {% endfor %}
+              {% endif %}
+            </span>
+            <span class="page-rail-entry-title">{{ rail_news_text | strip_html | strip }}</span>
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+
+      <li class="post-toc-item">
+        <a class="post-toc-link{% if is_home %} js-page-rail-link{% endif %}" href="{{ poster_href }}" data-rail-target="recent-poster">Recent Poster</a>
+      </li>
+      {% for post in site.posts limit: 8 %}
+        {% include poster-category-label.html post=post %}
+        {% include poster-post-meta.html post=post %}
+        <li class="post-toc-item post-toc-item--h3">
+          <a class="post-toc-link page-rail-entry" href="{{ post.url | relative_url }}" title="{{ post.title | strip_html | strip }}">
+            <span class="page-rail-entry-meta">
+              {% if poster_cat_label != '' %}
+                <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
+              {% endif %}
+              {% if poster_sub_label != '' %}
+                <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
+              {% endif %}
+              {% if poster_cat == 'algorithm' and poster_platform != '' %}
+                <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
+              {% endif %}
+              {% if poster_cat == 'paper' and poster_venue != '' %}
+                <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
+              {% endif %}
+            </span>
+            <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>
