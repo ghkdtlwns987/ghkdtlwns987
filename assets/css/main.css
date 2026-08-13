@@ -341,6 +341,10 @@ a:hover {
   padding: 2rem 2rem 3rem 1.5rem;
 }
 
+.content-area--wide .main-content:has(.post-layout) {
+  padding-right: 0.25rem;
+}
+
 .content-topbar {
   display: flex;
   justify-content: flex-end;
@@ -1489,6 +1493,97 @@ section ul:not(.post-list) li::before {
 }
 
 /* ── Post ── */
+.post-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 4.5rem;
+  justify-content: space-between;
+}
+
+.post-layout .post {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: var(--content-max);
+}
+
+.post-toc {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 3rem);
+  overflow: auto;
+  padding: 0.25rem 0 0.5rem;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.post-toc[hidden] {
+  display: none;
+}
+
+.post-toc-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.875rem;
+  letter-spacing: -0.01em;
+}
+
+.post-toc-nav {
+  border-left: 1px solid var(--border-light);
+}
+
+.post-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-toc-item {
+  margin: 0;
+}
+
+.post-toc-item--h3 .post-toc-link {
+  padding-left: 1.35rem;
+  font-size: 0.8125rem;
+}
+
+.post-toc-link {
+  display: block;
+  position: relative;
+  padding: 0.35rem 0.5rem 0.35rem 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+.post-toc-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.post-toc-link.is-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.post-toc-link.is-active::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+
 .post {
   background: var(--bg-card-poster);
   border: 1px solid var(--border-poster);
@@ -1544,8 +1639,15 @@ section ul:not(.post-list) li::before {
   font-size: 0.9375rem;
 }
 
+.post-content ul,
+.post-content ol {
+  padding-left: 1.5rem;
+  list-style-position: outside;
+}
+
 .post-content li {
   margin-bottom: 0.25rem;
+  padding-left: 0.25rem;
 }
 
 .post-content code {
@@ -1832,6 +1934,10 @@ td strong {
 /* ── Responsive ── */
 @media (max-width: 1100px) {
   .sidebar-right {
+    display: none;
+  }
+
+  .post-toc {
     display: none;
   }
 

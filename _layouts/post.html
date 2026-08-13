@@ -1,15 +1,25 @@
 ---
 layout: default
 ---
-<article class="post">
-  <header class="post-header">
-    {% include poster-breadcrumb.html post=page %}
-    <h1>{{ page.title }}</h1>
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+<div class="post-layout">
+  <article class="post" id="post-article">
+    <header class="post-header">
+      {% include poster-breadcrumb.html post=page %}
+      <h1>{{ page.title }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+      </div>
+    </header>
+    <div class="post-content" id="post-content">
+      {{ content }}
     </div>
-  </header>
-  <div class="post-content">
-    {{ content }}
-  </div>
-</article>
+  </article>
+
+  <aside class="post-toc" id="post-toc" aria-label="Contents" hidden>
+    <h2 class="post-toc-title">Contents</h2>
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list" id="post-toc-list"></ul>
+    </nav>
+  </aside>
+</div>
+<script src="{{ '/assets/js/post-toc.js' | relative_url }}?v=1"></script>

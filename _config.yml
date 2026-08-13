@@ -26,6 +26,7 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+timezone: Asia/Seoul
 permalink: /poster/:year/:month/:day/:title/
 
 defaults:
