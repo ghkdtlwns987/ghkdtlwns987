@@ -1,7 +1,7 @@
 title: Si June Hwang
 description: >-
   LLM을 활용한 Software Engineering · AI 기반 소프트웨어 보안 연구
-baseurl: "/ghkdtlwns987"
+baseurl: ""
 url: "https://ghkdtlwns987.github.io"
 
 author:
@@ -80,7 +80,7 @@ navigation:
 # 4) 아래 category_id 채우고 enabled: true
 giscus:
   enabled: true
-  repo: ghkdtlwns987/ghkdtlwns987
+  repo: ghkdtlwns987/ghkdtlwns987.github.io
   repo_id: R_kgDOJTHlkA
   category: Announcements
   category_id: "DIC_kwDOJTHlkM4DDWZQ"
