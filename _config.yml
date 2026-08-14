@@ -92,3 +92,6 @@ giscus:
 # 조회수 (Abacus 카운터 — 날짜 옆에 표시)
 views:
   namespace: ghkdtlwns987-poster
+
+# Google Analytics 4
+google_analytics: G-VJZB5VZ89Y

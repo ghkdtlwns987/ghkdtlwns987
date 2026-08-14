@@ -7,6 +7,16 @@
   <meta name="description" content="{{ page.description | default: site.description }}">
   <meta name="google-site-verification" content="ySuTthoenSlXqEtzt8hB6pwWTjk8VETClBH9HGVU9bk">
   {% seo %}
+  {% if site.google_analytics %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
   <script src="{{ '/assets/js/theme-init.js' | relative_url }}"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
