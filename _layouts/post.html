@@ -8,6 +8,11 @@ layout: default
       <h1>{{ page.title }}</h1>
       <div class="post-meta">
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+        <span class="post-views" id="post-views" hidden>
+          <span class="post-views-sep" aria-hidden="true">·</span>
+          <span class="post-views-label">조회</span>
+          <span class="post-views-count" id="post-views-count">0</span>
+        </span>
       </div>
     </header>
     <div class="post-content" id="post-content">
@@ -26,3 +31,10 @@ layout: default
   </aside>
 </div>
 <script src="{{ '/assets/js/post-toc.js' | relative_url }}?v=2"></script>
+<script>
+  window.__POST_VIEWS__ = {
+    namespace: {{ site.views.namespace | default: site.author.github | default: 'ghkdtlwns987' | jsonify }},
+    key: {{ page.url | jsonify }}
+  };
+</script>
+<script src="{{ '/assets/js/post-views.js' | relative_url }}?v=1"></script>
