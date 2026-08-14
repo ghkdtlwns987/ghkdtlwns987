@@ -2,6 +2,8 @@
 layout: default
 title: Research
 permalink: /research/
+description: >-
+  Knowledge Graph, Multi-Agent Reasoning, RAG를 활용한 LLM 기반 소프트웨어 취약점 탐지 연구를 소개합니다.
 ---
 
 <div class="hero">

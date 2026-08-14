@@ -1,0 +1,17 @@
+{% comment %}
+  Sets news_has_new = true when the item (or linked publication.news) has a "New" badge.
+  Usage: {% include assign-news-has-new.html item=item %}
+{% endcomment %}
+{% assign news_has_new = false %}
+{% if include.item.publication %}
+  {% include find-publication.html slug=include.item.publication %}
+  {% if found_pub and found_pub.news and found_pub.news.badges %}
+    {% if found_pub.news.badges contains 'New' %}
+      {% assign news_has_new = true %}
+    {% endif %}
+  {% endif %}
+{% elsif include.item.badges %}
+  {% if include.item.badges contains 'New' %}
+    {% assign news_has_new = true %}
+  {% endif %}
+{% endif %}

@@ -1,8 +1,11 @@
-title: Si June Hwang
+title: "황시준 | Si June Hwang"
+tagline: "LLM SE · AI Security"
 description: >-
-  LLM을 활용한 Software Engineering · AI 기반 소프트웨어 보안 연구
+  한양대학교 정보보호학과 석사과정. LLM Software Engineering과 AI 기반 소프트웨어 보안을 연구합니다.
 baseurl: ""
 url: "https://ghkdtlwns987.github.io"
+lang: ko_KR
+logo: /assets/images/1.png
 
 author:
   name: 황시준 (Si June Hwang)
@@ -30,6 +33,10 @@ timezone: Asia/Seoul
 permalink: /poster/:year/:month/:day/:title/
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/1.png
   - scope:
       path: ""
       type: posts

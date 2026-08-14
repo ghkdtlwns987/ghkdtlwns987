@@ -43,6 +43,7 @@ categories.each do |cat|
     {
       "layout" => "poster-category",
       "title" => title,
+      "description" => "#{title} 카테고리 Poster 글 모음",
       "category" => slug,
       "permalink" => "/poster/#{slug}/"
     }
@@ -61,6 +62,7 @@ categories.each do |cat|
       {
         "layout" => "poster-category",
         "title" => sub_title,
+        "description" => "#{sub_title} 알고리즘 Poster 글 모음",
         "category" => slug,
         "subcategory" => sub_slug,
         "permalink" => "/poster/#{slug}/#{sub_slug}/"

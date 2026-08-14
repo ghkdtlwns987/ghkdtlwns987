@@ -3,10 +3,8 @@ layout: post
 title: "가장 긴 노드"
 date: 2026-08-05
 problem: "49189"
-description: |
-  Platform : 프로그래머스
-  난이도 : 3
-  언어 : Python
+description: >-
+  프로그래머스 가장 먼 노드 — BFS로 최단 거리 최대 노드 구하기
 ---
 
 - Platform : 프로그래머스

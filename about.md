@@ -2,6 +2,8 @@
 layout: default
 title: About
 permalink: /about/
+description: >-
+  황시준 소개. 한양대학교 정보보호학과 석사과정, 학력·경력과 LLM·AI 보안 연구 관심사를 정리했습니다.
 ---
 
 <div class="hero">

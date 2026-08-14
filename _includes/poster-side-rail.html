@@ -8,7 +8,15 @@
   <section class="poster-side-section">
     <h2 class="post-toc-title">News</h2>
     <ul class="post-toc-list">
-      {% assign news_item = site.data.profile.news | first %}
+      {% assign news_item = nil %}
+      {% for item in site.data.profile.news %}
+        {% if news_item == nil %}
+          {% include assign-news-has-new.html item=item %}
+          {% if news_has_new %}
+            {% assign news_item = item %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
       {% if news_item %}
         {% assign rail_news_text = news_item.text %}
         {% assign rail_venue = '' %}
@@ -35,6 +43,8 @@
           {% endif %}
           {% assign rail_badges = news_meta.badges %}
           {% assign rail_tag = '' %}
+        {% else %}
+          {% assign rail_badges = news_item.badges %}
         {% endif %}
 
         <li class="post-toc-item page-rail-card-item">

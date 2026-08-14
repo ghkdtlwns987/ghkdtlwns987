@@ -3,10 +3,8 @@ layout: post
 title: "여행 경로"
 date: 2026-08-14
 problem: "43164"
-description: |
-  Platform : 프로그래머스
-  난이도 : 3
-  언어 : Python
+description: >-
+  프로그래머스 Lv.3 여행 경로 — 항공권 DFS/오일러 경로 풀이 정리
 ---
 
 - Platform : 프로그래머스

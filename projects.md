@@ -2,6 +2,8 @@
 layout: default
 title: Projects
 permalink: /projects/
+description: >-
+  LLM·보안·시스템 관련 연구·개발 프로젝트 목록입니다.
 ---
 
 <div class="hero">

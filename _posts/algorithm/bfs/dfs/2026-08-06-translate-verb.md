@@ -3,10 +3,8 @@ layout: post
 title: "단어 변환"
 date: 2026-08-06
 problem: "43163"
-description: |
-  Platform : 프로그래머스
-  난이도 : 3
-  언어 : Python
+description: >-
+  프로그래머스 단어 변환 — BFS로 최소 변환 횟수 구하는 풀이
 ---
 
 - Platform : 프로그래머스

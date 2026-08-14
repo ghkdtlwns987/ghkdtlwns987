@@ -1,6 +1,9 @@
 ---
 layout: default
-title: Home
+title: "황시준 | Si June Hwang"
+description: >-
+  황시준(Si June Hwang) 개인 사이트. LLM for Software Engineering, AI Security 연구 소개와 Poster 글을 모았습니다.
+image: /assets/images/1.png
 ---
 
 <div class="page-intro">
@@ -11,7 +14,10 @@ title: Home
   <h2 class="section-title section-title--feed">News</h2>
   <ul class="news-list">
     {% for item in site.data.profile.news %}
-      {% include news-item.html item=item featured=forloop.first %}
+      {% include assign-news-has-new.html item=item %}
+      {% if news_has_new %}
+        {% include news-item.html item=item %}
+      {% endif %}
     {% endfor %}
   </ul>
   {% include publication-modal.html %}
