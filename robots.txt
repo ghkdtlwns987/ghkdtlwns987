@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ghkdtlwns987.github.io/ghkdtlwns987/sitemap.xml

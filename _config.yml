@@ -35,6 +35,18 @@ defaults:
       type: posts
     values:
       layout: post
+  - scope:
+      path: "pdf"
+    values:
+      sitemap: false
+  - scope:
+      path: "figure"
+    values:
+      sitemap: false
+  - scope:
+      path: "*.pdf"
+    values:
+      sitemap: false
 
 plugins:
   - jekyll-feed
