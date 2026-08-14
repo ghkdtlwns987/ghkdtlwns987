@@ -55,6 +55,8 @@ plugins:
 
 feed:
   path: feed.xml
+  excerpt_only: false
+  posts_limit: 20
 
 # 네비게이션
 navigation:
