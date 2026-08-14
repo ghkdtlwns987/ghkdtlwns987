@@ -58,3 +58,19 @@ navigation:
     url: /publications/
   - title: Poster
     url: /poster/
+
+# 댓글 (Giscus — GitHub Discussions)
+# 1) 저장소 Settings → Features → Discussions 활성화
+# 2) https://github.com/apps/giscus 설치 (이 repo 선택)
+# 3) https://giscus.app 에서 repo 입력 후 category / IDs 확인
+# 4) 아래 category_id 채우고 enabled: true
+giscus:
+  enabled: true
+  repo: ghkdtlwns987/ghkdtlwns987
+  repo_id: R_kgDOJTHlkA
+  category: Announcements
+  category_id: "DIC_kwDOJTHlkM4DDWZQ"
+  mapping: pathname
+  reactions_enabled: 1
+  input_position: bottom
+  lang: ko

@@ -1595,6 +1595,47 @@ section ul:not(.post-list) li::before {
   border-top: 1px solid var(--border-light);
 }
 
+/* 댓글 (Giscus) */
+.post-comments {
+  margin-top: 2.5rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.post-comments-inner {
+  padding: 1.25rem 1.25rem 1rem;
+  border: 1px solid var(--border-poster);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+[data-theme="light"] .post-comments-inner {
+  background: var(--bg-card);
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.post-comments-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.35rem;
+}
+
+.post-comments-hint {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.post-comments .giscus,
+.post-comments .giscus-frame {
+  width: 100%;
+  min-height: 220px;
+  color-scheme: dark;
+}
+
 .post-prev-next-item {
   min-width: 0;
 }
@@ -1953,7 +1994,8 @@ section ul:not(.post-list) li::before {
 
 .post-figure img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
 }
@@ -1970,7 +2012,8 @@ section ul:not(.post-list) li::before {
 .post-content > p > img,
 .post-content img:not(.post-figure img) {
   display: block;
-  max-width: 100%;
+  max-width: min(100%, 560px);
+  width: auto;
   height: auto;
   margin: 1.25rem auto;
   border-radius: var(--radius-sm);

@@ -8,6 +8,16 @@
     root.setAttribute('data-theme', theme);
     localStorage.setItem(storageKey, theme);
     toggle.setAttribute('aria-label', theme === 'dark' ? 'Light mode로 변경' : 'Dark mode로 변경');
+    setGiscusTheme(theme);
+  }
+
+  function setGiscusTheme(theme) {
+    var frame = document.querySelector('iframe.giscus-frame');
+    if (!frame || !frame.contentWindow) return;
+    frame.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: theme === 'light' ? 'light' : 'dark_dimmed' } } },
+      'https://giscus.app'
+    );
   }
 
   toggle.addEventListener('click', function () {

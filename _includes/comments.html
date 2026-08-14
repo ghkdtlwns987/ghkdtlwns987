@@ -1,0 +1,30 @@
+{% comment %}
+  Giscus 댓글 (GitHub Discussions)
+  _config.yml 의 giscus.enabled / category_id 설정 후 동작
+{% endcomment %}
+{% if site.giscus.enabled and site.giscus.repo_id and site.giscus.category_id and site.giscus.category_id != '' %}
+{% unless page.comments == false %}
+<section class="post-comments" id="comments" aria-label="Comments">
+  <div class="post-comments-inner">
+    <h2 class="post-comments-title">Comments</h2>
+    <p class="post-comments-hint">GitHub 계정으로 댓글을 남길 수 있습니다.</p>
+    <script src="https://giscus.app/client.js"
+            data-repo="{{ site.giscus.repo }}"
+            data-repo-id="{{ site.giscus.repo_id }}"
+            data-category="{{ site.giscus.category }}"
+            data-category-id="{{ site.giscus.category_id }}"
+            data-mapping="{{ site.giscus.mapping | default: 'pathname' }}"
+            data-strict="0"
+            data-reactions-enabled="{{ site.giscus.reactions_enabled | default: 1 }}"
+            data-emit-metadata="0"
+            data-input-position="{{ site.giscus.input_position | default: 'bottom' }}"
+            data-theme="dark_dimmed"
+            data-lang="{{ site.giscus.lang | default: 'ko' }}"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+</section>
+{% endunless %}
+{% endif %}
