@@ -2,8 +2,8 @@
 layout: post
 title: "Software Engineering이란?"
 date: 2026-08-16
-description: |
-  Software Engineering이라는 이름에는 왜 Engineering이 붙었을까? 소프트웨어 공학이 무엇을 고민하는 분야인지 알아본다.
+description: >-
+  Software Engineering이 단순 개발과 어떻게 다른지, Engineering이 의미하는 바를 정리합니다.
 image: /assets/images/covers/software-engineering.png
 badges:
   - Essay

@@ -41,5 +41,8 @@
       {% include poster-extra-badges.html post=include.post %}
     </div>
     <h3 class="post-list-card-title">{{ include.post.title }}</h3>
+    {% if include.post.description and include.post.description != '' %}
+      <p class="post-list-card-desc">{{ include.post.description | strip_newlines | strip | truncate: 110, '…' }}</p>
+    {% endif %}
   </a>
 </li>

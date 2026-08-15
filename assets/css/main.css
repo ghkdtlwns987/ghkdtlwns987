@@ -22,7 +22,7 @@
   --layout-max: none;
   --layout-gutter-left: 1.25rem;
   --layout-gutter-right: 1.25rem;
-  --post-side-width: 300px;
+  --post-side-width: 360px;
   --sidebar-inner-width: 220px;
   --radius: 12px;
   --radius-sm: 8px;
@@ -1975,6 +1975,19 @@ section ul:not(.post-list) li::before {
   line-height: 1.45;
   color: var(--text);
   transition: color 0.15s ease;
+}
+
+.post-list-card-desc {
+  margin: 0.45rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.post-list-card:hover .post-list-card-desc {
+  color: color-mix(in srgb, var(--text-muted) 85%, var(--text));
 }
 
 .post-list-card-category {

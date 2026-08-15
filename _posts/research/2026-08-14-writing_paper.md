@@ -3,7 +3,7 @@ layout: post
 title: "Paper Extension"
 date: 2026-08-14
 description: >-
-  Conference 논문을 Journal로 확장(Paper Extension)할 때 고려할 점과 CLEAR 후속 작업 메모입니다.
+  Conference 논문을 Journal로 확장할 때 고려할 점을 정리합니다.
 badges:
   - Essay
 ---
