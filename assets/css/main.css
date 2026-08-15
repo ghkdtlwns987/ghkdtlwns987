@@ -2758,8 +2758,8 @@ td strong {
 .research-focus__text {
   font-size: 1.125rem;
   line-height: 1.65;
-  color: var(--text);
-  font-weight: 500;
+  color: var(--accent);
+  font-weight: 700;
   margin: 0;
 }
 
@@ -2767,8 +2767,9 @@ td strong {
   margin: 0.75rem 0 0;
   font-size: 0.9375rem;
   line-height: 1.65;
-  color: var(--text-muted);
-  max-width: 42rem;
+  color: var(--text);
+  max-width: none;
+  white-space: nowrap;
 }
 
 .research-topics {
@@ -2782,7 +2783,7 @@ td strong {
 
 @media (min-width: 900px) {
   .research-topics {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
   }
 }
@@ -2793,9 +2794,26 @@ td strong {
   gap: 0.75rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
+  border-left-width: 3px;
   border-radius: var(--radius-sm);
-  padding: 1rem 1.125rem;
+  padding: 1.1rem 1.15rem;
   min-height: 100%;
+  min-width: 0;
+}
+
+.research-topic--se {
+  border-left-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg-card));
+}
+
+.research-topic--sec {
+  border-left-color: var(--accent-green);
+  background: color-mix(in srgb, var(--accent-green) 7%, var(--bg-card));
+}
+
+.research-topic--kg {
+  border-left-color: var(--accent-purple);
+  background: color-mix(in srgb, var(--accent-purple) 7%, var(--bg-card));
 }
 
 .research-topic__num {
@@ -2803,23 +2821,42 @@ td strong {
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--accent);
   line-height: 1.4;
 }
 
+.research-topic--se .research-topic__num {
+  color: var(--accent);
+}
+
+.research-topic--sec .research-topic__num {
+  color: var(--accent-green);
+}
+
+.research-topic--kg .research-topic__num {
+  color: var(--accent-purple);
+}
+
+.research-topic__body {
+  min-width: 0;
+}
+
 .research-topic__body h3 {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.55rem;
   color: var(--text);
-  line-height: 1.35;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .research-topic__body p {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .research-pubs {

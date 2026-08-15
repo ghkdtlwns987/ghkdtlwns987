@@ -13,8 +13,7 @@ description: >-
 
 <section class="research-focus">
   <p class="research-focus__text">
-    My research focuses on LLM for Software Engineering<br>
-    and AI-driven Software Security.
+    My research focuses on LLM for Software Engineering and AI-driven Software Security.
   </p>
   <p class="research-focus__sub">
     I explore knowledge-augmented and agentic reasoning to improve LLMs’ understanding and analysis of software.
@@ -24,25 +23,25 @@ description: >-
 <section>
   <h2>Research Topics</h2>
   <ol class="research-topics">
-    <li class="research-topic">
+    <li class="research-topic research-topic--se">
       <span class="research-topic__num" aria-hidden="true">01</span>
       <div class="research-topic__body">
         <h3>LLM for Software Engineering</h3>
-        <p>Code Understanding · Program Analysis · Automated Reasoning</p>
+        <p>코드 이해 · 프로그램 분석 · 자동 추론</p>
       </div>
     </li>
-    <li class="research-topic">
+    <li class="research-topic research-topic--sec">
       <span class="research-topic__num" aria-hidden="true">02</span>
       <div class="research-topic__body">
         <h3>AI-driven Software Security</h3>
-        <p>Vulnerability Detection · Vulnerability Analysis · Program Repair</p>
+        <p>취약점 탐지 · 취약점 분석 · 프로그램 수리</p>
       </div>
     </li>
-    <li class="research-topic">
+    <li class="research-topic research-topic--kg">
       <span class="research-topic__num" aria-hidden="true">03</span>
       <div class="research-topic__body">
-        <h3>Knowledge-Augmented LLM Reasoning</h3>
-        <p>Knowledge Graph · RAG · Multi-Agent Reasoning</p>
+        <h3>Knowledge-Augmented Reasoning</h3>
+        <p>Knowledge Graph · RAG · Multi-Agent</p>
       </div>
     </li>
   </ol>
