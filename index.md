@@ -6,45 +6,89 @@ description: >-
 image: /assets/images/1.png
 ---
 
-<div class="page-intro">
-  {% include intro.html %}
-</div>
+<div class="home-panel">
+  <div class="home-panel__body">
+    <div class="home-panel__main">
+      <section class="home-panel__block" aria-label="Research identity">
+        <p class="home-panel__label">Research Identity</p>
+        <p class="home-panel__tagline">{{ site.data.profile.tagline }}</p>
+        <div class="home-panel__intro">
+          <p class="home-panel__intro-label">Introduction</p>
+          <p class="bio bio--ko">{{ site.data.profile.intro }}</p>
+          <p class="bio bio--en">{{ site.data.profile.intro_en }}</p>
+        </div>
+      </section>
 
-<section class="content-section content-section--feed" id="news">
-  <h2 class="section-title section-title--feed">News</h2>
-  <ul class="news-list">
-    {% for item in site.data.profile.news %}
-      {% include assign-news-has-new.html item=item %}
-      {% if news_has_new %}
-        {% include news-item.html item=item %}
-      {% endif %}
-    {% endfor %}
-  </ul>
-  {% include publication-modal.html %}
-</section>
-
-<section class="content-section content-section--feed" id="recent-poster">
-  <h2 class="section-title section-title--feed">Recent Posts</h2>
-  {% include poster-recent.html %}
-  <p class="cross-link cross-link--feed"><a href="{{ '/poster/' | relative_url }}">Blog 전체 보기 →</a></p>
-</section>
-
-<section class="content-section" id="contact">
-  <h2 class="section-title">Contact</h2>
-  <div class="contact-card">
-    <div class="contact-grid">
-      <div class="contact-item">
-        <span class="label">Email</span>
-        <span class="value"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">GitHub</span>
-        <span class="value"><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">github.com/{{ site.author.github }}</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="label">Velog</span>
-        <span class="value"><a href="{{ site.author.velog }}" target="_blank" rel="noopener">velog.io/@{{ site.author.github }}</a></span>
-      </div>
+      <section class="home-panel__block home-panel__block--news" id="news">
+        <p class="home-panel__label">News</p>
+        <ul class="news-list home-news-list">
+          {% for item in site.data.profile.news %}
+            {% include assign-news-has-new.html item=item %}
+            {% if news_has_new %}
+              {% include news-item.html item=item %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% include publication-modal.html %}
+      </section>
     </div>
+
+    <aside class="home-panel__rail" aria-label="Research interests and links">
+      <div class="home-panel__rail-block">
+        <p class="home-panel__label">Research Interests</p>
+        <ul class="home-interest-list">
+          <li class="home-interest-item home-interest-item--se">
+            <span class="home-interest-num" aria-hidden="true">01</span>
+            <span class="home-interest-body">
+              <span class="home-interest-name">LLM for Software Engineering</span>
+              <span class="home-interest-meta">Code Understanding · Program Analysis</span>
+            </span>
+          </li>
+          <li class="home-interest-item home-interest-item--sec">
+            <span class="home-interest-num" aria-hidden="true">02</span>
+            <span class="home-interest-body">
+              <span class="home-interest-name">AI-driven Software Security</span>
+              <span class="home-interest-meta">Vulnerability Detection · Analysis</span>
+            </span>
+          </li>
+          <li class="home-interest-item home-interest-item--kg">
+            <span class="home-interest-num" aria-hidden="true">03</span>
+            <span class="home-interest-body">
+              <span class="home-interest-name">Knowledge-Augmented Reasoning</span>
+              <span class="home-interest-meta">Knowledge Graph · RAG · Multi-Agent</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="home-panel__rail-block home-panel__rail-block--links">
+        <p class="home-panel__label">Links</p>
+        <nav class="home-quick-links" aria-label="Quick links">
+          <a href="{{ '/research/' | relative_url }}">Research</a>
+          <a href="{{ '/publications/' | relative_url }}">Publications</a>
+          <a href="{{ '/poster/' | relative_url }}">Blog</a>
+          <a href="{{ '/about/' | relative_url }}">CV</a>
+        </nav>
+      </div>
+    </aside>
   </div>
-</section>
+
+  <section class="home-panel__section" id="recent-poster">
+    <div class="home-panel__section-head">
+      <p class="home-panel__label">Recent Posts</p>
+      <a class="home-panel__more" href="{{ '/poster/' | relative_url }}">Blog →</a>
+    </div>
+    {% include poster-recent.html limit=4 grid=true %}
+  </section>
+
+  <section class="home-panel__section home-panel__section--contact" id="contact">
+    <p class="home-panel__label">Contact</p>
+    <div class="home-contact">
+      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      <span class="home-contact__sep" aria-hidden="true">·</span>
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+      <span class="home-contact__sep" aria-hidden="true">·</span>
+      <a href="{{ site.author.velog }}" target="_blank" rel="noopener">Velog</a>
+    </div>
+  </section>
+</div>

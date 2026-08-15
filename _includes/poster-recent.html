@@ -1,9 +1,11 @@
 {% comment %}
-  Home Recent Poster — 최신 10개 (site.posts는 날짜 내림차순)
+  Home Recent Posts
+  Usage: {% include poster-recent.html limit=4 grid=true %}
 {% endcomment %}
+{% assign recent_limit = include.limit | default: 10 %}
 
-<ul class="post-list post-list--cards poster-recent-list">
-  {% for post in site.posts limit: 10 %}
+<ul class="post-list post-list--cards poster-recent-list{% if include.grid %} poster-recent-list--grid{% endif %}">
+  {% for post in site.posts limit: recent_limit %}
     {% include poster-card.html post=post %}
   {% else %}
     <li class="poster-recent-empty">아직 등록된 글이 없습니다.</li>

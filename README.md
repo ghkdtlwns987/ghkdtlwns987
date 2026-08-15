@@ -2,7 +2,11 @@
 
 > **LLM for Software Engineering / AI Security Researcher**
 
-Large Language Model(LLM)을 활용한 Software Engineering 및 AI 소프트웨어 보안을 연구하고 있습니다. 특히 Knowledge Graph, RAG, Multi-Agent Reasoning을 활용하여 LLM의 소프트웨어 이해와 추론 능력을 향상시키고, 이를 소프트웨어 취약점 분석과 같은 실제 Software Engineering 문제에 적용하는 데 관심이 있습니다.
+Large Language Model(LLM)을 활용한 Software Engineering 및 AI 소프트웨어 보안을 연구하고 있습니다.  
+
+특히 Knowledge Graph, RAG, Multi-Agent Reasoning을 활용하여 LLM의 소프트웨어 이해와 추론 능력을 향상시키고,  
+
+이를 소프트웨어 취약점 분석과 같은 실제 Software Engineering 문제에 적용하는 데 관심이 있습니다.
 
 🌐 **Portfolio** · https://ghkdtlwns987.github.io/
 

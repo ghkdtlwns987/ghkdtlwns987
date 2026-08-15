@@ -12,7 +12,12 @@
     </a>
     <p class="profile-name">{{ site.data.profile.name }}</p>
     <p class="profile-name-en">{{ site.data.profile.name_en }}</p>
-    <p class="profile-tagline">{{ site.data.profile.tagline }}</p>
+    <p class="profile-tagline">
+      {% assign tagline_parts = site.data.profile.tagline | split: ' · ' %}
+      {% for part in tagline_parts %}
+        {{ part }}{% unless forloop.last %}<br>{% endunless %}
+      {% endfor %}
+    </p>
     <p class="profile-affiliation">{{ site.data.profile.affiliation }}</p>
   </div>
 
