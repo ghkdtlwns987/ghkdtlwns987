@@ -14,12 +14,13 @@ description: >-
 <section>
   <h2>Research Interests</h2>
   <div class="tags">
-    <span class="tag">AI Security</span>
-    <span class="tag">Software Vulnerability Detection</span>
     <span class="tag">Large Language Models</span>
+    <span class="tag">Software Engineering</span>
+    <span class="tag">Vulnerability Detection</span>
+    <span class="tag">Retrieval-Augmented Generation (RAG)</span>
     <span class="tag">Knowledge Graph</span>
-    <span class="tag">Multi-Agent Systems</span>
-    <span class="tag tag-purple">Secure Code Analysis</span>
+    <span class="tag">Multi-Agent</span>
+    <span class="tag tag-purple">Code Analysis</span>
   </div>
 </section>
 

@@ -37,13 +37,13 @@
 
 # Research Interests
 
-- AI Security
-- Software Vulnerability Detection
 - Large Language Models (LLMs)
-- Knowledge Graph
+- Software Engineering
+- Vulnerability Detection
 - Retrieval-Augmented Generation (RAG)
-- Multi-Agent Systems
-- Secure Code Analysis
+- Knowledge Graph
+- Multi-Agent
+- Secure Code
 ---
 
 # Publications
