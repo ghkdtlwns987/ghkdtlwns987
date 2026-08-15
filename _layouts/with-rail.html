@@ -5,6 +5,9 @@ layout: default
   <div class="page-layout-main">
     {{ content }}
   </div>
-  {% include page-rail.html %}
+  <div class="post-side-rail">
+    {% include content-topbar.html %}
+    {% include page-rail.html %}
+  </div>
 </div>
 <script src="{{ '/assets/js/page-rail.js' | relative_url }}?v=1"></script>

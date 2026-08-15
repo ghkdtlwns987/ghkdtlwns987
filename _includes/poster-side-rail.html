@@ -91,6 +91,7 @@
                 {% if poster_cat == 'paper' and poster_venue != '' %}
                   <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
                 {% endif %}
+                {% include poster-extra-badges.html post=post %}
               </span>
               <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>
             </a>

@@ -9,6 +9,8 @@ venue: ICSE 2026
 
 ## Summary
 
+---
+
 ## Figures
 
 논문 figure PNG/JPG를 `assets/images/papers/vultrial/` 에 넣은 뒤 아래처럼 추가합니다.
@@ -21,5 +23,6 @@ venue: ICSE 2026
 
 ## Key Contributions
 
+---
 
-## 느낀점
+## Paper Review

@@ -12,10 +12,10 @@ description: >-
 - 언어 : Python
 - 날짜 : 2026-08-09
 
-# 문제
+## 문제
 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/43164
 
-
+---
 
 ## 문제 설명
 
@@ -55,6 +55,8 @@ tickets	return
 문제가 잘 안풀린다면😢
 힌트가 필요한가요? [코딩테스트 연습 힌트 모음집]으로 오세요! → 클릭
 
+---
+
 ## 문제 풀이
 
 1. 문제 조건을 확인해보면, `알파벳 순서가 앞서는 경로를 우선 return` -> 정렬
@@ -71,6 +73,8 @@ tickets	return
 ```
 [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"], ["ICN", "BBB"]]
 ```
+
+---
 
 ### Solution
 ```python

@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <div class="post-layout">
   <article class="post" id="post-article">
     <header class="post-header">
@@ -18,19 +19,25 @@ layout: default
     <div class="post-content" id="post-content">
       {{ content }}
     </div>
+    {% include post-related.html %}
     {% include post-prev-next.html %}
     {% include comments.html %}
   </article>
 
-  <aside class="post-toc page-rail" id="post-toc" aria-label="Contents" hidden>
-    <h2 class="post-toc-title">Contents</h2>
-    <nav class="post-toc-nav" id="post-toc-nav">
-      <ul class="post-toc-list" id="post-toc-list"></ul>
-    </nav>
-    {% include post-toc-recent.html %}
-  </aside>
+  <div class="post-side-rail">
+    {% include content-topbar.html %}
+    <aside class="post-toc page-rail" id="post-toc" aria-label="Contents" hidden>
+      <details class="post-toc-details" id="post-toc-details" open>
+        <summary class="post-toc-title">Contents</summary>
+        <nav class="post-toc-nav" id="post-toc-nav">
+          <ul class="post-toc-list" id="post-toc-list"></ul>
+        </nav>
+      </details>
+      {% include post-toc-recent.html %}
+    </aside>
+  </div>
 </div>
-<script src="{{ '/assets/js/post-toc.js' | relative_url }}?v=2"></script>
+<script src="{{ '/assets/js/post-toc.js' | relative_url }}?v=3"></script>
 <script>
   window.__POST_VIEWS__ = {
     namespace: {{ site.views.namespace | default: site.author.github | default: 'ghkdtlwns987' | jsonify }},
@@ -38,3 +45,9 @@ layout: default
   };
 </script>
 <script src="{{ '/assets/js/post-views.js' | relative_url }}?v=1"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="window.__katexReady=true"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" crossorigin="anonymous"
+  onload="window.__mermaidReady=true"></script>
+<script defer src="{{ '/assets/js/post-enhance.js' | relative_url }}?v=2"></script>

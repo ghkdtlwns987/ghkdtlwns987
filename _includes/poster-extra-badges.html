@@ -1,0 +1,10 @@
+{% comment %}
+  Extra badges from post.badges front matter (e.g. ASE)
+  Usage: {% include poster-extra-badges.html post=post %}
+{% endcomment %}
+{% if include.post.badges %}
+  {% for badge in include.post.badges %}
+    {% assign badge_slug = badge | downcase | replace: ' ', '-' %}
+    <span class="news-badge news-badge--{{ badge_slug }}{% if badge_slug == 'ase' %} news-badge--poster-venue{% endif %}">{{ badge }}</span>
+  {% endfor %}
+{% endif %}

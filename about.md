@@ -11,10 +11,6 @@ description: >-
   {% include page-lead.html page="about" %}
 </div>
 
-<section class="about-intro">
-  {% include intro.html %}
-</section>
-
 <section>
   <h2>Education</h2>
 

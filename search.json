@@ -1,0 +1,40 @@
+---
+layout: null
+---
+[
+{% for post in site.posts %}
+  {% include poster-path.html post=post %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "type": "post",
+    "date": {{ post.date | date: "%Y.%m.%d" | jsonify }},
+    "year": {{ post.date | date: "%Y" | jsonify }},
+    "category": {{ poster_cat | jsonify }},
+    "subcategory": {{ poster_sub | jsonify }},
+    "description": {{ post.description | default: post.excerpt | strip_html | truncate: 140 | jsonify }}
+  },
+{% endfor %}
+{% for p in site.pages %}
+  {% if p.url == '/about/' or p.url == '/research/' or p.url == '/projects/' or p.url == '/publications/' or p.url == '/poster/' %}
+  {
+    "title": {{ p.title | jsonify }},
+    "url": {{ p.url | relative_url | jsonify }},
+    "type": "page",
+    "category": "page",
+    "description": {{ p.description | strip_html | truncate: 140 | jsonify }}
+  },
+  {% endif %}
+{% endfor %}
+{% assign all_pubs = site.data.publications.international | concat: site.data.publications.domestic %}
+{% for pub in all_pubs %}
+  {
+    "title": {{ pub.headline | default: pub.title | jsonify }},
+    "url": {{ "/publications/" | relative_url | jsonify }},
+    "type": "publication",
+    "category": "publication",
+    "date": {{ pub.date | jsonify }},
+    "description": {{ pub.venue | default: pub.title | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

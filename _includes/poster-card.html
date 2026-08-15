@@ -4,7 +4,12 @@
 {% endcomment %}
 {% include poster-category-label.html post=include.post %}
 {% include poster-post-meta.html post=include.post %}
-<li class="card post-list-card">
+<li
+  class="card post-list-card"
+  data-category="{{ poster_cat }}"
+  data-subcategory="{{ poster_sub }}"
+  data-year="{{ include.post.date | date: '%Y' }}"
+>
   <a href="{{ include.post.url | relative_url }}" class="post-list-card-link">
     <div class="post-list-card-meta">
       <time class="post-list-card-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y.%m.%d" }}</time>
@@ -20,6 +25,7 @@
       {% if poster_cat == 'paper' and poster_venue != '' %}
         <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
       {% endif %}
+      {% include poster-extra-badges.html post=include.post %}
     </div>
     <h3 class="post-list-card-title">{{ include.post.title }}</h3>
   </a>

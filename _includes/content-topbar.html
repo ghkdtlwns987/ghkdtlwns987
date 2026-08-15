@@ -2,6 +2,19 @@
   <div class="content-topbar-actions">
     <button
       type="button"
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+      aria-controls="site-sidebar"
+      title="Menu"
+    >
+      <svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+    <button
+      type="button"
       class="theme-toggle"
       id="theme-toggle"
       aria-label="테마 변경"
@@ -22,6 +35,20 @@
       Contact
     </a>
   </div>
+  <div class="site-search" id="site-search" data-index="{{ '/search.json' | relative_url }}">
+    <label class="visually-hidden" for="site-search-input">사이트 검색</label>
+    <input
+      id="site-search-input"
+      class="site-search-input"
+      type="search"
+      placeholder="Search…"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <div class="site-search-results" hidden></div>
+  </div>
 </div>
 
 <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/mobile-nav.js' | relative_url }}?v=1"></script>
+<script src="{{ '/assets/js/site-search.js' | relative_url }}?v=2"></script>

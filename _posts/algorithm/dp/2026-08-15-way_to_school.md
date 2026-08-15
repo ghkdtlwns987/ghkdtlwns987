@@ -4,7 +4,7 @@ title: "등굣길"
 date: 2026-08-15
 problem: "42898"
 description: >-
-  프로그래머스 정수 삼각형 — DP 로 최단 경로 구하기
+  프로그래머스 등굣길 — DP로 최단경로 개수 구하는 풀이
 ---
 
 - Platform : 프로그래머스
@@ -12,10 +12,10 @@ description: >-
 - 언어 : Python
 - 날짜 : 2026-08-15
 
-# 문제
+## 문제
 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/42898
 
-
+---
 
 ## 문제 설명
 문제 설명
@@ -39,6 +39,9 @@ m과 n이 모두 1인 경우는 입력으로 주어지지 않습니다.
 m	n	puddles	return
 4	3	[[2, 2]]	4
 ```
+
+---
+
 ## 문제 풀이
 문제를 보면 격자의 크기 `m`, `n`은 최대 `100`으로, 격자의 최대 크기는 `10000` 로 제한된다.  
 또한 `최단 경로`라는 단어를 보자마자 `BFS` 로 풀어야겠다고 생각할 수 있다.  
@@ -90,6 +93,8 @@ def solution(m, n, puddles):
 dp[i][j] = dp[i - 1][j] + dp[i][j - 1] (i, j > 0)
 ```
 
+---
+
 ### Solution
 
 ```python
@@ -121,3 +126,6 @@ def solution(m, n, puddles):
         
     return (dp[n - 1][m - 1]) % 1000000007
 ```
+
+
+시간 복잡도는 $$O(nm)$$ 이다.

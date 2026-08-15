@@ -1,4 +1,4 @@
-<aside class="sidebar-left">
+<aside class="sidebar-left" id="site-sidebar">
   <div class="sidebar-inner">
   <div class="profile-card">
     <a href="{{ '/' | relative_url }}" class="profile-avatar-link">
@@ -10,7 +10,7 @@
         height="120"
       >
     </a>
-    <h1 class="profile-name">{{ site.data.profile.name }}</h1>
+    <p class="profile-name">{{ site.data.profile.name }}</p>
     <p class="profile-name-en">{{ site.data.profile.name_en }}</p>
     <p class="profile-tagline">{{ site.data.profile.tagline }}</p>
     <p class="profile-affiliation">{{ site.data.profile.affiliation }}</p>
@@ -38,6 +38,7 @@
     <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener" title="GitHub">GitHub</a>
     <a href="{{ site.author.velog }}" target="_blank" rel="noopener" title="Velog">Velog</a>
     <a href="{{ site.author.tistory }}" target="_blank" rel="noopener" title="Tistory">Tistory</a>
+    <a href="{{ '/feed.xml' | relative_url }}" title="RSS Feed">RSS</a>
   </div>
   </div>
 </aside>

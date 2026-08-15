@@ -9,6 +9,9 @@
     localStorage.setItem(storageKey, theme);
     toggle.setAttribute('aria-label', theme === 'dark' ? 'Light mode로 변경' : 'Dark mode로 변경');
     setGiscusTheme(theme);
+    if (typeof window.__rerenderPostMermaid === 'function') {
+      window.__rerenderPostMermaid();
+    }
   }
 
   function setGiscusTheme(theme) {

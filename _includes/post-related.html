@@ -1,0 +1,44 @@
+{% comment %}
+  Related posts: prefer same subcategory, then same category. Max 3.
+{% endcomment %}
+{% include poster-path.html post=page %}
+{% assign related_cat = poster_cat %}
+{% assign related_sub = poster_sub %}
+{% assign related_urls = '|' %}
+{% assign related_count = 0 %}
+
+{% capture related_cards %}
+{% for post in site.posts %}
+  {% if related_count < 3 and post.url != page.url %}
+    {% include poster-path.html post=post %}
+    {% if poster_cat == related_cat and related_sub != '' and poster_sub == related_sub %}
+      {% assign related_count = related_count | plus: 1 %}
+      {% assign related_urls = related_urls | append: post.url | append: '|' %}
+      {% include poster-card.html post=post %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% for post in site.posts %}
+  {% if related_count < 3 and post.url != page.url %}
+    {% assign url_token = post.url | append: '|' %}
+    {% assign url_check = '|' | append: url_token %}
+    {% unless related_urls contains url_check %}
+      {% include poster-path.html post=post %}
+      {% if poster_cat == related_cat %}
+        {% assign related_count = related_count | plus: 1 %}
+        {% assign related_urls = related_urls | append: post.url | append: '|' %}
+        {% include poster-card.html post=post %}
+      {% endif %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+{% endcapture %}
+
+{% if related_count > 0 %}
+<section class="post-related" aria-label="Related posts">
+  <h2 class="post-related-title">Related Poster</h2>
+  <ul class="post-list post-list--cards post-related-list">
+    {{ related_cards }}
+  </ul>
+</section>
+{% endif %}

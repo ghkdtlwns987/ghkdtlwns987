@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v=70">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v=85">
   <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}?v=7">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 </head>
@@ -30,7 +30,16 @@
 
     <div class="content-area content-area--wide">
       <main class="main-content">
-        {% include content-topbar.html %}
+        {% assign topbar_in_rail = false %}
+        {% if page.layout == 'post' or page.layout == 'poster-category' or page.layout == 'with-rail' %}
+          {% assign topbar_in_rail = true %}
+        {% endif %}
+        {% if page.url == '/poster/' %}
+          {% assign topbar_in_rail = true %}
+        {% endif %}
+        {% unless topbar_in_rail %}
+          {% include content-topbar.html %}
+        {% endunless %}
         {{ content }}
       </main>
     </div>

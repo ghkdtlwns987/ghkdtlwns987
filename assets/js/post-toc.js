@@ -81,6 +81,11 @@
   if (!items.length && !recent) return;
   toc.hidden = false;
 
+  var details = document.getElementById("post-toc-details");
+  if (details && window.matchMedia("(max-width: 1100px)").matches) {
+    details.removeAttribute("open");
+  }
+
   var links = Array.prototype.slice.call(list.querySelectorAll(".post-toc-link"));
 
   function setActive(index) {

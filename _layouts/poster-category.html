@@ -31,5 +31,8 @@ layout: default
     {% endif %}
   </div>
 
-  {% include poster-side-rail.html poster_limit=5 %}
+  <div class="post-side-rail">
+    {% include content-topbar.html %}
+    {% include poster-side-rail.html poster_limit=5 %}
+  </div>
 </div>

@@ -12,9 +12,9 @@ description: >-
 - 언어 : Python
 - 날짜 : 2026-08-06
 
-# 문제
+## 문제
 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/43163
-
+---
 
 
 ## 문제 설명
@@ -42,14 +42,16 @@ begin	target	words	return
 
 예제 #2
 target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다.
+---
 
 ## 문제 풀이
 이 문제의 조건으로는 길이가 모두 같다는 조건이 있으며, 변환 시 단어 하나만 다를 경우에만 확장할 수 있다.
 또 하나 중요한 점은 최단 길이를 구해야 한다는 점이다. 처음엔 `cnt += 1` 과 같이 `level` 단위로 기록했으나, 구현하다가 수정했다. 
 핵심은 경로를 탐색할 때마다 큐에 그 길이를 추가하는 것이다. `q = deque((current, cnt))`, `q.append((next, cnt + 1))`
 
-### Solution
+---
 
+### Solution
 ```python
 def check(a, b):
     cnt = 0
