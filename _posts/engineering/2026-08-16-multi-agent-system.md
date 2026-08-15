@@ -4,6 +4,7 @@ title: "Multi-Agent System(MAS)이란?"
 date: 2026-08-16
 description: |
   하나의 LLM이 모든 작업을 처리하는 대신, 여러 Agent가 역할을 나누어 문제를 해결하는 Multi-Agent System의 개념과 실제 활용 방법을 알아본다.
+image: /assets/images/covers/multi-agent-system.png
 badges:
   - Multi-Agent
 ---

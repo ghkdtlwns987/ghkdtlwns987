@@ -1,23 +1,66 @@
 {% comment %}
-  Related posts: prefer same subcategory, then same category. Max 3.
+  Related posts priority:
+  1) 같은 의미 뱃지 공유 (Paper Review, Multi-Agent, Essay … — 연도·학회 venue 제외)
+     → 뱃지 매칭이 1개라도 있으면 카테고리 fallback 하지 않음
+  2) 같은 subcategory
+  3) 같은 category
+  Max 3.
 {% endcomment %}
 {% include poster-path.html post=page %}
 {% assign related_cat = poster_cat %}
 {% assign related_sub = poster_sub %}
 {% assign related_urls = '|' %}
 {% assign related_count = 0 %}
+{% assign related_by_badge = false %}
 
 {% capture related_cards %}
+{% if page.badges %}
 {% for post in site.posts %}
-  {% if related_count < 3 and post.url != page.url %}
-    {% include poster-path.html post=post %}
-    {% if poster_cat == related_cat and related_sub != '' and poster_sub == related_sub %}
+  {% if related_count < 3 and post.url != page.url and post.badges %}
+    {% assign badge_match = false %}
+    {% for badge in page.badges %}
+      {% assign badge_str = badge | append: '' %}
+      {% assign badge_year = badge_str | plus: 0 | append: '' %}
+      {% assign is_year = false %}
+      {% if badge_str.size == 4 and badge_year == badge_str %}
+        {% assign is_year = true %}
+      {% endif %}
+      {% assign is_venue = false %}
+      {% if badge_str == 'ASE' or badge_str == 'ICSE' or badge_str == 'FSE' or badge_str == 'ISSTA' %}
+        {% assign is_venue = true %}
+      {% endif %}
+      {% unless is_year or is_venue %}
+        {% if post.badges contains badge %}
+          {% assign badge_match = true %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+    {% if badge_match %}
+      {% assign related_by_badge = true %}
       {% assign related_count = related_count | plus: 1 %}
       {% assign related_urls = related_urls | append: post.url | append: '|' %}
       {% include poster-card.html post=post %}
     {% endif %}
   {% endif %}
 {% endfor %}
+{% endif %}
+
+{% unless related_by_badge %}
+{% for post in site.posts %}
+  {% if related_count < 3 and post.url != page.url %}
+    {% assign url_token = post.url | append: '|' %}
+    {% assign url_check = '|' | append: url_token %}
+    {% unless related_urls contains url_check %}
+      {% include poster-path.html post=post %}
+      {% if poster_cat == related_cat and related_sub != '' and poster_sub == related_sub %}
+        {% assign related_count = related_count | plus: 1 %}
+        {% assign related_urls = related_urls | append: post.url | append: '|' %}
+        {% include poster-card.html post=post %}
+      {% endif %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
 {% for post in site.posts %}
   {% if related_count < 3 and post.url != page.url %}
     {% assign url_token = post.url | append: '|' %}
@@ -32,6 +75,7 @@
     {% endunless %}
   {% endif %}
 {% endfor %}
+{% endunless %}
 {% endcapture %}
 
 {% if related_count > 0 %}

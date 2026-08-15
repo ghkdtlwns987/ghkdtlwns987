@@ -3,7 +3,7 @@ layout: default
 title: Blog
 permalink: /poster/
 description: >-
-  연구·보안·엔지니어링·알고리즘·일상 글을 모은 블로그입니다.
+  연구, 보안, 엔지니어링, 알고리즘, 일상 글을 모은 블로그입니다.
 ---
 
 <div class="post-layout page-layout">
@@ -49,6 +49,40 @@ description: >-
             {% endif %}
           {% endfor %}
         </div>
+        <div class="poster-filter-group" data-filter-group="badge">
+          <span class="poster-filter-label">Badge</span>
+          <button type="button" class="poster-filter-chip is-active" data-filter="all">All</button>
+          {% assign badge_str = '' %}
+          {% for post in site.posts %}
+            {% if post.badges %}
+              {% for badge in post.badges %}
+                {% assign b = badge | append: '' %}
+                {% assign by = b | plus: 0 | append: '' %}
+                {% assign skip = false %}
+                {% if b.size == 4 and by == b %}
+                  {% assign skip = true %}
+                {% endif %}
+                {% unless skip %}
+                  {% assign hay = '|' | append: badge_str | append: '|' %}
+                  {% assign token = '|' | append: b | append: '|' %}
+                  {% unless hay contains token %}
+                    {% if badge_str != '' %}
+                      {% assign badge_str = badge_str | append: '|' | append: b %}
+                    {% else %}
+                      {% assign badge_str = b %}
+                    {% endif %}
+                  {% endunless %}
+                {% endunless %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+          {% assign badge_list = badge_str | split: '|' %}
+          {% for b in badge_list %}
+            {% if b != '' %}
+          <button type="button" class="poster-filter-chip" data-filter="{{ b }}">{{ b }}</button>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
 
       <ul class="post-list post-list--cards poster-archive-list" id="poster-archive-list">
@@ -68,4 +102,4 @@ description: >-
   </div>
 </div>
 
-<script src="{{ '/assets/js/poster-filter.js' | relative_url }}?v=2"></script>
+<script src="{{ '/assets/js/poster-filter.js' | relative_url }}?v=4"></script>

@@ -5,6 +5,7 @@ date: YYYY-MM-DD
 description: |
   Short description
 venue: ASE 2026
+publication: clear-ase-2026
 badges:
   - ASE
   - "2026"

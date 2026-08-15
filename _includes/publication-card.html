@@ -22,6 +22,15 @@
   </div>
   <h3 class="pub-title">{{ include.pub.title }}</h3>
   <p class="pub-venue">{{ include.pub.venue }}</p>
+  {% assign pub_related_hint = 0 %}
+  {% for post in site.posts %}
+    {% if post.publication == include.pub.slug %}
+      {% assign pub_related_hint = pub_related_hint | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if pub_related_hint > 0 %}
+  <p class="pub-related-hint">Related Blog {{ pub_related_hint }}</p>
+  {% endif %}
   <span class="pub-more">자세히 보기 →</span>
 </button>
 {% elsif include.pub.link %}

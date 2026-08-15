@@ -1,0 +1,9 @@
+{% comment %}
+  예상 읽기 시간 (약 200 wpm, 한글 기준 보수적으로 단어수 사용)
+{% endcomment %}
+{% assign read_words = include.content | strip_html | number_of_words %}
+{% assign read_minutes = read_words | plus: 199 | divided_by: 200 %}
+{% if read_minutes < 1 %}
+  {% assign read_minutes = 1 %}
+{% endif %}
+<span class="post-read-time">{{ read_minutes }} min read</span>

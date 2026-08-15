@@ -1,0 +1,22 @@
+{% comment %}
+  포스트 → Publication 양방향 링크
+  front matter: publication: clear-ase-2026
+{% endcomment %}
+{% if page.publication %}
+  {% include find-publication.html slug=page.publication %}
+  {% if found_pub %}
+  <aside class="post-publication" aria-label="Related publication">
+    <p class="post-publication-label">Publication</p>
+    <a
+      class="post-publication-card"
+      href="{{ '/publications/' | relative_url }}?pub={{ found_pub.slug }}"
+    >
+      <span class="post-publication-title">{{ found_pub.headline | default: found_pub.title }}</span>
+      {% if found_pub.venue %}
+      <span class="post-publication-venue">{{ found_pub.venue }}</span>
+      {% endif %}
+      <span class="post-publication-cta">Publications에서 자세히 보기 →</span>
+    </a>
+  </aside>
+  {% endif %}
+{% endif %}

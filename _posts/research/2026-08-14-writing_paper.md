@@ -4,6 +4,8 @@ title: "Paper Extension"
 date: 2026-08-14
 description: >-
   Conference 논문을 Journal로 확장(Paper Extension)할 때 고려할 점과 CLEAR 후속 작업 메모입니다.
+badges:
+  - Essay
 ---
 `CLEAR:Causal Context-based Agentic Reasoning for Vulnerability Detection` 논문이 Accept 되고 나서, 교수님께서 논문을 Extension 하라고 하셔서 논문을 작성했는데, 현재 추가실험 중이라 이 글을 작성해본다.
 

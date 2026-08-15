@@ -1,6 +1,5 @@
 {% comment %}
-  Extra badges from post.badges (ASE, 2026, Paper Review, Multi-Agent, …)
-  ASE/ICSE 등 학회명은 파란 venue 색으로 통일, 연도는 별도
+  Extra badges — 클릭 시 /poster/?badge= 로 필터
   Usage: {% include poster-extra-badges.html post=post %}
 {% endcomment %}
 {% if include.post.badges %}
@@ -9,11 +8,17 @@
     {% assign badge_slug = badge_str | downcase | replace: ' ', '-' %}
     {% assign badge_year = badge_str | plus: 0 | append: '' %}
     {% if badge_str == 'ASE' or badge_str == 'ICSE' or badge_str == 'FSE' or badge_str == 'ISSTA' %}
-      <span class="news-badge news-badge--venue">{{ badge_str }}</span>
+      {% assign badge_class = 'news-badge--venue' %}
     {% elsif badge_str.size == 4 and badge_year == badge_str %}
-      <span class="news-badge news-badge--year">{{ badge_str }}</span>
+      {% assign badge_class = 'news-badge--year' %}
     {% else %}
-      <span class="news-badge news-badge--{{ badge_slug }}">{{ badge_str }}</span>
+      {% assign badge_class = 'news-badge--' | append: badge_slug %}
     {% endif %}
+    <button
+      type="button"
+      class="news-badge {{ badge_class }} news-badge--filter"
+      data-badge-filter="{{ badge_str | escape }}"
+      title="{{ badge_str }} 글 보기"
+    >{{ badge_str }}</button>
   {% endfor %}
 {% endif %}

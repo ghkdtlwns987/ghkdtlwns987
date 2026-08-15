@@ -1,0 +1,33 @@
+{% comment %}
+  Publication 외부 링크 (arXiv / Code / Slides …)
+  Usage: {% include pub-links.html pub=pub %}
+{% endcomment %}
+{% assign has_pub_links = false %}
+{% if include.pub.links and include.pub.links.size > 0 %}
+  {% assign has_pub_links = true %}
+{% elsif include.pub.link %}
+  {% assign has_pub_links = true %}
+{% endif %}
+
+{% if has_pub_links %}
+<div class="pub-modal-links">
+  <p class="pub-modal-links-label">Links</p>
+  <ul class="pub-modal-links-list">
+    {% if include.pub.links %}
+      {% for item in include.pub.links %}
+        <li>
+          <a href="{{ item.url }}" target="_blank" rel="noopener" class="pub-modal-link-chip">
+            {{ item.label }}
+          </a>
+        </li>
+      {% endfor %}
+    {% elsif include.pub.link %}
+      <li>
+        <a href="{{ include.pub.link }}" target="_blank" rel="noopener" class="pub-modal-link-chip">
+          {{ include.pub.link_label | default: 'arXiv' }}
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}

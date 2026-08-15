@@ -36,7 +36,15 @@ international:
           다중 LLM 에이전트 기반 협력 추론을 통해 소프트웨어 취약점의 탐지와
           원인 분석을 수행합니다.
     link: "https://arxiv.org/abs/2608.03134"
-    link_label: "http://arxiv.org/abs/2608.03134"
+    link_label: "arXiv"
+    links:
+      - label: arXiv
+        url: "https://arxiv.org/abs/2608.03134"
+      # - label: Code
+      #   url: "https://github.com/..."
+      # - label: Slides
+      #   url: "https://..."
+    image: /assets/images/papers/clear-og.png
     contributions:
       - Multi-Agent 기반 취약점 탐지 프레임워크 제안
       - Vulnerability Causal Knowledge Graph (VCKG) 설계

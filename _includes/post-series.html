@@ -1,0 +1,69 @@
+{% comment %}
+  시리즈 / 이어서 읽기
+  front matter:
+    series: se-mas-research
+    series_order: 1
+    series_title: "From SE to Multi-Agent"
+{% endcomment %}
+{% if page.series %}
+  {% assign series_id = page.series %}
+  {% assign series_title = page.series_title | default: '' %}
+  {% assign ordered = site.posts | where: 'series', series_id | sort: 'series_order' %}
+  {% assign series_size = ordered.size %}
+
+  {% if series_title == '' %}
+    {% for post in ordered %}
+      {% if series_title == '' and post.series_title %}
+        {% assign series_title = post.series_title %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if series_title == '' %}
+    {% assign series_title = series_id %}
+  {% endif %}
+
+  {% if series_size > 1 %}
+  {% assign current_idx = 0 %}
+  {% assign prev_post = nil %}
+  {% assign next_post = nil %}
+  {% assign seen_current = false %}
+  {% for post in ordered %}
+    {% if post.url == page.url %}
+      {% assign seen_current = true %}
+      {% assign current_idx = forloop.index %}
+    {% elsif seen_current == false %}
+      {% assign prev_post = post %}
+    {% elsif next_post == nil %}
+      {% assign next_post = post %}
+    {% endif %}
+  {% endfor %}
+
+  <nav class="post-series" aria-label="Series">
+    <p class="post-series-label">
+      Series · {{ series_title }}
+      <span class="post-series-progress">{{ current_idx }} / {{ series_size }}</span>
+    </p>
+    <ol class="post-series-list">
+      {% for post in ordered %}
+        <li class="post-series-item{% if post.url == page.url %} is-current{% endif %}">
+          {% if post.url == page.url %}
+            <span class="post-series-link">{{ forloop.index }}. {{ post.title | strip_html | strip }}</span>
+          {% else %}
+            <a class="post-series-link" href="{{ post.url | relative_url }}">{{ forloop.index }}. {{ post.title | strip_html | strip }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+    <div class="post-series-nav">
+      {% if prev_post %}
+        <a class="post-series-nav-link post-series-nav-link--prev" href="{{ prev_post.url | relative_url }}">← 이전: {{ prev_post.title | strip_html | strip | truncate: 40 }}</a>
+      {% else %}
+        <span class="post-series-nav-link is-disabled"></span>
+      {% endif %}
+      {% if next_post %}
+        <a class="post-series-nav-link post-series-nav-link--next" href="{{ next_post.url | relative_url }}">다음: {{ next_post.title | strip_html | strip | truncate: 40 }} →</a>
+      {% endif %}
+    </div>
+  </nav>
+  {% endif %}
+{% endif %}

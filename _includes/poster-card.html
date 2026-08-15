@@ -4,17 +4,34 @@
 {% endcomment %}
 {% include poster-category-label.html post=include.post %}
 {% include poster-post-meta.html post=include.post %}
+{% assign card_badges = '' %}
+{% if include.post.badges %}
+  {% for badge in include.post.badges %}
+    {% assign b = badge | append: '' %}
+    {% if card_badges != '' %}
+      {% assign card_badges = card_badges | append: '|' | append: b %}
+    {% else %}
+      {% assign card_badges = b %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 <li
   class="card post-list-card"
   data-category="{{ poster_cat }}"
   data-subcategory="{{ poster_sub }}"
   data-year="{{ include.post.date | date: '%Y' }}"
+  data-badges="{{ card_badges | escape }}"
 >
   <a href="{{ include.post.url | relative_url }}" class="post-list-card-link">
     <div class="post-list-card-meta">
       <time class="post-list-card-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y.%m.%d" }}</time>
       {% if poster_cat_label != '' %}
-        <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
+        <button
+          type="button"
+          class="news-badge news-badge--poster-{{ poster_cat }} news-badge--filter"
+          data-category-filter="{{ poster_cat }}"
+          title="{{ poster_cat_label }} 글 보기"
+        >{{ poster_cat_label }}</button>
       {% endif %}
       {% include poster-sub-badge.html %}
       {% if poster_cat == 'algorithm' and poster_platform != '' %}

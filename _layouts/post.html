@@ -9,6 +9,8 @@ layout: default
       <h1>{{ page.title }}</h1>
       <div class="post-meta">
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+        <span class="post-meta-sep" aria-hidden="true">·</span>
+        {% include post-read-time.html content=content %}
         <span class="post-views" id="post-views" hidden>
           <span class="post-views-sep" aria-hidden="true">·</span>
           <span class="post-views-label">조회</span>
@@ -16,6 +18,8 @@ layout: default
         </span>
       </div>
     </header>
+    {% include post-series.html %}
+    {% include post-publication.html %}
     <div class="post-content" id="post-content">
       {{ content }}
     </div>
@@ -50,4 +54,5 @@ layout: default
   onload="window.__katexReady=true"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" crossorigin="anonymous"
   onload="window.__mermaidReady=true"></script>
-<script defer src="{{ '/assets/js/post-enhance.js' | relative_url }}?v=2"></script>
+<script defer src="{{ '/assets/js/post-enhance.js' | relative_url }}?v=3"></script>
+<script defer src="{{ '/assets/js/code-copy.js' | relative_url }}?v=1"></script>

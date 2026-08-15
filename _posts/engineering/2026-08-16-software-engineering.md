@@ -4,6 +4,7 @@ title: "Software Engineering이란?"
 date: 2026-08-16
 description: |
   Software Engineering이라는 이름에는 왜 Engineering이 붙었을까? 소프트웨어 공학이 무엇을 고민하는 분야인지 알아본다.
+image: /assets/images/covers/software-engineering.png
 badges:
   - Essay
 ---
@@ -25,7 +26,7 @@ badges:
 하지만 이름을 조금 자세히 살펴보면 Software + Engineering이라는 두 단어가 결합되어 있다.
 
 ```text
-Software(소프트웨어) + Engineering(공학))
+Software(소프트웨어) + Engineering(공학)
 ```
 그렇다면 먼저 Software는 왜 만들까?
 

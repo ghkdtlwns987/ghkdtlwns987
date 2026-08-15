@@ -1,0 +1,73 @@
+{% comment %}
+  Publication 모달: 관련 블로그 글 (publication: slug 매칭 우선, 없으면 ASE 휴리스틱)
+  Usage: {% include pub-related-posts.html pub=pub %}
+{% endcomment %}
+{% assign related_count = 0 %}
+{% capture related_items %}
+{% for post in site.posts %}
+  {% if post.publication == include.pub.slug %}
+    {% assign related_count = related_count | plus: 1 %}
+    {% include poster-category-label.html post=post %}
+    <li class="news-related-item">
+      <a class="news-related-link" href="{{ post.url | relative_url }}">
+        <span class="news-related-meta">
+          {% if poster_cat_label != '' %}
+            <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
+          {% endif %}
+          {% include poster-extra-badges.html post=post %}
+        </span>
+        <span class="news-related-title">{{ post.title | strip_html | strip }}</span>
+      </a>
+    </li>
+  {% endif %}
+{% endfor %}
+{% endcapture %}
+
+{% if related_count == 0 %}
+  {% assign show_ase_fallback = false %}
+  {% if include.pub.news.tags %}
+    {% for tag in include.pub.news.tags %}
+      {% if tag contains 'ASE' %}{% assign show_ase_fallback = true %}{% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if include.pub.badges %}
+    {% for badge in include.pub.badges %}
+      {% if badge.type == 'venue' and badge.label contains 'ASE' %}
+        {% assign show_ase_fallback = true %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if show_ase_fallback %}
+    {% capture related_items %}
+    {% for post in site.posts %}
+      {% assign post_is_ase = false %}
+      {% if post.badges and post.badges contains 'ASE' %}{% assign post_is_ase = true %}{% endif %}
+      {% if post.venue and post.venue contains 'ASE' %}{% assign post_is_ase = true %}{% endif %}
+      {% if post_is_ase %}
+        {% assign related_count = related_count | plus: 1 %}
+        {% include poster-category-label.html post=post %}
+        <li class="news-related-item">
+          <a class="news-related-link" href="{{ post.url | relative_url }}">
+            <span class="news-related-meta">
+              {% if poster_cat_label != '' %}
+                <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
+              {% endif %}
+              {% include poster-extra-badges.html post=post %}
+            </span>
+            <span class="news-related-title">{{ post.title | strip_html | strip }}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    {% endcapture %}
+  {% endif %}
+{% endif %}
+
+{% if related_count > 0 %}
+<div class="news-related pub-modal-related" aria-label="Related blog posts">
+  <p class="news-related-label">Related Blog</p>
+  <ul class="news-related-list">
+    {{ related_items }}
+  </ul>
+</div>
+{% endif %}
