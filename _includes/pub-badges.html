@@ -1,0 +1,50 @@
+{% comment %}
+  Publication badges — Home News와 동일 구성
+  International / Domestic 제외
+  우선순위: news.tags(ASE/2026) + news.badges(New/Paper) + author
+  Usage: {% include pub-badges.html pub=pub %}
+{% endcomment %}
+{% assign pub = include.pub %}
+{% assign has_pub_badges = false %}
+{% if pub.news.tags and pub.news.tags.size > 0 %}
+  {% assign has_pub_badges = true %}
+{% endif %}
+{% if pub.news.badges and pub.news.badges.size > 0 %}
+  {% assign has_pub_badges = true %}
+{% endif %}
+{% if pub.badges and pub.badges.size > 0 %}
+  {% assign has_pub_badges = true %}
+{% endif %}
+
+{% if has_pub_badges %}
+<div class="pub-badges">
+  {% if pub.news %}
+    {% include news-venue-badges.html news=pub.news pub=pub %}
+    {% if pub.news.badges %}
+      {% for badge in pub.news.badges %}
+        <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    {% for badge in pub.badges %}
+      {% unless badge.type == 'intl' or badge.type == 'domestic' or badge.type == 'author' %}
+        {% if badge.type == 'venue' %}
+          <span class="news-badge news-badge--venue">{{ badge.label }}</span>
+        {% elsif badge.type == 'year' %}
+          <span class="news-badge news-badge--year">{{ badge.label }}</span>
+        {% else %}
+          <span class="news-badge news-badge--{{ badge.type }}">{{ badge.label }}</span>
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  {% endif %}
+
+  {% if pub.badges %}
+    {% for badge in pub.badges %}
+      {% if badge.type == 'author' %}
+        <span class="news-badge news-badge--author">{{ badge.label }}</span>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+{% endif %}

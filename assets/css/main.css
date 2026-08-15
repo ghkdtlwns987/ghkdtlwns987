@@ -3806,6 +3806,14 @@ button.news-badge--filter:hover {
   letter-spacing: 0.02em;
 }
 
+.news-badge--author {
+  background: #9a6700;
+  color: #ffffff;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+}
+
 .news-badge--poster-paper,
 .news-badge--poster-research {
   background: #8957e5;

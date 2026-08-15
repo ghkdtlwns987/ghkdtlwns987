@@ -27,14 +27,14 @@ description: >-
       <span class="research-topic__num" aria-hidden="true">01</span>
       <div class="research-topic__body">
         <h3>LLM for Software Engineering</h3>
-        <p>Code Understanding · Program Analysis · Automated Reasoning</p>
+        <p>Code Understanding · Program Analysis</p>
       </div>
     </li>
     <li class="research-topic research-topic--sec">
       <span class="research-topic__num" aria-hidden="true">02</span>
       <div class="research-topic__body">
         <h3>AI-driven Software Security</h3>
-        <p>Vulnerability Detection · Vulnerability Analysis · Program Repair</p>
+        <p>Vulnerability Detection · Analysis</p>
       </div>
     </li>
     <li class="research-topic research-topic--kg">
