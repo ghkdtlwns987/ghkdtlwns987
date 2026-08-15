@@ -84,9 +84,9 @@ image: /assets/images/1.png
   <section class="home-panel__section home-panel__section--contact" id="contact">
     <p class="home-panel__label">Contact</p>
     <div class="home-contact">
-      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      <a href="mailto:{{ site.author.email }}">Email</a>
       <span class="home-contact__sep" aria-hidden="true">·</span>
-      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">{{ site.author.github }}</a>
       <span class="home-contact__sep" aria-hidden="true">·</span>
       <a href="{{ site.author.velog }}" target="_blank" rel="noopener">Velog</a>
     </div>
