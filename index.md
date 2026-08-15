@@ -2,7 +2,7 @@
 layout: default
 title: "황시준 | Si June Hwang"
 description: >-
-  황시준(Si June Hwang) 개인 사이트. LLM for Software Engineering, AI Security 연구 소개와 Poster 글을 모았습니다.
+  Si June Hwang, LLM, Software Engineering, AI Security Researcher
 image: /assets/images/1.png
 ---
 
