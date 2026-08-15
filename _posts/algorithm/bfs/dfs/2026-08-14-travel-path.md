@@ -5,6 +5,7 @@ date: 2026-08-14
 problem: "43164"
 description: >-
   프로그래머스 Lv.3 여행 경로 — 항공권 DFS/오일러 경로 풀이 정리
+image: /assets/images/covers/travel-path.png
 ---
 
 - Platform : 프로그래머스

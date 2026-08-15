@@ -3,7 +3,7 @@ layout: default
 title: Research
 permalink: /research/
 description: >-
-  Knowledge Graph, Multi-Agent Reasoning, RAG를 활용한 LLM 기반 소프트웨어 취약점 탐지 연구를 소개합니다.
+  LLM for Software Engineering and AI-driven Software Security. Knowledge Graph · RAG · Multi-Agent Reasoning.
 ---
 
 <div class="hero">
@@ -11,71 +11,88 @@ description: >-
   {% include page-lead.html page="research" %}
 </div>
 
-<section>
-  <h2>Research Interests</h2>
-  <div class="tags">
-    <span class="tag">Large Language Models</span>
-    <span class="tag">Software Engineering</span>
-    <span class="tag">Vulnerability Detection</span>
-    <span class="tag">Retrieval-Augmented Generation (RAG)</span>
-    <span class="tag">Knowledge Graph</span>
-    <span class="tag">Multi-Agent</span>
-    <span class="tag tag-purple">Code Analysis</span>
-  </div>
-</section>
-
-<section>
-  <h2>Current Research</h2>
-  <div class="card">
-    <h3>LLM 기반 소프트웨어 취약점 탐지</h3>
-    <p class="meta">2025 ~ Present</p>
-    <p>
-      LLM과 Software Engineering을 결합하여, 취약점의 탐지를 넘어
-      <strong>발생 원인(Causality)을 추론</strong>하는 연구를 수행하고 있습니다.
-    </p>
-    <p>
-      Knowledge Graph 를 설계하고 RAG 파이프라인에 Multi-Agent를 결합해 최첨단 LLM Agent 성능보다 우수한 성능을 보이는 Framework 를 개발중입니다. <br>
-    </p>
-    <p class="cross-link">
-      바로가기 → <a href="{{ '/publications/' | relative_url }}">Publications</a><br>
-    </p>
-  </div>
+<section class="research-focus">
+  <p class="research-focus__text">
+    My research focuses on LLM for Software Engineering<br>
+    and AI-driven Software Security.
+  </p>
+  <p class="research-focus__sub">
+    I explore knowledge-augmented and agentic reasoning to improve LLMs’ understanding and analysis of software.
+  </p>
 </section>
 
 <section>
   <h2>Research Topics</h2>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <h3>Problem</h3>
-      <ul>
-        <li>Software Vulnerability Detection</li>
-        <li>AI Security</li>
-        <li>Root Cause Analysis of Vulnerabilities</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <h3>Approach</h3>
-      <ul>
-        <li>Retrieval-Augmented Generation (RAG)</li>
-        <li>Knowledge Graph Construction</li>
-        <li>Multi-Agent Orchestration</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <h3>Output</h3>
-      <ul>
-        <li>Vulnerability Causal Knowledge Graph (VCKG)</li>
-        <li>Agentic Reasoning Framework (CLEAR)</li>
-        <li>Secure Code Analysis</li>
-      </ul>
-    </div>
-  </div>
+  <ol class="research-topics">
+    <li class="research-topic">
+      <span class="research-topic__num" aria-hidden="true">01</span>
+      <div class="research-topic__body">
+        <h3>LLM for Software Engineering</h3>
+        <p>Code Understanding · Program Analysis · Automated Reasoning</p>
+      </div>
+    </li>
+    <li class="research-topic">
+      <span class="research-topic__num" aria-hidden="true">02</span>
+      <div class="research-topic__body">
+        <h3>AI-driven Software Security</h3>
+        <p>Vulnerability Detection · Vulnerability Analysis · Program Repair</p>
+      </div>
+    </li>
+    <li class="research-topic">
+      <span class="research-topic__num" aria-hidden="true">03</span>
+      <div class="research-topic__body">
+        <h3>Knowledge-Augmented LLM Reasoning</h3>
+        <p>Knowledge Graph · RAG · Multi-Agent Reasoning</p>
+      </div>
+    </li>
+  </ol>
 </section>
 
 <section>
-  <h2>Patent</h2>
+  <h2>Selected Publications</h2>
+  <div class="research-pubs">
+    {% for pub in site.data.publications.international %}
+      {% if pub.featured %}
+        {% assign review_post = false %}
+        {% for post in site.posts %}
+          {% if post.publication == pub.slug %}
+            {% assign review_post = post %}
+          {% endif %}
+        {% endfor %}
+        <article class="research-pub">
+          <p class="research-pub__venue">{{ pub.venue }}</p>
+          <h3 class="research-pub__title">{{ pub.headline | default: pub.title }}</h3>
+          {% if pub.authors %}
+            <p class="research-pub__authors">{{ pub.authors }}</p>
+          {% endif %}
+          <div class="research-pub__links">
+            {% if pub.links %}
+              {% for item in pub.links %}
+                <a href="{{ item.url }}" target="_blank" rel="noopener">{% if item.label == 'arXiv' %}Paper{% else %}{{ item.label }}{% endif %}</a>
+              {% endfor %}
+            {% elsif pub.link %}
+              <a href="{{ pub.link }}" target="_blank" rel="noopener">Paper</a>
+            {% endif %}
+            {% if review_post %}
+              <a href="{{ review_post.url | relative_url }}">Review</a>
+            {% endif %}
+            <button type="button" class="research-pub__more" data-pub-modal="{{ pub.slug }}">Details</button>
+          </div>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <p class="cross-link">
+    <a href="{{ '/publications/' | relative_url }}">All publications →</a>
+  </p>
+</section>
+
+<section>
+  <h2>Patents</h2>
   <div class="card">
     <h3>지식그래프 기반 취약점 탐지 시스템</h3>
     <p class="meta">출원 진행 중</p>
   </div>
 </section>
+
+{% include publication-modal.html %}

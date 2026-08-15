@@ -1,8 +1,8 @@
 # 황시준 (Si June Hwang)
 
 > **LLM for Software Engineering / AI Security Researcher**
- 
-저는 **Large Language Model(LLM)을 활용한 Software Engineering**, 특히 AI 기반 소프트웨어 보안 분야에 관심을 두고 연구하고 있습니다. 취약점 분석과 보안 엔지니어링 경험을 바탕으로, Knowledge Graph · Multi-Agent Reasoning · RAG를 결합해 소프트웨어 취약점을 탐지하는 것을 넘어 그 원인까지 이해하고 설명할 수 있는 지능형 시스템을 연구합니다.
+
+Large Language Model(LLM)을 활용한 Software Engineering 및 AI 소프트웨어 보안을 연구하고 있습니다. 특히 Knowledge Graph, RAG, Multi-Agent Reasoning을 활용하여 LLM의 소프트웨어 이해와 추론 능력을 향상시키고, 이를 소프트웨어 취약점 분석과 같은 실제 Software Engineering 문제에 적용하는 데 관심이 있습니다.
 
 🌐 **Portfolio** · https://ghkdtlwns987.github.io/
 
@@ -13,10 +13,9 @@
 # Highlights
 
 - 🎓 M.S. Student, Department of Information Security, Hanyang University
-- 📝 CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection  
-- ASE 2026 (IEEE/ACM Automated Software Engineering)
-  - CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection
-- 🤖 Research on AI-based Vulnerability Detection using LLMs and Knowledge Graphs
+- 📝 **CLEAR**: Causal Context-based Agentic Reasoning for Vulnerability Detection  
+  — **ASE 2026** (IEEE/ACM Automated Software Engineering) · [arXiv](https://arxiv.org/abs/2608.03134)
+- 🤖 Research on AI-based Vulnerability Detection using LLMs, Knowledge Graphs, and Multi-Agent Reasoning
 - 🏆 Grand Prize, **2022 KOSPO Web Security Competition**
 - 🎯 **Best of the Best (BoB) 10th**, Vulnerability Analysis Track
 - 👨‍🏫 Security Instructor at Gwangju Software Meister High School
@@ -43,14 +42,15 @@
 - Retrieval-Augmented Generation (RAG)
 - Knowledge Graph
 - Multi-Agent
-- Secure Code
+- Secure Code Analysis
+
 ---
 
 # Publications
 
 | Type | Title | Venue | Link |
 |:--|:--|:--|:--|
-| **International** | **CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection** | **Automated Software Engineering 2026** | https://arxiv.org/abs/2608.03134 |
+| **International** | **CLEAR: Causal Context-based Agentic Reasoning for Vulnerability Detection** | **IEEE/ACM ASE 2026** | https://arxiv.org/abs/2608.03134 |
 
 ---
 

@@ -5,6 +5,7 @@ date: 2026-08-15
 problem: "42898"
 description: >-
   프로그래머스 등굣길 — DP로 최단경로 개수 구하는 풀이
+image: /assets/images/covers/way-to-school.png
 ---
 
 - Platform : 프로그래머스
