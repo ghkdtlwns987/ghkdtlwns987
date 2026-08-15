@@ -1,0 +1,8 @@
+{% comment %}
+  Algorithm 서브카테고리 뱃지 (DP / Graph / BFS·DFS / Greedy 색 구분)
+  Usage: poster_sub, poster_sub_label 이 이미 assign된 뒤
+{% endcomment %}
+{% if poster_sub_label != '' %}
+  {% assign sub_slug = poster_sub | replace: '/', '-' %}
+  <span class="news-badge news-badge--poster-sub news-badge--poster-sub-{{ sub_slug }}">{{ poster_sub_label }}</span>
+{% endif %}

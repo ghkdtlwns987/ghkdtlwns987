@@ -1,0 +1,30 @@
+{% comment %}
+  News / Publication 모달용 venue 뱃지
+  학회명(ASE/ICSE 등)은 파란 venue, 연도는 year
+  Usage: {% include news-venue-badges.html news=news_meta pub=pub %}
+{% endcomment %}
+{% if include.news.tags and include.news.tags.size > 0 %}
+  {% for tag in include.news.tags %}
+    {% assign tag_str = tag | append: '' %}
+    {% assign tag_year = tag_str | plus: 0 | append: '' %}
+    {% if tag_str.size == 4 and tag_year == tag_str %}
+      <span class="news-badge news-badge--year">{{ tag_str }}</span>
+    {% else %}
+      <span class="news-badge news-badge--venue">{{ tag_str }}</span>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% if include.news.tag %}
+    <span class="news-badge news-badge--venue">{{ include.news.tag }}</span>
+  {% elsif include.news.venue %}
+    <span class="news-badge news-badge--venue">{{ include.news.venue }}</span>
+  {% elsif include.pub.badges %}
+    {% for badge in include.pub.badges %}
+      {% if badge.type == 'venue' %}
+        <span class="news-badge news-badge--venue">{{ badge.label }}</span>
+      {% elsif badge.type == 'year' %}
+        <span class="news-badge news-badge--year">{{ badge.label }}</span>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}

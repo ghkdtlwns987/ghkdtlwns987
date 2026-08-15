@@ -78,16 +78,16 @@ feed:
 navigation:
   - title: Home
     url: /
-  - title: About
-    url: /about/
   - title: Research
     url: /research/
-  - title: Projects
-    url: /projects/
   - title: Publications
     url: /publications/
-  - title: Poster
+  - title: Projects
+    url: /projects/
+  - title: Blog
     url: /poster/
+  - title: CV
+    url: /about/
 
 # 댓글 (Giscus — GitHub Discussions)
 # 1) 저장소 Settings → Features → Discussions 활성화

@@ -10,7 +10,7 @@
 
 {% if recent_shown > 0 %}
 <div class="post-toc-recent" id="post-toc-recent">
-  <h3 class="post-toc-subtitle">Recent Poster</h3>
+  <h3 class="post-toc-subtitle">Recent Posts</h3>
   <ul class="post-toc-list post-toc-recent-list">
     {% assign recent_shown = 0 %}
     {% for post in site.posts %}
@@ -25,15 +25,11 @@
               {% if poster_cat_label != '' %}
                 <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
               {% endif %}
-              {% if poster_sub_label != '' %}
-                <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
-              {% endif %}
+              {% include poster-sub-badge.html %}
               {% if poster_cat == 'algorithm' and poster_platform != '' %}
                 <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
               {% endif %}
-              {% if poster_cat == 'paper' and poster_venue != '' %}
-                <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
-              {% endif %}
+              {% include poster-venue-badge.html %}
               {% include poster-extra-badges.html post=post %}
             </span>
             <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>

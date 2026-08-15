@@ -29,29 +29,19 @@
           {% include assign-news-has-new.html item=item %}
           {% if news_has_new %}
             {% assign rail_news_text = item.text %}
-            {% assign rail_venue = '' %}
             {% assign rail_tag = item.tag | default: '' %}
             {% assign rail_badges = nil %}
             {% assign rail_date = item.date | default: '' %}
+            {% assign rail_news_meta = nil %}
+            {% assign rail_pub = nil %}
 
             {% if item.publication %}
               {% include find-publication.html slug=item.publication %}
-              {% assign news_meta = found_pub.news %}
-              {% assign rail_news_text = item.text | default: news_meta.text | default: found_pub.headline | default: found_pub.title %}
-              {% assign rail_date = news_meta.date | default: item.date | default: '' %}
-              {% if news_meta.tag %}
-                {% assign rail_venue = news_meta.tag %}
-              {% elsif news_meta.venue %}
-                {% assign rail_venue = news_meta.venue %}
-              {% endif %}
-              {% if rail_venue == '' and found_pub.badges %}
-                {% for badge in found_pub.badges %}
-                  {% if badge.type == 'year' %}
-                    {% assign rail_venue = badge.label %}
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-              {% assign rail_badges = news_meta.badges %}
+              {% assign rail_pub = found_pub %}
+              {% assign rail_news_meta = found_pub.news %}
+              {% assign rail_news_text = item.text | default: rail_news_meta.text | default: found_pub.headline | default: found_pub.title %}
+              {% assign rail_date = rail_news_meta.date | default: item.date | default: '' %}
+              {% assign rail_badges = rail_news_meta.badges %}
               {% assign rail_tag = '' %}
             {% else %}
               {% assign rail_badges = item.badges %}
@@ -63,7 +53,9 @@
               <a class="post-toc-link page-rail-entry{% if is_home %} js-page-rail-link{% endif %}" href="{{ news_href }}" title="{{ rail_news_text | strip_html | strip }}">
                 <span class="page-rail-entry-meta">
                   {% if rail_date != '' %}<time class="page-rail-date">{{ rail_date }}</time>{% endif %}
-                  {% if rail_venue != '' %}<span class="news-badge news-badge--venue">{{ rail_venue }}</span>{% endif %}
+                  {% if rail_news_meta %}
+                    {% include news-venue-badges.html news=rail_news_meta pub=rail_pub %}
+                  {% endif %}
                   {% if rail_tag != '' %}<span class="news-tag">{{ rail_tag }}</span>{% endif %}
                   {% if rail_badges %}
                     {% for badge in rail_badges %}
@@ -80,7 +72,7 @@
       {% endfor %}
 
       <li class="post-toc-item">
-        <a class="post-toc-link{% if is_home %} js-page-rail-link{% endif %}" href="{{ poster_href }}" data-rail-target="recent-poster">Recent Poster</a>
+        <a class="post-toc-link{% if is_home %} js-page-rail-link{% endif %}" href="{{ poster_href }}" data-rail-target="recent-poster">Recent Posts</a>
       </li>
       {% for post in site.posts limit: 8 %}
         {% include poster-category-label.html post=post %}
@@ -92,15 +84,11 @@
               {% if poster_cat_label != '' %}
                 <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
               {% endif %}
-              {% if poster_sub_label != '' %}
-                <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
-              {% endif %}
+              {% include poster-sub-badge.html %}
               {% if poster_cat == 'algorithm' and poster_platform != '' %}
                 <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
               {% endif %}
-              {% if poster_cat == 'paper' and poster_venue != '' %}
-                <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
-              {% endif %}
+              {% include poster-venue-badge.html %}
               {% include poster-extra-badges.html post=post %}
             </span>
             <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>

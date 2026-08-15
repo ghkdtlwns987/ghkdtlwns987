@@ -24,9 +24,9 @@ image: /assets/images/1.png
 </section>
 
 <section class="content-section content-section--feed" id="recent-poster">
-  <h2 class="section-title section-title--feed">Recent Poster</h2>
+  <h2 class="section-title section-title--feed">Recent Posts</h2>
   {% include poster-recent.html %}
-  <p class="cross-link cross-link--feed"><a href="{{ '/poster/' | relative_url }}">Poster 전체 보기 →</a></p>
+  <p class="cross-link cross-link--feed"><a href="{{ '/poster/' | relative_url }}">Blog 전체 보기 →</a></p>
 </section>
 
 <section class="content-section" id="contact">

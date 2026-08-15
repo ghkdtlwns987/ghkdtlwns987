@@ -3,15 +3,24 @@
   Usage: {% include news-ase-related.html pub=pub %}
 {% endcomment %}
 {% assign related_venue = nil %}
-{% if include.pub.news.tag %}
+{% if include.pub.news.tags %}
+  {% for tag in include.pub.news.tags %}
+    {% if tag contains 'ASE' %}
+      {% assign related_venue = tag %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if related_venue == nil and include.pub.news.tag %}
   {% assign related_venue = include.pub.news.tag %}
-{% elsif include.pub.news.venue %}
+{% elsif related_venue == nil and include.pub.news.venue %}
   {% assign related_venue = include.pub.news.venue %}
 {% endif %}
 {% if related_venue == nil and include.pub.badges %}
   {% for badge in include.pub.badges %}
-    {% if badge.type == 'year' %}
-      {% assign related_venue = badge.label %}
+    {% if badge.type == 'venue' or badge.type == 'year' %}
+      {% if badge.label contains 'ASE' %}
+        {% assign related_venue = badge.label %}
+      {% endif %}
     {% endif %}
   {% endfor %}
 {% endif %}
@@ -19,6 +28,13 @@
 {% assign show_ase_related = false %}
 {% if related_venue and related_venue contains 'ASE' %}
   {% assign show_ase_related = true %}
+{% endif %}
+{% if include.pub.news.tags %}
+  {% for tag in include.pub.news.tags %}
+    {% if tag contains 'ASE' %}
+      {% assign show_ase_related = true %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
 {% if include.pub.news.badges %}
   {% for badge in include.pub.news.badges %}
@@ -45,7 +61,7 @@
 
   {% if ase_related_count > 0 %}
   <div class="news-related pub-modal-related" aria-label="ASE related posts">
-    <p class="news-related-label">Related Poster</p>
+    <p class="news-related-label">Related Posts</p>
     <ul class="news-related-list">
       {% for post in site.posts %}
         {% assign post_is_ase = false %}
@@ -66,7 +82,7 @@
                 {% include poster-extra-badges.html post=post %}
                 {% if post.venue and post.venue contains 'ASE' %}
                   {% unless post.badges and post.badges contains 'ASE' %}
-                    <span class="news-badge news-badge--ase news-badge--poster-venue">ASE</span>
+                    <span class="news-badge news-badge--venue">ASE</span>
                   {% endunless %}
                 {% endif %}
               </span>

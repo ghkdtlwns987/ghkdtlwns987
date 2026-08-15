@@ -1,11 +1,14 @@
 (function () {
-  var content = document.getElementById("post-content");
+  var article = document.getElementById("post-article");
+  var content =
+    document.getElementById("post-content") ||
+    document.getElementById("page-content");
   var toc = document.getElementById("post-toc");
   var list = document.getElementById("post-toc-list");
   var nav = document.getElementById("post-toc-nav");
-  var article = document.getElementById("post-article");
   var recent = document.getElementById("post-toc-recent");
-  if (!content || !toc || !list || !article) return;
+  var isPost = !!article;
+  if (!content || !toc || !list) return;
 
   function slugify(text) {
     return text
@@ -16,7 +19,11 @@
       .replace(/-+/g, "-") || "section";
   }
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll("h2, h3"));
+  // Posts: h2+h3. Pages (CV 등): h2 only — timeline/skill h3는 TOC를 너무 길게 만듦
+  var headingSelector = isPost ? "h2, h3" : "h2";
+  var headings = Array.prototype.slice.call(
+    content.querySelectorAll(headingSelector)
+  );
   var items = [];
 
   if (headings.length) {
@@ -35,19 +42,21 @@
       usedIds[heading.id] = true;
     });
 
-    var firstHeading = headings[0];
-    var hasIntro = false;
-    var node = content.firstElementChild;
-    while (node && node !== firstHeading) {
-      if (node.textContent && node.textContent.trim()) {
-        hasIntro = true;
-        break;
+    if (isPost) {
+      var firstHeading = headings[0];
+      var hasIntro = false;
+      var node = content.firstElementChild;
+      while (node && node !== firstHeading) {
+        if (node.textContent && node.textContent.trim()) {
+          hasIntro = true;
+          break;
+        }
+        node = node.nextElementSibling;
       }
-      node = node.nextElementSibling;
-    }
-    if (hasIntro) {
-      if (!article.id) article.id = "post-top";
-      items.push({ id: article.id, text: "들어가며", level: 2, el: article });
+      if (hasIntro) {
+        if (!article.id) article.id = "post-top";
+        items.push({ id: article.id, text: "들어가며", level: 2, el: article });
+      }
     }
 
     headings.forEach(function (heading) {

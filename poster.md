@@ -1,21 +1,21 @@
 ---
 layout: default
-title: Poster
+title: Blog
 permalink: /poster/
 description: >-
-  논문 리뷰, 알고리즘 풀이, 연구 노트를 모아 둔 Poster 아카이브입니다.
+  연구·보안·엔지니어링·알고리즘·일상 글을 모은 블로그입니다.
 ---
 
 <div class="post-layout page-layout">
   <div class="page-layout-main">
     <div class="hero">
-      <h1>Poster</h1>
+      <h1>Blog</h1>
       {% include page-lead.html page="poster" %}
     </div>
 
     {% include poster-tree.html %}
 
-    <section class="poster-archive" id="poster-archive" aria-label="Poster archive">
+    <section class="poster-archive" id="poster-archive" aria-label="Blog archive">
       <h2 class="section-title">All Posts</h2>
 
       <div class="poster-filters" id="poster-filters">
@@ -55,10 +55,10 @@ description: >-
         {% for post in site.posts %}
           {% include poster-card.html post=post %}
         {% else %}
-          <li class="poster-recent-empty">아직 등록된 Poster가 없습니다.</li>
+          <li class="poster-recent-empty">아직 등록된 글이 없습니다.</li>
         {% endfor %}
       </ul>
-      <p class="poster-filter-empty" id="poster-filter-empty" hidden>해당 조건의 Poster가 없습니다.</p>
+      <p class="poster-filter-empty" id="poster-filter-empty" hidden>해당 조건의 글이 없습니다.</p>
     </section>
   </div>
 

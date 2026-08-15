@@ -16,15 +16,11 @@
       {% if poster_cat_label != '' %}
         <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
       {% endif %}
-      {% if poster_sub_label != '' %}
-        <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
-      {% endif %}
+      {% include poster-sub-badge.html %}
       {% if poster_cat == 'algorithm' and poster_platform != '' %}
         <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
       {% endif %}
-      {% if poster_cat == 'paper' and poster_venue != '' %}
-        <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
-      {% endif %}
+      {% include poster-venue-badge.html %}
       {% include poster-extra-badges.html post=include.post %}
     </div>
     <h3 class="post-list-card-title">{{ include.post.title }}</h3>

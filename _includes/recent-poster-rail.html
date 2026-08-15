@@ -6,7 +6,7 @@
 {% endcomment %}
 {% assign rail_limit = include.limit | default: 5 %}
 {% assign rail_exclude = include.exclude_url | default: '' %}
-{% assign rail_title = include.title | default: 'Recent Poster' %}
+{% assign rail_title = include.title | default: 'Recent Posts' %}
 {% assign recent_shown = 0 %}
 
 {% for post in site.posts %}
@@ -32,15 +32,11 @@
               {% if poster_cat_label != '' %}
                 <span class="news-badge news-badge--poster-{{ poster_cat }}">{{ poster_cat_label }}</span>
               {% endif %}
-              {% if poster_sub_label != '' %}
-                <span class="news-badge news-badge--poster-sub">{{ poster_sub_label }}</span>
-              {% endif %}
+              {% include poster-sub-badge.html %}
               {% if poster_cat == 'algorithm' and poster_platform != '' %}
                 <span class="news-badge news-badge--poster-platform">{{ poster_platform }}</span>
               {% endif %}
-              {% if poster_cat == 'paper' and poster_venue != '' %}
-                <span class="news-badge news-badge--poster-venue">{{ poster_venue }}</span>
-              {% endif %}
+              {% include poster-venue-badge.html %}
               {% include poster-extra-badges.html post=post %}
             </span>
             <span class="page-rail-entry-title">{{ post.title | strip_html | strip }}</span>

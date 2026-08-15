@@ -1,10 +1,14 @@
 ---
 layout: post
-title: "Let the Trial Begin: A Mock-Court Approach to Vulnerability Detection using LLM-Based Agents Review"
-date: 2026-08-05
+title: "Paper Title Review"
+date: YYYY-MM-DD
 description: |
-  Mock-Court 기반 LLM Multi-Agent 소프트웨어 취약점 탐지 프레임워크
-venue: ICSE 2026
+  Short description
+venue: ASE 2026
+badges:
+  - ASE
+  - "2026"
+  - Paper Review
 ---
 
 ## Summary

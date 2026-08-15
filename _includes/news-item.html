@@ -10,19 +10,6 @@
   {% assign pub = found_pub %}
   {% assign news_meta = pub.news %}
   {% assign news_text = include.item.text | default: news_meta.text | default: pub.headline | default: pub.title %}
-  {% assign venue_label = nil %}
-  {% if news_meta.tag %}
-    {% assign venue_label = news_meta.tag %}
-  {% elsif news_meta.venue %}
-    {% assign venue_label = news_meta.venue %}
-  {% endif %}
-  {% if venue_label == nil and pub.badges %}
-    {% for badge in pub.badges %}
-      {% if badge.type == 'year' %}
-        {% assign venue_label = badge.label %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
   {% assign has_detail = false %}
   {% if pub.summary and pub.summary.size > 0 %}
     {% assign has_detail = true %}
@@ -39,7 +26,7 @@
     <button type="button" class="news-item-link" data-pub-modal="{{ pub.slug }}" aria-haspopup="dialog">
       <div class="news-meta">
         <time class="news-date">{{ news_meta.date | default: include.item.date }}</time>
-        {% if venue_label %}<span class="news-badge news-badge--venue">{{ venue_label }}</span>{% endif %}
+        {% include news-venue-badges.html news=news_meta pub=pub %}
         {% if news_meta.badges %}
           {% for badge in news_meta.badges %}
             <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
@@ -53,7 +40,7 @@
   <li class="news-item{% if is_featured %} news-item--featured{% endif %}">
     <div class="news-meta">
       <time class="news-date">{{ news_meta.date | default: include.item.date }}</time>
-      {% if venue_label %}<span class="news-badge news-badge--venue">{{ venue_label }}</span>{% endif %}
+      {% include news-venue-badges.html news=news_meta pub=pub %}
     </div>
     <p class="news-text">{{ news_text }}</p>
   </li>

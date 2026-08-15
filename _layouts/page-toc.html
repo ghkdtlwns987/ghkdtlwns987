@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="post-layout page-layout">
+  <div class="page-layout-main" id="page-content">
+    {{ content }}
+  </div>
+  <div class="post-side-rail">
+    {% include content-topbar.html %}
+    <aside class="post-toc page-rail" id="post-toc" aria-label="Contents" hidden>
+      <details class="post-toc-details" id="post-toc-details" open>
+        <summary class="post-toc-title">Contents</summary>
+        <nav class="post-toc-nav" id="post-toc-nav">
+          <ul class="post-toc-list" id="post-toc-list"></ul>
+        </nav>
+      </details>
+    </aside>
+  </div>
+</div>
+<script src="{{ '/assets/js/post-toc.js' | relative_url }}?v=4"></script>

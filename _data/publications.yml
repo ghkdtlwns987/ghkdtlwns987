@@ -9,8 +9,10 @@ international:
     badges:
       - type: intl
         label: International
+      - type: venue
+        label: ASE
       - type: year
-        label: ASE 2026
+        label: "2026"
       - type: author
         label: First Author
     news:
@@ -22,7 +24,9 @@ international:
       badges:
         - New
         - Paper
-      tag: "ASE 2026"
+      tags:
+        - ASE
+        - "2026"
     summary:
       - >
           소프트웨어 취약점의 복잡한 인과 관계를 구조화한 Vulnerability Causal Knowledge Graph (VCKG)와 LLM 기반 Multi-Agent Reasoning을 결합한 AI 기반 취약점 탐지 프레임워크를 제안하였습니다. 

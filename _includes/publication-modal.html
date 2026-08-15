@@ -33,24 +33,11 @@
     </h2>
 
     {% if pub.news %}
-    {% assign venue_label = nil %}
-    {% if pub.news.tag %}
-      {% assign venue_label = pub.news.tag %}
-    {% elsif pub.news.venue %}
-      {% assign venue_label = pub.news.venue %}
-    {% endif %}
-    {% if venue_label == nil and pub.badges %}
-      {% for badge in pub.badges %}
-        {% if badge.type == 'year' %}
-          {% assign venue_label = badge.label %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
     <div class="pub-modal-news-meta news-meta">
       {% if pub.news.date %}
       <time class="news-date">{{ pub.news.date }}</time>
       {% endif %}
-      {% if venue_label %}<span class="news-badge news-badge--venue">{{ venue_label }}</span>{% endif %}
+      {% include news-venue-badges.html news=pub.news pub=pub %}
       {% if pub.news.badges %}
         {% for badge in pub.news.badges %}
           <span class="news-badge news-badge--{{ badge | downcase }}">{{ badge }}</span>
