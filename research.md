@@ -27,14 +27,14 @@ description: >-
       <span class="research-topic__num" aria-hidden="true">01</span>
       <div class="research-topic__body">
         <h3>LLM for Software Engineering</h3>
-        <p>코드 이해 · 프로그램 분석 · 자동 추론</p>
+        <p>Code Understanding · Program Analysis · Automated Reasoning</p>
       </div>
     </li>
     <li class="research-topic research-topic--sec">
       <span class="research-topic__num" aria-hidden="true">02</span>
       <div class="research-topic__body">
         <h3>AI-driven Software Security</h3>
-        <p>취약점 탐지 · 취약점 분석 · 프로그램 수리</p>
+        <p>Vulnerability Detection · Vulnerability Analysis · Program Repair</p>
       </div>
     </li>
     <li class="research-topic research-topic--kg">
@@ -73,7 +73,7 @@ description: >-
               <a href="{{ pub.link }}" target="_blank" rel="noopener">Paper</a>
             {% endif %}
             {% if review_post %}
-              <a href="{{ review_post.url | relative_url }}">Review</a>
+              <a href="{{ review_post.url | relative_url }}">Overview</a>
             {% endif %}
             <button type="button" class="research-pub__more" data-pub-modal="{{ pub.slug }}">Details</button>
           </div>

@@ -86,7 +86,7 @@ image: /assets/images/1.png
     <div class="home-contact">
       <a href="mailto:{{ site.author.email }}">Email</a>
       <span class="home-contact__sep" aria-hidden="true">·</span>
-      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">{{ site.author.github }}</a>
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
       <span class="home-contact__sep" aria-hidden="true">·</span>
       <a href="{{ site.author.velog }}" target="_blank" rel="noopener">Velog</a>
     </div>
