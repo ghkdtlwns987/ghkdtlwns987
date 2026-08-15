@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Allow: /assets/
+
+Disallow: /*.pdf$
+Disallow: /pdf/
+Disallow: /figure/*.pdf$
+Disallow: /bob.png
+Disallow: /ho-dong.png
+Disallow: /1.png
 
 Sitemap: https://ghkdtlwns987.github.io/sitemap.xml

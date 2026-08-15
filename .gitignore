@@ -9,3 +9,14 @@ Gemfile.lock
 .DS_Store
 script.sh
 *.sh
+upload_poster.sh
+
+# PDF / 비공개 자료 (로컬 전용)
+*.pdf
+pdf/
+_private/
+
+# 루트에 남은 미사용 이미지 (프로필은 assets/images/ 사용)
+/bob.png
+/ho-dong.png
+/1.png

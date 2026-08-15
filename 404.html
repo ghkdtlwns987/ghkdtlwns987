@@ -1,0 +1,46 @@
+---
+layout: default
+title: 잘못된 접근
+description: 요청하신 페이지를 찾을 수 없습니다.
+permalink: /404.html
+sitemap: false
+robots: noindex
+---
+
+<section class="error-page" aria-labelledby="error-title">
+  <p class="error-page-code">404</p>
+  <h1 id="error-title" class="error-page-title">잘못된 접근입니다</h1>
+  <p class="error-page-desc">
+    요청하신 주소의 페이지를 찾을 수 없습니다.<br>
+    잠시 후 이전 페이지로 이동합니다.
+  </p>
+  <div class="error-page-actions">
+    <button type="button" class="error-page-btn" id="error-back-btn">이전 페이지로</button>
+    <a class="error-page-link" href="{{ '/' | relative_url }}">홈으로</a>
+  </div>
+</section>
+
+<script>
+(function () {
+  var homeUrl = {{ '/' | relative_url | jsonify }};
+  var delayMs = 2500;
+  var timer = null;
+
+  function goBack() {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+    window.location.replace(homeUrl);
+  }
+
+  var btn = document.getElementById('error-back-btn');
+  if (btn) btn.addEventListener('click', goBack);
+
+  timer = setTimeout(goBack, delayMs);
+})();
+</script>

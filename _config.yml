@@ -14,7 +14,7 @@ author:
   velog: https://velog.io/@ghkdtlwns987
   tistory: https://pwnable-study.tistory.com
 
-# GitHub Profile README는 Jekyll 빌드에서 제외
+# 공개되면 안 되는/불필요한 파일은 사이트에 올리지 않음
 exclude:
   - README.md
   - Gemfile
@@ -23,6 +23,15 @@ exclude:
   - .git
   - .gitignore
   - .github
+  - pdf
+  - "*.pdf"
+  - figure/*.pdf
+  - _private
+  - _templates
+  - bob.png
+  - ho-dong.png
+  - 1.png
+  - .DS_Store
 
 markdown: kramdown
 kramdown:
