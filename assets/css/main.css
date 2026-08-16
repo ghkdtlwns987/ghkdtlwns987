@@ -4017,7 +4017,7 @@ a.post-series-link:hover {
 
 .post-series-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   gap: 0.75rem;
   margin-top: 0.85rem;
@@ -4028,7 +4028,15 @@ a.post-series-link:hover {
 .post-series-nav-link {
   font-size: 0.8125rem;
   font-weight: 500;
-  max-width: min(100%, 18rem);
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-series-nav-link--next {
+  text-align: right;
 }
 
 .post-series-nav-link.is-disabled {

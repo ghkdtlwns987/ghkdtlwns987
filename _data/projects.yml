@@ -394,5 +394,8 @@ sections:
             - DVWA
             - sqlmap
             - Burp Suite
-          internal_link: /poster/2026/08/16/reverse-engineering-with-games/
-          internal_link_label: Blog → RE 강의 실습
+          internal_links:
+            - url: /poster/2026/08/16/reverse-engineering-with-games/
+              label: Blog → RE 강의 실습
+            - url: /poster/2026/08/16/stack-buffer-overflow/
+              label: Blog → System Hacking

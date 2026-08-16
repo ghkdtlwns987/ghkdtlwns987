@@ -129,14 +129,20 @@
       {% endif %}
     </div>
 
-    {% if project.detail.link or project.detail.internal_link %}
+    {% if project.detail.link or project.detail.internal_link or project.detail.internal_links %}
     <p class="pub-modal-footer">
       {% if project.detail.link %}
       <a href="{{ project.detail.link }}" target="_blank" rel="noopener" class="pub-modal-details">
         details → {{ project.detail.link_label | default: project.detail.link }}
       </a>
       {% endif %}
-      {% if project.detail.internal_link %}
+      {% if project.detail.internal_links %}
+        {% for item in project.detail.internal_links %}
+      <a href="{{ item.url | relative_url }}" class="pub-modal-details">
+        {{ item.label | default: '자세히 보기' }}
+      </a>
+        {% endfor %}
+      {% elsif project.detail.internal_link %}
       <a href="{{ project.detail.internal_link | relative_url }}" class="pub-modal-details">
         {{ project.detail.internal_link_label | default: '자세히 보기' }}
       </a>

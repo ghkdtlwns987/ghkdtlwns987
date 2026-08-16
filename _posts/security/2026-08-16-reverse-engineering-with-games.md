@@ -6,6 +6,9 @@ description: >-
   SW마이스터고 정보보안 강의에서 Cheat Engine과 x64dbg로 게임 Memory·Assembly를 분석하며 Reverse Engineering 기초를 가르친 실습 설계
 badges:
   - Essay
+series: re-system-hacking
+series_order: 1
+series_title: "Reverse Engineering → System Hacking"
 ---
 
 ## 들어가며
@@ -199,3 +202,5 @@ Assembly를 암기시키기보다, `mov` / `inc` / Conditional Jump / Register�
 실습에 사용한 Reverse Engineering Overview 자료를 아래에 올려 두었다.
 
 [Reverse Engineering Overview.pdf]({{ '/assets/documents/reverse-engineering-overview.pdf' | relative_url }})
+
+다음 글에서는 Register · Stack · Calling Convention을 이어 **Stack Buffer Overflow**로 System Hacking 기초를 정리한다.

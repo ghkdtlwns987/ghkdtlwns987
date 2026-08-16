@@ -56,12 +56,12 @@
     </ol>
     <div class="post-series-nav">
       {% if prev_post %}
-        <a class="post-series-nav-link post-series-nav-link--prev" href="{{ prev_post.url | relative_url }}">← 이전: {{ prev_post.title | strip_html | strip | truncate: 40 }}</a>
+        <a class="post-series-nav-link post-series-nav-link--prev" href="{{ prev_post.url | relative_url }}">← 이전: {{ prev_post.title | strip_html | strip }}</a>
       {% else %}
         <span class="post-series-nav-link is-disabled"></span>
       {% endif %}
       {% if next_post %}
-        <a class="post-series-nav-link post-series-nav-link--next" href="{{ next_post.url | relative_url }}">다음: {{ next_post.title | strip_html | strip | truncate: 40 }} →</a>
+        <a class="post-series-nav-link post-series-nav-link--next" href="{{ next_post.url | relative_url }}">다음: {{ next_post.title | strip_html | strip }} →</a>
       {% endif %}
     </div>
   </nav>
