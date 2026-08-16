@@ -46,8 +46,10 @@ sections:
         meta: Capstone Design
         summary: AI 악성코드 탐지 MSA 플랫폼. Kubernetes · GitOps CI/CD · 모니터링 인프라 구축.
         figures:
-          - src: figure/capstone/capstone1.png
-            caption: AI Malware Detector Platform 아키텍처
+          - src: figure/capstone/amd-architecture.png
+            caption: AMD 전체 아키텍처
+          - src: figure/capstone/amd-cicd.png
+            caption: CI/CD 파이프라인 (Jenkins · Docker Hub · Kubernetes)
           - src: figure/capstone/capstone2.png
             caption: 서비스 구성 및 배포 파이프라인
         tags:
@@ -87,8 +89,8 @@ sections:
             - Prometheus
             - Grafana
             - Linux
-          link: /assets/documents/capstone-final-report.pdf
-          link_label: 캡스톤 최종발표.pdf
+          internal_link: /poster/2026/08/16/ai-malware-detector/
+          internal_link_label: Blog → AMD 개발기
 
       - slug: hccc-incident-response
         title: HCCC 침해사고 대응
@@ -141,8 +143,8 @@ sections:
             - SQL Injection
             - Apache Log
             - Digital Forensics
-          link: /assets/documents/hccc-final.pdf
-          link_label: HCCC 최종.pdf
+          internal_link: /poster/2026/08/16/hccc-incident-response/
+          internal_link_label: Blog → HCCC 회고
 
   - title: Engineering
     projects:
@@ -246,6 +248,8 @@ sections:
             - QueryDSL
             - REST API
             - Redis
+          internal_link: /poster/2026/08/16/zero-downtime-deployment-platform/
+          internal_link_label: Blog → 무중단 배포 플랫폼
 
       - slug: live-coding
         title: 교내 라이브코딩 플랫폼 구축
@@ -332,6 +336,8 @@ sections:
             - MySQL
             - SSL
             - Firewall
+          internal_link: /poster/2026/08/16/live-coding-system/
+          internal_link_label: Blog → 라이브 코딩 운영기
 
   - title: Education
     projects:
@@ -388,3 +394,5 @@ sections:
             - DVWA
             - sqlmap
             - Burp Suite
+          internal_link: /poster/2026/08/16/reverse-engineering-with-games/
+          internal_link_label: Blog → RE 강의 실습

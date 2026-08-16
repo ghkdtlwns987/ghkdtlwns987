@@ -24,7 +24,6 @@ exclude:
   - .gitignore
   - .github
   - pdf
-  - "*.pdf"
   - figure/*.pdf
   - _private
   - _templates
@@ -32,6 +31,10 @@ exclude:
   - ho-dong.png
   - 1.png
   - .DS_Store
+
+# assets/documents 아래 PDF는 블로그 첨부용으로 공개
+include:
+  - assets/documents
 
 markdown: kramdown
 kramdown:
