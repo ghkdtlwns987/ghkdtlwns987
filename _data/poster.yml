@@ -33,6 +33,8 @@ categories:
         title: BFS · DFS
       - slug: greedy
         title: Greedy
+      - slug: hash
+        title: Hash
 
   - slug: etc
     title: Etc
