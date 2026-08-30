@@ -3,7 +3,7 @@ layout: post
 title: "Overleaf AI Assistant 만들기 - 1"
 date: 2026-08-31
 description: >-
-  Overleaf에서 LaTeX를 복사해 외부 AI에 붙이지 않고, 에디터 안에서 선택·검토·Apply까지 이어지는 Chrome 확장을 만들기 시작한 이야기
+  Overleaf에서 LaTeX를 복사해 외부 AI에 붙이지 않고, 에디터 안에서 선택/검토/Apply까지 이어지는 Chrome 확장을 만들기 시작한 이야기
 badges:
   - Essay
 series: overleaf-ai-assistant
@@ -32,7 +32,7 @@ v0.2.0에서 **AI Paper Copilot**이라는 이름의 사이드바 UX와, 선택�
 
 - **Polish** — 학술 영어를 더 자연스럽게  
 - **Shorten** — 의미를 유지한 채 짧게  
-- **Review** — 논리·표현·문법 이슈 점검  
+- **Review** — 논리/표현/문법 이슈 점검  
 - **LaTeX Check** — 명령/문법 오류 점검  
 - **Citation Check** — `\cite` 등 인용 사용 점검  
 
@@ -141,7 +141,7 @@ LLM API 연결
   ↓
 액션별 Prompt / 출력 형식
   ↓
-필요하면 CM6 선택·Apply 대응
+필요하면 CM6 선택/Apply 대응
 ```
 
 다음 편에서는 stub 자리에 실제 모델을 넣고, 액션마다 어떤 입력을 주고하고 어떤 형태로 받게 할지 다듬으려 한다.
