@@ -3,7 +3,7 @@ layout: post
 title: "Overleaf AI Assistant 만들기 - 1"
 date: 2026-08-31
 description: >-
-  Overleaf에서 LaTeX를 복사해 외부 AI에 붙이지 않고, 에디터 안에서 선택/검토/Apply까지 이어지는 Chrome 확장을 만들기 시작한 이야기
+  논문 작성 흐름을 끊지 않고 AI를 활용하기 위해, Overleaf에서 선택한 LaTeX를 검토하고 다시 적용할 수 있는 Chrome Extension을 만든 과정
 badges:
   - Essay
 series: overleaf-ai-assistant
@@ -13,154 +13,194 @@ series_title: "Overleaf AI Assistant 만들기"
 
 ## 들어가며
 
-논문을 Overleaf에서 쓰다 보면 AI를 쓰고 싶은 순간이 자주 온다.  
-문장을 더 자연스럽게 다듬고 싶거나, 같은 내용을 짧게 줄이고 싶거나, citation이나 LaTeX가 어색하지 않은지 확인하고 싶을 때다.
+논문을 작성하면서 ChatGPT를 자주 사용한다.
 
-문제는 도구가 없어서가 아니다. ChatGPT에 붙여 넣으면 된다.  
-다만 그 순간마다 에디터를 벗어나야 한다. 문장을 복사하고, 새 탭에서 요청하고, 결과를 다시 가져와 덮어쓴다. 한두 번은 괜찮지만, 논문 문장을 고치는 작업이 반복되면 흐름이 계속 끊긴다.
+영어 문장을 다듬거나, 긴 문장을 줄이고, LaTeX나 Citation을 확인하거나, Reviewer 관점에서 작성한 문단을 다시 검토할 때 유용하다.
 
-그래서 만들고 싶은 것은 “더 똑똑한 모델”이 아니라 **Overleaf 안에서 바로 쓰는 Assistant**였다.  
-문장을 고르고, 원하는 액션을 누르고, 결과를 확인한 뒤 에디터에 다시 넣는 일까지를 한 화면에서 끝내고 싶었다.
+그런데 반복해서 사용하다 보니 모델의 성능과는 별개로 불편한 점이 있었다.
 
-이번 글은 그 시리즈의 첫 번째 편이다.  
-v0.2.0에서 **AI Paper Copilot**이라는 이름의 사이드바 UX와, 선택부터 Apply까지의 기본 파이프라인을 잡은 과정을 정리한다.
-
-## 무엇을 만들고 싶었는가
-
-처음부터 복잡한 Agent를 만들 생각은 없었다.  
-논문 작성 중에 자주 하는 다섯 가지 일만 사이드바에 두기로 했다.
-
-- **Polish** — 학술 영어를 더 자연스럽게  
-- **Shorten** — 의미를 유지한 채 짧게  
-- **Review** — 논리/표현/문법 이슈 점검  
-- **LaTeX Check** — 명령/문법 오류 점검  
-- **Citation Check** — `\cite` 등 인용 사용 점검  
-
-사용 흐름도 단순하게 잡았다.
+**논문을 작성하는 곳과 AI를 사용하는 곳이 분리되어 있었다.**
 
 ```text
-LaTeX 선택
-    ↓
-사이드바에서 액션 선택
-    ↓
-결과 확인
-    ↓
-Apply 또는 Copy
+Overleaf에서 문장 선택
+        ↓
+Copy
+        ↓
+ChatGPT
+        ↓
+Prompt 작성
+        ↓
+결과 Copy
+        ↓
+Overleaf
+        ↓
+원래 위치를 찾아 Paste
 ```
 
-여기서 중요하게 본 기준은 하나였다.
+한두 번은 괜찮지만 논문 전체를 수정하다 보면 이 과정을 계속 반복하게 된다.
 
-> AI가 문장을 고쳐주는가보다, **고른 구간을 잃지 않고 다시 에디터에 넣을 수 있는가?**
+그래서 생각했다.
 
-외부 챗봇은 보통 앞부분만 해결한다.  
-내가 만들고 싶은 Assistant는 뒷부분, 즉 논문 편집기와의 연결까지 포함해야 했다.
+**AI를 사용하기 위해 논문 작성 흐름을 벗어나지 않게 할 수 없을까?**
 
-## 확장은 세 층으로 나눴다
+이 생각에서 Overleaf AI Assistant를 만들기 시작했다.
 
-Chrome Extension(Manifest V3)으로 구현했고, 역할은 의도적으로 나눴다.
+## 무엇을 만들고 싶었나
+
+목표는 단순했다.
+
+**Select → Action → Preview → Apply**
+
+Overleaf에서 LaTeX를 선택하고 원하는 작업을 실행한 뒤, 결과가 괜찮으면 바로 원래 위치에 적용한다.
+
+초기에는 논문을 작성하면서 자주 사용하는 기능 다섯 개만 넣었다.
+
+- **Polish** — 학술적인 문장으로 다듬기
+- **Shorten** — 의미를 유지하면서 압축
+- **Review** — Reviewer 관점에서 검토
+- **LaTeX Check** — LaTeX 구조 확인
+- **Citation Check** — Citation과 Claim 점검
+
+Chrome Extension은 Manifest V3를 사용했고 역할을 간단하게 나눴다.
 
 ```text
-CodeMirror 에디터
-        ↕
-   content.js
-        ↕
-  sidebar (iframe)
-        ↕
-  background.js
+Overleaf Editor
+      ↕
+  content.js
+      ↕
+Sidebar
+      ↕
+background.js
 ```
 
-- `content.js`는 Overleaf 페이지에 사이드바를 붙이고, 선택 구간을 기억하며, Apply 시 에디터를 직접 수정한다.  
-- `sidebar/`는 사용자가 보는 Paper Copilot UI다. 선택 문구, 액션 버튼, 결과, Copy/Apply가 여기에 있다.  
-- `background.js`는 `AI_ACTION`을 받아 액션별 프롬프트를 붙이고 응답을 돌려준다. 지금은 stub이고, 이후 LLM API만 연결하면 된다.
+`content.js`가 Overleaf 에디터와 연결되고, Sidebar는 사용자 인터페이스를 담당한다. `background.js`는 이후 LLM을 연결할 수 있도록 AI 요청을 담당하게 했다.
 
-사이드바는 iframe으로 주입하고 content script와는 `postMessage`로 이야기한다.  
-AI 요청만 `chrome.runtime.sendMessage`로 background에 보낸다.  
-UI, 에디터 조작, 모델 호출을 한 파일에 몰아넣지 않은 이유는 다음 편에서 API나 에디터 버전만 바꿔도 전체 UX를 다시 짜지 않게 하기 위해서다.
+## 그런데 LLM부터 연결하지 않았다
 
-## 한 번의 액션이 실제로 하는 일
+처음에는 OpenAI API부터 붙이려고 했다.
 
-표면적으로는 버튼을 하나 누르는 일이다.  
-안에서는 선택이 여러 경계를 넘어간다.
+하지만 생각해보니 이 Extension에서 더 먼저 확인해야 할 것이 있었다.
 
-1. 에디터에서 문장을 고르면 content script가 텍스트와 CodeMirror cursor를 캐시한다.  
-2. 사이드바 액션을 누르면 최신 선택을 다시 가져온다.  
-3. background에 `AI_ACTION`을 보내고 결과를 사이드바에 보여준다.  
-4. Copy는 클립보드로, Apply는 캐시해 둔 선택 구간을 결과로 바꾼다.
+**AI가 수정한 결과를 사용자가 선택했던 정확한 위치에 다시 넣을 수 있는가?**
 
-```mermaid
-sequenceDiagram
-  participant User
-  participant Editor as CodeMirror
-  participant Content as content.js
-  participant Sidebar as sidebar
-  participant BG as background
+LLM과 에디터 연동을 동시에 만들면 결과가 이상할 때 원인을 구분하기 어려워진다.
 
-  User->>Editor: 문장 선택
-  Content->>Content: text + cursor 캐시
-  User->>Sidebar: Polish
-  Sidebar->>Content: GET_SELECTION
-  Content-->>Sidebar: 선택 텍스트
-  Sidebar->>BG: AI_ACTION
-  BG-->>Sidebar: reply
-  User->>Sidebar: Apply
-  Sidebar->>Content: APPLY
-  Content->>Editor: replaceRange
+```text
+Prompt 문제?
+API 문제?
+선택 영역 문제?
+Apply 위치 문제?
 ```
 
-Apply가 생각보다 까다로운 이유는 여기에 있다.  
-화면에 보이는 문자열만 있으면 “무엇을 고칠지”는 알아도 “어디를 고칠지”는 모른다.  
-그래서 CodeMirror 5 기준으로 `getCursor("from"/"to")`를 같이 저장하고, Apply 때 `replaceRange`로 그 구간만 교체한다.
+그래서 첫 버전에서는 의도적으로 실제 LLM을 사용하지 않고 **stub response**를 반환하도록 했다.
 
-이 부분을 먼저 고정한 이유는 단순하다.  
-모델이 아무리 좋은 문장을 만들어도, 에디터에 정확히 들어가지 않으면 Assistant라고 부르기 어렵다.
+```text
+Selected LaTeX
+      ↓
+Action
+      ↓
+Stub Response
+      ↓
+Preview
+      ↓
+Apply
+```
 
-## 이번 버전에서 끝난 것, 일부러 미룬 것
+모델 품질을 제외하고 **Editor → Extension → Editor** 흐름부터 검증하고 싶었다.
 
-v0.2.0에서 맞춘 것은 제품의 겉모습이 아니라 **루프**다.
+## 선택한 문장을 어떻게 다시 찾을까?
 
-이전에는 확장을 열어 AI에 무언가를 보내는 정도에 가까웠다면,  
-지금은 논문 작성 중에 고른 문장을 사이드바에서 다루고 다시 에디터로 되돌리는 형태가 됐다.  
-액션별 system prompt도 미리 나눠 두었다. Polish는 LaTeX 명령을 유지한 채 문장만 다듬고, Review는 이슈를 bullet로 지적하도록 적어 두었다.
+Apply를 구현하면서 중요한 것은 선택한 문자열뿐만 아니라 **선택한 위치**라는 것을 알게 됐다.
 
-반대로 일부러 아직 하지 않은 것도 있다.
+예를 들어 논문에 같은 문장이 두 번 있다면,
 
-- LLM API는 연결하지 않았다. 지금은 액션별 stub 미리보기만 반환한다.  
-- CodeMirror 6 전용 구간은 따로 대응하지 않았다. 지금은 CM5 API를 기준으로 동작한다.
+```text
+CRAFT achieves strong performance.
+...
+CRAFT achieves strong performance.
+```
 
-처음부터 모델을 붙이지 않은 이유는, API 품질 문제를 에디터 연동 문제와 섞고 싶지 않아서다.  
-Stub으로도 “선택 → 결과 → Apply”가 되는지 먼저 확인하는 편이 다음 작업을 단순하게 만든다.
+문자열만 저장해서는 어느 문장을 수정해야 하는지 알 수 없다.
 
-## 결과 화면 (v0.2.0)
+그래서 선택한 text와 함께 CodeMirror의 cursor range를 저장했다.
 
-v0.2.0에서 확인한 것은 **AI Paper Copilot** 사이드바와 Chrome 확장 등록 상태다.  
-선택 영역, 다섯 가지 액션, 결과, Copy / Apply까지 한 패널에 모였다. 아직 LLM은 stub이지만, 루프 자체는 이 화면에서 끝까지 돌아간다.
+```javascript
+selection = {
+  text: selectedText,
+  from: editor.getCursor("from"),
+  to: editor.getCursor("to")
+};
+```
 
-### AI Paper Copilot 사이드바
+그리고 Apply할 때 저장해둔 범위만 교체했다.
 
-Overleaf 에디터에서 확장을 열면 사이드바가 표시된다.  
-Polish / Shorten / Review / LaTeX Check / Citation Check 버튼과 결과 영역이 v0.2.0 UX의 기본 형태다.
+```javascript
+editor.replaceRange(
+  revisedText,
+  selection.from,
+  selection.to
+);
+```
+
+즉,
+
+- **What was selected?** → text
+- **Where was selected?** → range
+
+를 하나의 selection state로 관리했다.
+
+이렇게 하니 문서 전체에서 문자열을 다시 검색할 필요 없이, **사용자가 실제로 선택했던 영역만** 수정할 수 있었다.
+
+## 결과
+
+첫 번째 버전에서는 실제 AI 없이 다음 흐름을 완성했다.
+
+```text
+LaTeX 선택 → Action → 결과 확인 → Apply → 선택했던 영역 수정
+```
 
 ![AI Paper Copilot v0.2.0 사이드바]({{ '/assets/images/engineering/overleaf-ai-copilot-sidebar.png' | relative_url }})
 
-### Chrome Extension 등록
-
-`chrome://extensions`에 **Overleaf AI Extension 0.2.0**이 설치된 상태다.  
-Manifest V3 확장으로, Overleaf 탭에서 content script와 sidebar iframe이 주입된다.
+Chrome Extension으로 등록해 실제 Overleaf에서도 동작하는 것을 확인했다.
 
 ![Chrome Extension 0.2.0 설치 화면]({{ '/assets/images/engineering/overleaf-ai-extension-installed.png' | relative_url }})
 
-## 다음에 할 일
+아직 LLM도 없고 UI도 단순하지만, 이 버전에서 확인하고 싶었던 것은 **Overleaf와 AI 사이를 연결할 편집 루프를 만들 수 있는가**였다.
 
-1편에서 파이프와 UX를 고정해 두면, 이후 문제는 비교적 선명해진다.
+## 느낀 점
+
+처음에는 AI Assistant를 만든다고 하니 자연스럽게 어떤 모델을 사용할지, Prompt를 어떻게 작성할지를 먼저 생각했다.
+
+그런데 직접 만들어보니 **모델보다 먼저 해결해야 할 문제**가 있었다.
+
+아무리 좋은 결과를 생성해도 엉뚱한 위치에 적용된다면 사용할 수 없는 도구다.
+
+특히 이번에 구현하면서 **선택한 내용과 선택한 위치는 서로 다른 상태**라는 점이 인상적이었다. 단순한 문자열 처리라고 생각했지만, 실제 Editor와 연결되면서 상태를 어떻게 기억하고 복원할지가 중요한 문제가 됐다.
+
+LLM을 일부러 늦게 붙인 것도 도움이 됐다.
 
 ```text
-Stub
-  ↓
-LLM API 연결
-  ↓
-액션별 Prompt / 출력 형식
-  ↓
-필요하면 CM6 선택/Apply 대응
+Editor → Extension → Editor
 ```
 
-다음 편에서는 stub 자리에 실제 모델을 넣고, CM6 bridge/스트리밍/LLM 파라미터까지 v0.4.0까지 다룬다. → [2편](/engineering/2026-08-31-overleaf-ai-assistant-2/)
+를 먼저 확인했기 때문에, 다음 단계에서는 여기에 LLM만 추가하면 된다.
+
+기능을 한꺼번에 붙이는 것보다 **가장 중요한 흐름을 먼저 만들고 외부 의존성을 하나씩 추가**하는 편이 문제를 찾기 쉬웠다.
+
+## 다음
+
+첫 번째 버전에서 편집 루프는 만들었지만 아직 실제 AI Assistant는 아니다.
+
+다음에는 stub을 실제 LLM으로 교체해야 한다. 동시에 최신 Overleaf의 CodeMirror 6에서도 같은 선택과 Apply 흐름이 동작해야 한다.
+
+즉 다음 문제는
+
+```text
+Editor → Extension → LLM → Extension → Editor
+```
+
+를 완성하는 것이다.
+
+2편에서는 실제 LLM API를 연결하고, CodeMirror 6와 Streaming까지 붙여본다.
+
+→ [Overleaf AI Assistant 만들기 - 2](/engineering/2026-08-31-overleaf-ai-assistant-2/)

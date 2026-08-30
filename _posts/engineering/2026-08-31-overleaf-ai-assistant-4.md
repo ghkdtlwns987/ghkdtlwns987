@@ -3,7 +3,7 @@ layout: post
 title: "Overleaf AI Assistant 만들기 - 4"
 date: 2026-08-31
 description: >-
-  Ask AI Apply changes — 원문을 LaTeX 주석으로 남기고 Suggested Revision을 아래에 추가하는 v0.7.8–v0.8.0
+  AI 수정안으로 원문을 덮어쓰는 대신, 기존 LaTeX를 보존하면서 Suggested Revision을 적용하도록 개선한 과정
 badges:
   - Essay
 series: overleaf-ai-assistant
@@ -13,86 +13,142 @@ series_title: "Overleaf AI Assistant 만들기"
 
 ## 들어가며
 
-[3편](/engineering/2026-08-31-overleaf-ai-assistant-3/)까지 Ask AI로 **선택 → 질문 → Answer → Apply suggestion** 흐름을 에디터 안에서 만들었다.  
-다만 Apply를 누르면 원문이 **그 자리에서 통째로 바뀌었다.** 수정본만 남고, “AI 적용 전에 뭐였는지”는 히스토리나 git diff에 맡겨야 했다.
+[3편](/engineering/2026-08-31-overleaf-ai-assistant-3/)까지 만들면서 Overleaf에서 문장을 선택하고, 바로 옆에서 AI에게 질문한 뒤 결과를 Apply할 수 있게 됐다.
 
-논문을 고칠 때는 한 번에 덮어쓰기보다, **원문을 남겨 두고 수정본을 옆에/아래에 붙여** 비교하는 편이 낫다. LaTeX라면 `%` 주석으로 원문을 보존하면 compile에는 영향 없고, diff도 읽기 쉽다.
+**Select → Ask AI → Answer → Apply**
 
-**v0.7.8 ~ v0.8.0**에서는 Apply 동작을 **“교체”에서 “추가”** 쪽으로 바꿨다.
+기능적으로는 원하는 흐름이 완성됐지만, 실제 논문을 수정하면서 마지막으로 하나가 마음에 걸렸다.
 
-## 3편에서 남은 문제
+**Apply를 누르는 순간 원문이 사라졌다.**
 
-3편 Ask AI는 Suggested Revision을 `APPLY_TEXT`로 **선택 구간 전체 교체**했다.
+시리즈 마지막인 4편에서는 AI의 수정안을 어떻게 생성할지가 아니라, **수정 결과를 어떻게 안전하게 문서에 남길 것인가**를 바꿔봤다.
 
-- Apply 후 원문 복구가 어렵다
-- 여러 Ask 세션이 쌓이면 “어느 질문에서 바뀐 문장인지” 추적이 힘들다
-- busy 상태/파싱 이슈로 **Apply changes** 버튼이 비활성인 경우가 있었다
+## 문제: Apply가 너무 destructive했다
 
-## 핵심 변경 (v0.7.8 → v0.8.0)
+기존 Apply는 선택한 영역을 AI의 Suggested Revision으로 **바로 교체**했다.
 
-### 1. Apply changes: 주석 + Suggested Revision (v0.7.8)
+```latex
+% Before
+CRAFT achieves strong performance.
 
-**Apply changes**를 누르면:
+% Apply 후
+CRAFT consistently achieves strong performance.
+```
 
-1. Ask했던 **원문**을 `%` LaTeX 주석으로 보존
-2. 바로 아래에 **Suggested Revision** 본문 삽입
-3. 세션에 저장된 `selectionRange`로 위치 적용 (cached 선택에 덜 의존)
+수정 자체는 정상적이지만, 원래 문장을 다시 확인하려면 Undo나 Version History에 의존해야 했다.
 
-원문을 지우지 않고, 수정본을 **아래에 추가**하는 형태다.
+Ask AI 세션이 여러 개 쌓이면 **어떤 질문을 통해 어느 문장이 변경됐는지** 추적하기도 어려워졌다.
 
-### 2. Apply changes 버튼 활성화 (v0.7.9)
+논문 수정에서는 AI가 제안한 문장을 바로 채택하는 것보다, **원문과 수정안을 비교한 뒤 판단**하는 과정이 더 중요하다고 생각했다.
 
-- AI 응답 완료 후 `busy` 해제 뒤 **UI 재렌더** → Apply changes 정상 활성화
-- `Suggested Revision` 파싱 강화 (`###`, `**`, 코드블록 fallback)
-- 버튼 `title` 툴팁으로 적용 가능/불가 이유 표시
+그래서 Apply를 덮어쓰기 방식에서 **원문을 보존하는 방식**으로 바꾸기로 했다.
 
-### 3. 구분선 + id 라벨 (v0.8.0)
+## 개선: 원문을 남기면서 Revision 적용하기
 
-Apply 시 `% =================` 구분선과 **세션 id 라벨**을 넣는다.
+LaTeX에서는 `%` 뒤의 내용이 compile 결과에 포함되지 않는다.
+
+이 점을 이용해 Apply 시 기존 문장을 삭제하지 않고 **주석으로 남기도록** 했다.
 
 ```latex
 % ================= id(ASK AI - 1) before
-% (원문 — 주석으로 보존)
+% CRAFT achieves strong performance.
 % ================= id(ASK AI - 1) after
-(Suggested Revision 본문)
+CRAFT consistently achieves strong performance.
 ```
 
-Ask AI - N pill과 에디터 안 주석 id가 맞물려, **어느 세션에서 바뀐 블록인지** 바로 보인다.
+사용자에게 보이는 PDF에는 **after**만 반영되지만, 에디터에서는 기존 문장과 수정된 문장을 동시에 확인할 수 있다.
+
+또한 `ASK AI - N`을 함께 기록해, **어느 Ask AI 세션**에서 만들어진 수정인지 추적할 수 있게 했다.
 
 ```text
-v0.7.8  원문 주석 보존 + Revision 아래 삽입
-v0.7.9  Apply changes 활성화 / 파싱 강화
-v0.8.0  구분선 + id(ASK AI - N) 라벨
+Ask AI - 1
+    │
+    └── id(ASK AI - 1)
+            ├── before → 원문
+            └── after  → Suggested Revision
 ```
 
-## 결과 화면
+Apply 위치는 각 세션이 가지고 있는 `selectionRange`를 사용했다.  
+여러 Ask AI 세션을 열어두거나 pill로 최소화했다가 다시 열어도, **처음 질문했던 영역**에 수정안을 적용할 수 있다.
 
-CLEAR 논문 초록 일부에 **Ask AI - 1**로 academic writing 개선을 요청한 뒤, **Apply changes**를 적용한 모습이다.
+## 결과
 
-- `% id(ASK AI - 1) before` 아래: 원문 (주석)
-- `% id(ASK AI - 1) after` 아래: Suggested Revision (compile 대상)
-- pill **Ask AI - 1**은 에디터 위에 그대로 남아 있다
+실제 논문 문장을 Ask AI로 수정한 뒤 **Apply changes**를 실행하면, 원문과 수정본이 함께 남는다.
 
 ![Apply changes — before/after 주석 + Revision 추가]({{ '/assets/images/engineering/overleaf-ai-ask-apply-before-after.png' | relative_url }})
 
-덮어쓰기가 아니라 **내용을 추가**하는 쪽으로 바뀐 점이 이 스크린샷에서 가장 잘 드러난다.
+`before`는 LaTeX 주석이기 때문에 compile에는 영향을 주지 않고, `after`만 실제 논문에 반영된다.
 
-## 변경 파일
+Apply의 의미가 이렇게 바뀌었다.
 
-| 파일 | 역할 |
-|------|------|
-| `ask-bubble.js` | Apply changes, id 라벨/구분선 삽입 |
-| `editor-bridge.js` | `selectionRange` 기준 apply |
-| `manifest.json` | v0.7.8 → v0.8.0 |
+**Before**
 
-## 적용 방법
+```text
+Original ──Apply──> Revision
+```
 
-1. 확장 / Overleaf 탭 새로고침
-2. 문장 드래그 → **✨ Ask AI** → 질문 또는 Quick 버튼
-3. Answer에 Suggested Revision 확인 → **Apply changes**
-4. 에디터에서 `before` 주석 / `after` 본문 구조 확인
+**After**
 
-## 마무리
+```text
+Original ──Apply──> % Original
+                    Revision
+```
 
-3편에서 “어디서 질문하는가”를 바꿨다면, 4편은 **Apply가 에디터에 무엇을 남기는가**를 바꿨다.  
-원문 주석 + Revision 추가 + id 라벨까지 맞추면서, AI 수정을 논문 초안 안에서 **추적 가능한 diff**처럼 다룰 수 있게 됐다.
+작은 변화지만, AI가 기존 내용을 바로 파괴하지 않는다는 점에서 실제로 사용할 때 부담이 훨씬 줄었다.
+
+## 느낀 점
+
+이번 수정에서 가장 크게 느낀 것은, AI 편집 기능에서는 **생성 품질뿐 아니라 되돌릴 수 있는가**도 중요하다는 점이었다.
+
+AI가 항상 더 좋은 문장을 만든다고 가정할 수는 없다. 그렇다면 시스템이 해야 할 일은 결과를 바로 확정하는 것이 아니라, **사용자가 원본과 제안을 비교하고 선택**할 수 있도록 만드는 쪽에 가깝다.
+
+처음에는 Apply를 단순히 “AI 결과로 선택 영역을 교체한다”고 생각했다.
+
+지금은 조금 다르게 생각한다.
+
+> “AI의 제안을 문서에 반영하되, 사용자의 원래 작업을 잃지 않는다.”
+
+특히 논문처럼 여러 번 수정하고 검토하는 문서에서는 이 방식이 더 잘 맞았다.
+
+## 시리즈를 마치며
+
+처음 이 프로젝트를 시작한 이유는 단순했다.
+
+논문을 고칠 때마다 Overleaf와 외부 AI를 오가는 과정이 번거로웠다.
+
+그래서 네 편에 걸쳐 조금씩 작업 흐름을 줄여봤다.
+
+| 편 | 해결한 문제 |
+|----|-------------|
+| [1편](/engineering/2026-08-31-overleaf-ai-assistant-1/) | 선택한 LaTeX를 다시 정확한 위치에 Apply |
+| [2편](/engineering/2026-08-31-overleaf-ai-assistant-2/) | 실제 LLM, CM6, Streaming 연결 |
+| [3편](/engineering/2026-08-31-overleaf-ai-assistant-3/) | Sidebar 대신 선택한 문장 위에서 Ask AI |
+| 4편 | 원문을 보존하면서 AI Revision 적용 |
+
+결과적으로 처음의 흐름
+
+```text
+Overleaf → Copy → External AI → Copy → Overleaf
+```
+
+을
+
+```text
+Overleaf
+   │
+ Select
+   ↓
+ Ask AI
+   ↓
+ Compare
+   ↓
+ Apply
+```
+
+로 바꿀 수 있었다.
+
+돌아보면 이 프로젝트에서 계속 개선한 것은 **LLM 자체**가 아니었다.
+
+AI를 사용하기 위해 논문 작성 흐름을 **얼마나 적게 벗어나게** 만들 수 있는가, 그리고 AI가 개입하더라도 사용자가 **자신의 원문에 대한 통제권**을 유지할 수 있는가가 더 중요한 문제였다.
+
+UI와 테스트 등 아직 다듬을 부분은 남아 있지만, 처음 만들고 싶었던 **Overleaf 안에서 자연스럽게 사용하는 AI Assistant**의 기본 흐름은 여기까지 완성했다.
