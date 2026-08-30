@@ -163,4 +163,4 @@ LLM API 연결
 필요하면 CM6 선택/Apply 대응
 ```
 
-다음 편에서는 stub 자리에 실제 모델을 넣고, 액션마다 어떤 입력을 주고 어떤 형태로 받게 할지 다듬으려 한다. → [2편](/engineering/2026-08-31-overleaf-ai-assistant-2/)
+다음 편에서는 stub 자리에 실제 모델을 넣고, CM6 bridge/스트리밍/LLM 파라미터까지 v0.4.0까지 다룬다. → [2편](/engineering/2026-08-31-overleaf-ai-assistant-2/)
