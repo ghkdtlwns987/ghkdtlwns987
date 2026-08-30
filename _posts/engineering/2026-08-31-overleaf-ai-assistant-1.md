@@ -130,6 +130,25 @@ v0.2.0에서 맞춘 것은 제품의 겉모습이 아니라 **루프**다.
 처음부터 모델을 붙이지 않은 이유는, API 품질 문제를 에디터 연동 문제와 섞고 싶지 않아서다.  
 Stub으로도 “선택 → 결과 → Apply”가 되는지 먼저 확인하는 편이 다음 작업을 단순하게 만든다.
 
+## 결과 화면 (v0.2.0)
+
+v0.2.0에서 확인한 것은 **AI Paper Copilot** 사이드바와 Chrome 확장 등록 상태다.  
+선택 영역, 다섯 가지 액션, 결과, Copy / Apply까지 한 패널에 모였다. 아직 LLM은 stub이지만, 루프 자체는 이 화면에서 끝까지 돌아간다.
+
+### AI Paper Copilot 사이드바
+
+Overleaf 에디터에서 확장을 열면 사이드바가 표시된다.  
+Polish / Shorten / Review / LaTeX Check / Citation Check 버튼과 결과 영역이 v0.2.0 UX의 기본 형태다.
+
+![AI Paper Copilot v0.2.0 사이드바]({{ '/assets/images/engineering/overleaf-ai-copilot-sidebar.png' | relative_url }})
+
+### Chrome Extension 등록
+
+`chrome://extensions`에 **Overleaf AI Extension 0.2.0**이 설치된 상태다.  
+Manifest V3 확장으로, Overleaf 탭에서 content script와 sidebar iframe이 주입된다.
+
+![Chrome Extension 0.2.0 설치 화면]({{ '/assets/images/engineering/overleaf-ai-extension-installed.png' | relative_url }})
+
 ## 다음에 할 일
 
 1편에서 파이프와 UX를 고정해 두면, 이후 문제는 비교적 선명해진다.
@@ -144,4 +163,4 @@ LLM API 연결
 필요하면 CM6 선택/Apply 대응
 ```
 
-다음 편에서는 stub 자리에 실제 모델을 넣고, 액션마다 어떤 입력을 주고하고 어떤 형태로 받게 할지 다듬으려 한다.
+다음 편에서는 stub 자리에 실제 모델을 넣고, 액션마다 어떤 입력을 주고 어떤 형태로 받게 할지 다듬으려 한다. → [2편](/engineering/2026-08-31-overleaf-ai-assistant-2/)
