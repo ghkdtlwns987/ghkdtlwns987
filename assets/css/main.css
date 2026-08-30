@@ -4043,6 +4043,11 @@ a.post-series-link:hover {
   visibility: hidden;
 }
 
+.post-series-continue {
+  margin: 1.75rem 0 0;
+  font-size: 0.9375rem;
+}
+
 .post-publication {
   margin: 0 0 1.5rem;
 }

@@ -1,0 +1,13 @@
+{%- comment -%}
+  시리즈 특정 편 링크
+  inline: {% include post-series-part-link.html order=1 label="1편" markdown=true %}
+{%- endcomment -%}
+{%- assign series_id = include.series | default: page.series -%}
+{%- assign target_order = include.order | plus: 0 -%}
+{%- assign ordered = site.posts | where: 'series', series_id | sort: 'series_order' -%}
+{%- for post in ordered -%}
+  {%- if post.series_order == target_order -%}
+    {%- assign link_label = include.label | default: post.title | strip_html | strip -%}
+    {%- if include.markdown -%}[{{ link_label }}]({{ post.url | relative_url }}){%- else -%}<a href="{{ post.url | relative_url }}">{{ link_label }}</a>{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

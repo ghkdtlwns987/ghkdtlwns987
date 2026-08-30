@@ -1,0 +1,12 @@
+{%- comment -%}
+  시리즈 다음 편 링크 (글 본문 하단)
+{%- endcomment -%}
+{%- if page.series and page.series_order -%}
+  {%- assign next_order = page.series_order | plus: 1 -%}
+  {%- assign ordered = site.posts | where: 'series', page.series | sort: 'series_order' -%}
+  {%- for post in ordered -%}
+    {%- if post.series_order == next_order -%}
+<p class="post-series-continue">→ <a href="{{ post.url | relative_url }}">{{ post.title | strip_html | strip }}</a></p>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
