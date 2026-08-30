@@ -203,4 +203,4 @@ Editor → Extension → LLM → Extension → Editor
 
 2편에서는 실제 LLM API를 연결하고, CodeMirror 6와 Streaming까지 붙여본다.
 
-→ [Overleaf AI Assistant 만들기 - 2](/engineering/2026-08-31-overleaf-ai-assistant-2/)
+→ [Overleaf AI Assistant 만들기 - 2]({{ '/poster/2026/08/31/overleaf-ai-assistant-2/' | relative_url }})

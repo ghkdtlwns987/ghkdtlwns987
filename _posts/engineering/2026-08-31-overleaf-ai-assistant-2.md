@@ -13,7 +13,7 @@ series_title: "Overleaf AI Assistant 만들기"
 
 ## 들어가며
 
-[1편](/engineering/2026-08-31-overleaf-ai-assistant-1/)에서는 실제 LLM을 연결하지 않고 **Select → Action → Preview → Apply** 흐름부터 만들었다.
+[1편]({{ '/poster/2026/08/31/overleaf-ai-assistant-1/' | relative_url }})에서는 실제 LLM을 연결하지 않고 **Select → Action → Preview → Apply** 흐름부터 만들었다.
 
 이번에는 stub을 실제 LLM으로 교체했다.
 
@@ -149,4 +149,4 @@ Overleaf와 외부 AI를 오가는 문제는 해결했지만, Overleaf 안에서
 
 그래서 다음에는 AI를 Sidebar가 아니라 **지금 선택한 문장 바로 옆**으로 가져오기로 했다.
 
-→ [Overleaf AI Assistant 만들기 - 3](/engineering/2026-08-31-overleaf-ai-assistant-3/)
+→ [Overleaf AI Assistant 만들기 - 3]({{ '/poster/2026/08/31/overleaf-ai-assistant-3/' | relative_url }})

@@ -13,7 +13,7 @@ series_title: "Overleaf AI Assistant 만들기"
 
 ## 들어가며
 
-[3편](/engineering/2026-08-31-overleaf-ai-assistant-3/)까지 만들면서 Overleaf에서 문장을 선택하고, 바로 옆에서 AI에게 질문한 뒤 결과를 Apply할 수 있게 됐다.
+[3편]({{ '/poster/2026/08/31/overleaf-ai-assistant-3/' | relative_url }})까지 만들면서 Overleaf에서 문장을 선택하고, 바로 옆에서 AI에게 질문한 뒤 결과를 Apply할 수 있게 됐다.
 
 **Select → Ask AI → Answer → Apply**
 
@@ -120,9 +120,9 @@ AI가 항상 더 좋은 문장을 만든다고 가정할 수는 없다. 그렇�
 
 | 편 | 해결한 문제 |
 |----|-------------|
-| [1편](/engineering/2026-08-31-overleaf-ai-assistant-1/) | 선택한 LaTeX를 다시 정확한 위치에 Apply |
-| [2편](/engineering/2026-08-31-overleaf-ai-assistant-2/) | 실제 LLM, CM6, Streaming 연결 |
-| [3편](/engineering/2026-08-31-overleaf-ai-assistant-3/) | Sidebar 대신 선택한 문장 위에서 Ask AI |
+| [1편]({{ '/poster/2026/08/31/overleaf-ai-assistant-1/' | relative_url }}) | 선택한 LaTeX를 다시 정확한 위치에 Apply |
+| [2편]({{ '/poster/2026/08/31/overleaf-ai-assistant-2/' | relative_url }}) | 실제 LLM, CM6, Streaming 연결 |
+| [3편]({{ '/poster/2026/08/31/overleaf-ai-assistant-3/' | relative_url }}) | Sidebar 대신 선택한 문장 위에서 Ask AI |
 | 4편 | 원문을 보존하면서 AI Revision 적용 |
 
 결과적으로 처음의 흐름

@@ -13,7 +13,7 @@ series_title: "Overleaf AI Assistant 만들기"
 
 ## 들어가며
 
-[2편](/engineering/2026-08-31-overleaf-ai-assistant-2/)까지 만들면서 Overleaf 안에서 실제 LLM을 사용할 수 있게 됐다.
+[2편]({{ '/poster/2026/08/31/overleaf-ai-assistant-2/' | relative_url }})까지 만들면서 Overleaf 안에서 실제 LLM을 사용할 수 있게 됐다.
 
 문장을 선택하고, Polish나 Review를 실행하고, 결과를 다시 Apply하는 것까지 가능했다.
 
@@ -222,4 +222,4 @@ AI가 수정한 결과를 적용하는 것만큼, **무엇이 수정됐는지를
 
 다음 편에서는 기존 문장을 바로 덮어쓰는 대신, 원문과 Suggested Revision을 함께 남길 수 있는 Apply 방식을 만들어본다.
 
-→ [Overleaf AI Assistant 만들기 - 4](/engineering/2026-08-31-overleaf-ai-assistant-4/)
+→ [Overleaf AI Assistant 만들기 - 4]({{ '/poster/2026/08/31/overleaf-ai-assistant-4/' | relative_url }})
