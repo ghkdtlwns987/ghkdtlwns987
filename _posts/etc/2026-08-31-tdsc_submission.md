@@ -16,7 +16,7 @@ badges:
 
 **IEEE Transactions on Dependable and Secure Computing (TDSC)**에 논문을 제출했다.
 
-→ 이전 글: [ASE Accept 회고](/poster/2026/08/31/accepted/)
+→ 이전 글: [ASE Accept 회고]({{ '/poster/2026/08/13/accepted/' | relative_url }})
 
 ASE 2026에 Accept된 CLEAR를 기반으로 Journal Extension을 시작했고,
 추가 실험과 방법론 수정을 거쳐 이번에 TDSC에 제출하게 되었다.
@@ -34,7 +34,7 @@ Dependable Computing과 Security를 주요 주제로 다루는 IEEE 저널이다
 Software Security, Vulnerability Analysis, System Security 등
 현재 연구하고 있는 주제와 관련된 논문도 꾸준히 게재되고 있다.
 
-[저널 점수 확인하는 법](/poster/2026/08/31/journal/)을 작성할 때
+[저널 점수 확인하는 법]({{ '/poster/2026/08/13/journal/' | relative_url }})을 작성할 때
 TDSC를 예시로 사용한 적이 있었는데, 이번에는 실제 투고까지 진행하게 되었다.
 
 이번에 제출한 논문은 ASE 2026에 Accept된
@@ -58,7 +58,7 @@ Conference 논문과 충분히 구별되는 새로운 Contribution이 있어야 
 기존 방법에서 부족했던 부분을 다시 살펴보면서
 방법론 자체도 상당 부분 수정해야 했다.
 
-[Paper Extension](/poster/2026/08/14/writing_paper/)에서도 일부 정리했지만,
+[Paper Extension]({{ '/poster/2026/08/14/writing_paper/' | relative_url }})에서도 일부 정리했지만,
 이번 Extension에서는 크게 다음과 같은 부분을 추가했다.
 
 - 취약점의 Causality Type을 고려한 Knowledge Representation
@@ -148,8 +148,9 @@ Review 결과가 도착하면,
 
 ---
 
-Related:
+## Related
 
-[ASE Paper Accepted - 회고](/poster/2026/08/31/accepted/) ·
-
-[Paper Extension](/poster/2026/08/14/writing_paper/)
+- [ASE Paper Accepted - 회고]({{ '/poster/2026/08/13/accepted/' | relative_url }})
+- [Paper Extension]({{ '/poster/2026/08/14/writing_paper/' | relative_url }})
+- [CLEAR Review]({{ '/poster/2026/08/14/clear/' | relative_url }})
+- [저널 점수 확인하는 법]({{ '/poster/2026/08/13/journal/' | relative_url }})
