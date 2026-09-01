@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "배달"
+title: "뉴스 클러스터링"
 date: 2026-08-31
 problem: "17677"
 description: >-
-  프로그래머스 뉴스 클러스터링 - 배달
+  코딩테스트 연습 - 2018 KAKAO BLIND RECRUITMENT - [1차] 뉴스 클러스터링
+
 ---
 
 - Platform : 프로그래머스
