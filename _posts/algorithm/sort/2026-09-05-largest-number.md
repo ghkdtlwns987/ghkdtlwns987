@@ -109,7 +109,9 @@ a + b  >  b + a  이면  a가 앞
 
 ## `[0, 0, 0]` → `"0"`
 
-정렬 후 `join`만 하면 `"000"`이 된다. 가장 큰 수는 **0 하나**이므로, 한 번 정수로 바꿨다가 다시 문자열로 만든다.
+정렬 후 `join`만 하면 `"000"`이 된다. 가장 큰 수는 **0 하나**여야 한다.
+
+한 방법은 붙인 문자열을 정수로 바꿨다가 다시 문자열로 만드는 것이다.
 
 ```python
 str(int("".join(numbers)))
@@ -117,9 +119,17 @@ str(int("".join(numbers)))
 
 문제에서 문자열로 return 하라고 한 것은 값이 커서 정수 overflow를 피하려는 것이고, 파이썬 `int`는 이 정도에서 문제 없다. 여기서 `int`를 쓰는 이유는 overflow가 아니라 **선행 0 제거**다.
 
+다른 방법은 정렬 결과만 보면 된다. `reverse=True`이므로 가장 큰 키가 맨 앞이다. 그 값이 `"0"`이면 나머지 것도 전부 0이다. 큰 문자열을 `int`로 바꿀 필요 없다.
+
+```python
+if numbers[0] == "0":
+    return "0"
+return "".join(numbers)
+```
+
 ---
 
-### Solution
+### Solution (`int`로 0 처리)
 
 ```python
 def solution(numbers):
@@ -153,6 +163,31 @@ def solution(numbers):
 
 ---
 
+## 앞이 `"0"`이면 바로 반환해도 된다
+
+정렬 키는 같고, 0 처리만 바꾼 풀이다. 내림차순에서 맨 앞이 `"0"`이면 `[0, 0, 0]`처럼 **전부 0**인 경우뿐이다. `[0, 0, 1]`이면 `"1"`이 앞으로 오므로 이 분기에 안 들어간다.
+
+길이가 100,000이면 `join`한 뒤 `int()`는 긴 문자열을 숫자로 파싱한다. 앞 글자만 보면 그 비용을 피할 수 있다.
+
+### Solution (앞이 0인지 확인)
+
+```python
+def solution(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=lambda x: x * 3, reverse=True)
+
+    if numbers[0] == "0":
+        return "0"
+
+    return "".join(numbers)
+```
+
+- 정렬까지는 위와 같음
+- `numbers[0] == "0"` : 가장 큰 수가 0 → 답은 `"0"`
+- 아니면 `join`만 하면 된다. 선행 0이 생기지 않음
+
+---
+
 ## 정리
 
 | 키워드 | 내용 |
@@ -161,6 +196,6 @@ def solution(numbers):
 | 함정 | 숫자 크기·일반 문자열 정렬로는 부족 (`3` vs `30`) |
 | 비교 | `a+b`와 `b+a` 중 큰 쪽이 앞 |
 | 구현 | `key = lambda x: x * 3`, `reverse=True` |
-| 예외 | 전부 0이면 `"0"` (`str(int(...))`) |
+| 예외 | 전부 0이면 `"0"` — `str(int(join))` 또는 `numbers[0] == "0"` |
 
 이어 붙여 최댓값을 만드는 문제는 "값의 크기"가 아니라 **앞에 놓았을 때 만들어지는 문자열**로 순서를 정한다.

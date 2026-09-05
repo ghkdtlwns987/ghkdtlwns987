@@ -33,6 +33,8 @@ categories:
         title: BFS · DFS
       - slug: greedy
         title: Greedy
+      - slug: stack
+        title: Stack · Queue
       - slug: sort
         title: Sort
       - slug: hash

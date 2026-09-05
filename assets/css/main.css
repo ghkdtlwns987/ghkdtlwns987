@@ -3920,6 +3920,10 @@ button.news-badge--filter:hover {
   background: #bf3989;
 }
 
+.news-badge--poster-sub-stack {
+  background: #8250df;
+}
+
 .news-badge--poster-sub-sort {
   background: #1f6feb;
 }
